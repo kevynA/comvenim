@@ -161,200 +161,381 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // ===================================
-            // DATOS (Planes y Productos)
-            // ===================================
-            // NOTA: Se ha ampliado la lista de productos.
-            const products = [
-                { id: 101, name: 'Página Web Corporativa', description: 'Diseño profesional con 5 secciones. Ideal para presentar tu empresa. (Entrega en 7 días)', price: 159.99, image: 'https://placehold.co/400x300/3B82F6/FFFFFF?text=Web+Corp' },
-                { id: 102, name: 'Tienda Online (eCommerce)', description: 'Catálogo de productos, carrito de compras y pasarela de pagos integrada.', price: 299.99, image: 'https://placehold.co/400x300/10B981/FFFFFF?text=Tienda' },
-                { id: 103, name: 'Mantenimiento PC/Laptop', description: 'Optimización, limpieza de software y hardware. (Proceso de 2 días hábiles)', price: 29.99, image: 'https://placehold.co/400x300/F59E0B/FFFFFF?text=Manto.+PC' },
-                { id: 104, name: 'Soporte Técnico Remoto', description: 'Asistencia inmediata para solucionar problemas de software. (Precio por hora)', price: 15.00, image: 'https://placehold.co/400x300/EF4444/FFFFFF?text=Soporte' },
-                { id: 105, name: 'Gestión de Redes Sociales', description: 'Plan mensual básico. Creación y programación de contenido para una red social.', price: 99.00, image: 'https://placehold.co/400x300/8B5CF6/FFFFFF?text=Social+Media' },
-                { id: 106, name: 'Campaña de Google Ads', description: 'Configuración y optimización de una campaña de búsqueda para atraer clientes.', price: 75.00, image: 'https://placehold.co/400x300/EC4899/FFFFFF?text=Google+Ads' },
-                { id: 107, name: 'Diseño de Logo Profesional', description: 'Creación de un logotipo único y memorable para tu marca. Incluye 3 propuestas.', price: 89.99, image: 'https://placehold.co/400x300/6366F1/FFFFFF?text=Logo' },
-                { id: 108, name: 'Hosting y Dominio .com', description: 'Paquete anual de alojamiento web rápido y seguro, con dominio .com gratis el primer año.', price: 59.99, image: 'https://placehold.co/400x300/06B6D4/FFFFFF?text=Hosting' }
-            ];
 
-            let cartItems = [];
+        document.addEventListener('DOMContentLoaded', function () {
 
-            // ===================================
-            // RENDERIZADO INICIAL DEL CARRUSEL
-            // ===================================
-            const productListContainer = document.getElementById('product-list');
+            // ===================================
 
-            function renderProducts() {
-                if (!productListContainer) return;
-                // Se mapean los productos para que cada uno sea un 'swiper-slide'
-                productListContainer.innerHTML = products.map(product => `
-                    <div class="swiper-slide">
-                        <div class="card flex flex-col text-center w-full">
-                            <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-xl font-bold mb-2 h-14 flex items-center justify-center">${product.name}</h3>
-                                <p class="text-gray-600 text-sm flex-grow mb-4">${product.description}</p>
-                                <p class="text-3xl font-bold text-blue-600 mb-4">$${product.price.toFixed(2)}</p>
-                                <button onclick="addItemToCart(${product.id})" class="w-full btn-secondary mt-auto">Añadir al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-                
-                // INICIALIZACIÓN DE SWIPER.JS
-                // Esta parte es nueva y crea el carrusel.
-                new Swiper('.swiper-container', {
-                    loop: true,
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    breakpoints: {
-                        // Cuando el ancho de la pantalla es >= 640px
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        // Cuando el ancho de la pantalla es >= 1024px
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                        }
-                    }
-                });
-            }
-            
-            renderProducts();
+            // DATOS (Planes y Productos)
 
-            // ===================================
-            // FUNCIONALIDAD DEL CARRITO (Lógica principal sin cambios)
-            // ===================================
-            const cartModal = document.getElementById('cart-modal');
-            const cartContainer = document.getElementById('cart-container');
-            const closeCartButton = document.getElementById('close-cart-button');
-            const cartButton = document.getElementById('cart-button');
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartTotalEl = document.getElementById('cart-total');
-            const cartCountEl = document.getElementById('cart-count');
-            const checkoutButton = document.getElementById('checkout-button-whatsapp');
+            // ===================================
 
-            function updateCart() {
-                cartItemsContainer.innerHTML = '';
-                if (cartItems.length === 0) {
-                    cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center">Tu carrito está vacío.</p>';
-                } else {
-                    cartItems.forEach(item => {
-                        const itemEl = document.createElement('div');
-                        itemEl.className = 'flex justify-between items-center mb-4 cart-item-animation';
-                        itemEl.innerHTML = `
-                            <div class="flex-grow pr-4">
-                                <p class="font-bold">${item.name} ${item.quantity > 1 ? `(x${item.quantity})`: ''}</p>
-                                <p class="text-sm text-gray-600">$${item.price.toFixed(2)}</p>
-                            </div>
-                            <span class="font-bold w-24 text-right">$${(item.price * item.quantity).toFixed(2)}</span>
-                            <button onclick="removeItemFromCart(${item.id})" class="ml-4 text-red-500 hover:text-red-700 text-2xl font-bold">&times;</button>
-                        `;
-                        cartItemsContainer.appendChild(itemEl);
-                    });
-                }
+            const plans = [
 
-                const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                cartTotalEl.textContent = `$${total.toFixed(2)}`;
+                { id: 1, name: 'Plan Básico', price: 99.00, type: 'plan' },
 
-                const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-                cartCountEl.textContent = totalItems;
-                cartCountEl.classList.toggle('hidden', totalItems === 0);
-            }
+                { id: 2, name: 'Plan Estándar', price: 199.00, type: 'plan' },
 
-            window.addItemToCart = function(itemId) {
-                const itemToAdd = products.find(item => item.id === itemId);
+                { id: 3, name: 'Plan Premium', price: 399.00, type: 'plan' }
 
-                if (itemToAdd) {
-                    const existingItem = cartItems.find(item => item.id === itemId);
-                    if (existingItem) {
-                        existingItem.quantity++;
-                    } else {
-                        cartItems.push({ ...itemToAdd, quantity: 1 });
-                    }
-                    showCartNotification(itemToAdd.name);
-                    updateCart();
-                }
-            }
-            
-            function showCartNotification(itemName) {
-                const notification = document.createElement('div');
-                notification.className = 'fixed top-24 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in z-50';
-                notification.textContent = `"${itemName}" añadido al carrito!`;
-                document.body.appendChild(notification);
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
-            }
+            ];
 
-            window.removeItemFromCart = function(itemId) {
-                const itemIndex = cartItems.findIndex(item => item.id === itemId);
-                if (itemIndex > -1) {
-                    cartItems[itemIndex].quantity--;
-                    if (cartItems[itemIndex].quantity === 0) {
-                        cartItems.splice(itemIndex, 1);
-                    }
-                }
-                updateCart();
-            }
 
-            function toggleCart() {
-                const isHidden = cartModal.classList.contains('hidden');
-                if (isHidden) {
-                    cartModal.classList.remove('hidden');
-                    setTimeout(() => cartContainer.classList.remove('translate-x-full'), 10);
-                } else {
-                    cartContainer.classList.add('translate-x-full');
-                    setTimeout(() => cartModal.classList.add('hidden'), 300);
-                }
-            }
-            
-            function sendOrderToWhatsApp() {
-                if (cartItems.length === 0) {
-                    // Usamos una notificación personalizada en lugar de alert()
-                    const notification = document.createElement('div');
-                    notification.className = 'fixed top-24 right-5 bg-red-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in z-50';
-                    notification.textContent = 'Tu carrito está vacío.';
-                    document.body.appendChild(notification);
-                    setTimeout(() => notification.remove(), 3000);
-                    return;
-                }
 
-                let message = '¡Hola! 👋\n\nQuisiera solicitar una cotización para los siguientes servicios/productos:\n\n';
+            const products = [
 
-                cartItems.forEach(item => {
-                    message += `*✅ ${item.name}*\n`;
-                    message += `   Cantidad: ${item.quantity}\n`;
-                    message += `   Precio: $${item.price.toFixed(2)}\n\n`;
-                });
+                { id: 101, name: 'Página Web', description: 'Distribución en 5 secciones. (Tiempo estimado de entrega 7 días)', price: 59.99, image: 'https://placehold.co/400x300/1E90FF/FFFFFF?text=Hosting' },
 
-                const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                message += `*Total Estimado: $${total.toFixed(2)}*\n\n`;
-                message += 'Agradezco su atención y quedo a la espera de los siguientes pasos.';
+                { id: 102, name: 'Tienda Web', description: '5 secciones más botón de carrito', price: 79.99, image: 'https://placehold.co/400x300/32CD32/FFFFFF?text=SSL' },
 
-                const phoneNumber = '593992648781'; // Tu número de WhatsApp
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                { id: 103, name: 'Mantenimientos Computadores o Laptop', description: 'Duración del proceso 2 días hábiles.', price: 29.99, image: 'https://placehold.co/400x300/FFD700/FFFFFF?text=Mantenimiento' },
 
-                window.open(whatsappUrl, '_blank');
-            }
+                { id: 104, name: 'Soporte Técnico', description: 'Detección de problemas. (El tiempo de entrega  y valor agregado dependerá de la gravedad del problema)', price: 5.00, image: 'https://placehold.co/400x300/FF6347/FFFFFF?text=Logo' }
 
-            checkoutButton.addEventListener('click', sendOrderToWhatsApp);
-            [cartButton, closeCartButton].forEach(btn => btn.addEventListener('click', toggleCart));
-            cartModal.addEventListener('click', (e) => e.target === cartModal && toggleCart());
-            
-            updateCart();
-        });
-    </script>
+            ];
+
+
+
+            let cartItems = [];
+
+
+
+            // ===================================
+
+            // RENDERIZADO INICIAL
+
+            // ===================================
+
+            const productListContainer = document.getElementById('product-list');
+
+
+
+            function renderProducts() {
+
+                if (!productListContainer) return;
+
+                productListContainer.innerHTML = products.map(product => `
+
+                    <div class="card flex flex-col text-center">
+
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+
+                        <div class="p-6 flex flex-col flex-grow">
+
+                            <h3 class="text-xl font-bold mb-2">${product.name}</h3>
+
+                            <p class="text-gray-600 text-sm flex-grow mb-4">${product.description}</p>
+
+                            <p class="text-2xl font-bold text-blue-600 mb-4">$${product.price.toFixed(2)}</p>
+
+                            <button onclick="addItemToCart(${product.id}, 'product')" class="w-full btn-secondary mt-auto">Añadir al carrito</button>
+
+                        </div>
+
+                    </div>
+
+                `).join('');
+
+            }
+
+            
+
+            renderProducts();
+
+
+
+            // ===================================
+
+            // FUNCIONALIDAD DEL CARRITO
+
+            // ===================================
+
+            const cartModal = document.getElementById('cart-modal');
+
+            const cartContainer = document.getElementById('cart-container');
+
+            const closeCartButton = document.getElementById('close-cart-button');
+
+            const cartButton = document.getElementById('cart-button');
+
+            const cartButtonMobile = document.getElementById('cart-button-mobile');
+
+            const cartItemsContainer = document.getElementById('cart-items');
+
+            const cartTotalEl = document.getElementById('cart-total');
+
+            const cartCountEls = [document.getElementById('cart-count'), document.getElementById('cart-count-mobile')];
+
+            const checkoutButton = document.getElementById('checkout-button-whatsapp');
+
+
+
+            function updateCart() {
+
+                cartItemsContainer.innerHTML = '';
+
+                if (cartItems.length === 0) {
+
+                    cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center">Tu carrito está vacío.</p>';
+
+                } else {
+
+                    cartItems.forEach(item => {
+
+                        const itemEl = document.createElement('div');
+
+                        itemEl.className = 'flex justify-between items-center mb-4 cart-item-animation';
+
+                        itemEl.innerHTML = `
+
+                            <div class="flex-grow">
+
+                                <p class="font-bold">${item.name} ${item.quantity > 1 ? `(x${item.quantity})`: ''}</p>
+
+                                <p class="text-sm text-gray-600">$${item.price.toFixed(2)}${item.type === 'plan' ? '/mes' : ''}</p>
+
+                            </div>
+
+                            <span class="font-bold w-24 text-right">$${(item.price * item.quantity).toFixed(2)}</span>
+
+                            <button onclick="removeItemFromCart(${item.id})" class="ml-4 text-red-500 hover:text-red-700 font-bold">&times;</button>
+
+                        `;
+
+                        cartItemsContainer.appendChild(itemEl);
+
+                    });
+
+                }
+
+
+
+                const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                cartTotalEl.textContent = `$${total.toFixed(2)}`;
+
+
+
+                const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+                cartCountEls.forEach(el => {
+
+                    el.textContent = totalItems;
+
+                    el.classList.toggle('hidden', totalItems === 0);
+
+                });
+
+            }
+
+
+
+            window.addItemToCart = function(itemId, itemType) {
+
+                const sourceArray = itemType === 'plan' ? plans : products;
+
+                const itemToAdd = sourceArray.find(item => item.id === itemId);
+
+
+
+                if (itemToAdd) {
+
+                    const existingItem = cartItems.find(item => item.id === itemId);
+
+                    if (existingItem) {
+
+                        existingItem.quantity++;
+
+                    } else {
+
+                        cartItems.push({ ...itemToAdd, quantity: 1 });
+
+                    }
+
+                    showCartNotification(itemToAdd.name);
+
+                    updateCart();
+
+                }
+
+            }
+
+            
+
+            function showCartNotification(itemName) {
+
+                const notification = document.createElement('div');
+
+                notification.className = 'fixed top-24 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in';
+
+                notification.textContent = `"${itemName}" añadido al carrito!`;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+
+                    notification.remove();
+
+                }, 3000);
+
+            }
+
+
+
+            window.removeItemFromCart = function(itemId) {
+
+                cartItems = cartItems.filter(item => item.id !== itemId);
+
+                updateCart();
+
+            }
+
+
+
+            function toggleCart() {
+
+                const isHidden = cartModal.classList.contains('hidden');
+
+                if (isHidden) {
+
+                    cartModal.classList.remove('hidden');
+
+                    setTimeout(() => cartContainer.classList.remove('translate-x-full'), 10);
+
+                } else {
+
+                    cartContainer.classList.add('translate-x-full');
+
+                    setTimeout(() => cartModal.classList.add('hidden'), 300);
+
+                }
+
+            }
+
+
+
+            // ========= NUEVA FUNCIÓN PARA ENVIAR PEDIDO A WHATSAPP =========
+
+            function sendOrderToWhatsApp() {
+
+                if (cartItems.length === 0) {
+
+                    alert("Tu carrito está vacío. Añade productos antes de enviar tu pedido.");
+
+                    return;
+
+                }
+
+
+
+                let message = '¡Hola COMVENIM! \n\nQuisiera iniciar el proceso de contratación de los siguientes servicios/productos:\n\n';
+
+
+
+                cartItems.forEach(item => {
+
+                    message += `*- ${item.name}*\n`;
+
+                    message += `  Cantidad: ${item.quantity}\n`;
+
+                    message += `  Precio Unitario: $${item.price.toFixed(2)}${item.type === 'plan' ? '/mes' : ''}\n\n`;
+
+                });
+
+
+
+                const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                message += `*Total Estimado: $${total.toFixed(2)}*\n\n`;
+
+                message += 'Espero su pronta respuesta para coordinar. ¡Gracias!';
+
+
+
+                // IMPORTANTE: Reemplaza el número de abajo con tu número de WhatsApp, incluyendo el código de país.
+
+                const phoneNumber = '593992648781'; 
+
+                const encodedMessage = encodeURIComponent(message);
+
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+
+
+                window.open(whatsappUrl, '_blank');
+
+            }
+
+
+
+            checkoutButton.addEventListener('click', sendOrderToWhatsApp);
+
+            [cartButton, cartButtonMobile, closeCartButton].forEach(btn => btn.addEventListener('click', toggleCart));
+
+            cartModal.addEventListener('click', (e) => e.target === cartModal && toggleCart());
+
+
+
+            // ===================================
+
+            // OTRAS FUNCIONALIDADES (Menú Móvil, Carrusel)
+
+            // ===================================
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+            
+
+            const slides = document.querySelectorAll('.carousel-item');
+
+            let currentSlide = 0;
+
+            const prevBtn = document.getElementById('prevBtn');
+
+            const nextBtn = document.getElementById('nextBtn');
+
+
+
+            function showSlide(index) {
+
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+
+            }
+
+
+
+            function nextSlide() {
+
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                showSlide(currentSlide);
+
+            }
+
+
+
+            prevBtn.addEventListener('click', () => {
+
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+
+                showSlide(currentSlide);
+
+            });
+
+            nextBtn.addEventListener('click', nextSlide);
+
+            setInterval(nextSlide, 5000);
+
+            
+
+            updateCart();
+
+        });
+
+    </script>
 </body>
 </html>
