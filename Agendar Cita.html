@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda una Cita | COMVENIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Agenda una cita con nuestros expertos de COMVENIM para transformar tu negocio digitalmente. Soporte técnico, desarrollo web y marketing digital.">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Header consistente con el sitio principal -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="https://comvenim.vercel.app/" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="https://comvenim.vercel.app/#inicio" class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
+                <a href="https://comvenim.vercel.app/#servicios" class="text-gray-600 hover:text-blue-600 font-medium">Servicios</a>
+                <a href="https://comvenim.vercel.app/#planes" class="text-gray-600 hover:text-blue-600 font-medium">Planes</a>
+                <a href="https://comvenim.vercel.app/#productos" class="text-gray-600 hover:text-blue-600 font-medium">Productos</a>
+                <a href="https://comvenim.vercel.app/#redes" class="text-gray-600 hover:text-blue-600 font-medium">Redes</a>
+            </div>
+            <!-- Botón de Menú Móvil -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="https://comvenim.vercel.app/#inicio" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Inicio</a>
+            <a href="https://comvenim.vercel.app/#servicios" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Servicios</a>
+            <a href="https://comvenim.vercel.app/#planes" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Planes</a>
+            <a href="https://comvenim.vercel.app/#productos" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Productos</a>
+            <a href="https://comvenim.vercel.app/#redes" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Redes</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">Agenda una cita con nuestros expertos</h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 fade-in">Reserva un tiempo para hablar sobre cómo podemos impulsar tu negocio digitalmente.</p>
+                <a href="#agendar" class="btn-primary inline-block fade-in">Agendar Ahora</a>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">¿Por qué agendar con nosotros?</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Ofrecemos soluciones personalizadas para cada necesidad de tu negocio.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="card p-8 text-center">
+                        <div class="bg-blue-100 text-blue-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-calendar-check text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Flexibilidad de Horarios</h3>
+                        <p class="text-gray-600">Elige el horario que mejor se adapte a tu disponibilidad, incluyendo fines de semana.</p>
+                    </div>
+                    <div class="card p-8 text-center">
+                        <div class="bg-green-100 text-green-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-headset text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Asesoría Personalizada</h3>
+                        <p class="text-gray-600">Recibe atención 1 a 1 con nuestros especialistas en desarrollo web y marketing digital.</p>
+                    </div>
+                    <div class="card p-8 text-center">
+                        <div class="bg-purple-100 text-purple-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-lightbulb text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Soluciones a Medida</h3>
+                        <p class="text-gray-600">Analizamos tu caso específico para ofrecerte la mejor solución tecnológica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tipos de Citas -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tipos de Consulta</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Selecciona el tipo de asesoría que necesitas para tu negocio.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="card p-6 text-center">
+                        <div class="bg-orange-100 text-orange-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-laptop-code text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Desarrollo Web</h3>
+                        <p class="text-sm text-gray-600 mb-4">Consulta sobre creación o mejora de tu sitio web.</p>
+                        <a href="#agendar" class="text-blue-600 font-medium text-sm">Agendar &rarr;</a>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <div class="bg-blue-100 text-blue-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-ad text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Marketing Digital</h3>
+                        <p class="text-sm text-gray-600 mb-4">Estrategias para aumentar tu presencia online.</p>
+                        <a href="#agendar" class="text-blue-600 font-medium text-sm">Agendar &rarr;</a>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <div class="bg-green-100 text-green-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-tools text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Soporte Técnico</h3>
+                        <p class="text-sm text-gray-600 mb-4">Resolución de problemas técnicos y mantenimiento.</p>
+                        <a href="#agendar" class="text-blue-600 font-medium text-sm">Agendar &rarr;</a>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <div class="bg-purple-100 text-purple-600 rounded-full p-4 inline-block mb-4">
+                            <i class="fas fa-star text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Consulta General</h3>
+                        <p class="text-sm text-gray-600 mb-4">Orientación sobre nuestros servicios y planes.</p>
+                        <a href="#agendar" class="text-blue-600 font-medium text-sm">Agendar &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Agendamiento con Koalendar -->
+        <section id="agendar" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Agenda tu cita ahora</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Selecciona una fecha y hora disponible para tu consulta gratuita.</p>
+                </div>
+                
+                <!-- Widget de Koalendar -->
+                <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                    <iframe 
+                        src="https://koalendar.com/e/comvenim-consulta?embed=true" 
+                        width="100%" 
+                        height="800" 
+                        frameborder="0" 
+                        style="border:0; border-radius: 12px;"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-6">¿Prefieres que te contactemos? Déjanos tus datos:</p>
+                    <form class="max-w-md mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <input type="text" placeholder="Nombre" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="email" placeholder="Correo electrónico" class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <input type="tel" placeholder="Teléfono" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <textarea placeholder="Cuéntanos sobre tu proyecto o consulta" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">Solicitar Contacto</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section class="py-20 bg-blue-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Lo que dicen nuestros clientes</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Experiencias reales de negocios que han crecido con nosotros.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"La asesoría con COMVENIM fue clave para entender cómo mejorar mi presencia online. Ahora mi negocio tiene más clientes gracias a su sitio web y estrategia de redes."</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <span class="font-bold">AM</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Ana Martínez</h4>
+                                <p class="text-sm text-gray-500">Tienda de ropa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Excelente atención en la consulta técnica. Resolvieron mis problemas de servidor rápidamente y con mucha paciencia. Definitivamente los recomiendo."</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <span class="font-bold">CR</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Carlos Rodríguez</h4>
+                                <p class="text-sm text-gray-500">Consultor independiente</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"El proceso de agendamiento fue muy sencillo y la consulta superó mis expectativas. Ahora tengo claro el plan de marketing que necesito para mi restaurante."</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <span class="font-bold">LG</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Luisa González</h4>
+                                <p class="text-sm text-gray-500">Restaurante "El Sazón"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer consistente con el sitio principal -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-extrabold text-white">COMVENIM</a>
+                    <p class="text-gray-400 mt-2">Transformando negocios digitalmente</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.facebook.com/profile.php?id=61578571285624" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/comvenim/" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@comvenim" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/593992648781" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 COMVENIM. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z" />
+        </svg>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú móvil
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth scrolling para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Animaciones al hacer scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Ejecutar al cargar y al hacer scroll
+            checkFade();
+            window.addEventListener('scroll', checkFade);
+        });
+    </script>
+</body>
+</html>
