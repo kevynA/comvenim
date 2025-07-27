@@ -328,30 +328,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
 
             // ========= FUNCIÓN PARA ENVIAR PEDIDO A WHATSAPP =========
-            function sendOrderToWhatsApp() {
-                if (cartItems.length === 0) {
-                    alert("Tu carrito está vacío. Añade productos antes de enviar tu pedido.");
-                    return;
-                }
+            // ========= FUNCIÓN PARA ENVIAR PEDIDO A WHATSAPP =========
+function sendOrderToWhatsApp() {
+    if (cartItems.length === 0) {
+        alert("Tu carrito está vacío. Añade productos antes de enviar tu pedido.");
+        return;
+    }
 
-                let message = '¡Hola COMVENIM! 👋\n\nQuisiera solicitar un presupuesto para los siguientes servicios/productos:\n\n';
+    let message = '¡Hola COMVENIM! 👋\n\nQuisiera solicitar un presupuesto para los siguientes servicios/productos:\n\n';
 
-                cartItems.forEach(item => {
-                    message += `*- ${item.name}*\n`;
-                    message += `  Cantidad: ${item.quantity}\n`;
-                    message += `  Precio Unitario: $${item.price.toFixed(2)}${item.type === 'plan' ? '/mes' : ''}\n\n`;
-                });
+    cartItems.forEach(item => {
+        message += `*- ${item.name}*\n`;
+        message += `  Cantidad: ${item.quantity}\n`;
+        message += `  Precio Unitario: $${item.price.toFixed(2)}${item.type === 'plan' ? '/mes' : ''}\n\n`;
+    });
 
-                const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                message += `*Total Estimado: $${total.toFixed(2)}*\n\n`;
-                message += 'Espero su pronta respuesta para coordinar. ¡Gracias!';
+    const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    message += `*Total Estimado: $${total.toFixed(2)}*\n\n`;
+    message += 'Espero su pronta respuesta para coordinar. ¡Gracias!';
 
-                const phoneNumber = '593992648781'; 
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const phoneNumber = '593992648781'; 
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-                window.open(whatsappUrl, '_blank');
-            }
+    // Limpiar el carrito después de enviar el pedido
+    cartItems = [];
+    updateCart();
+    toggleCart(); // Opcional: cerrar el modal del carrito
+    
+    // Mostrar notificación de pedido enviado
+    const notification = document.createElement('div');
+    notification.className = 'fixed top-24 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in';
+    notification.textContent = '¡Pedido enviado con éxito!';
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+
+    // Abrir WhatsApp
+    window.open(whatsappUrl, '_blank');
+}
 
             // Event listeners
             checkoutButton.addEventListener('click', sendOrderToWhatsApp);
