@@ -345,7 +345,16 @@
             // Ejecutar al cargar y al hacer scroll
             checkFade();
             window.addEventListener('scroll', checkFade);
+            
+            function clearCart() {
+    cartItems = [];
+    localStorage.removeItem('comvenimCart');
+    updateCart();
+}
         });
     </script>
+    
+    <!-- En el <head> o antes de cerrar el <body> -->
+<script src="/js/cart.js"></script>
 </body>
 </html>
