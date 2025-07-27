@@ -146,6 +146,17 @@
     </section>
 
     <script>
+        function doPost(e) {
+  const sheet = SpreadsheetApp.openById("ID_DE_TU_HOJA").getActiveSheet();
+  
+  // Obtiene los datos del formulario (application/x-www-form-urlencoded)
+  const email = e.parameter.email; // ¡No uses JSON.parse aquí!
+  
+  sheet.appendRow([new Date(), email]);
+  
+  return ContentService.createTextOutput("¡Gracias por suscribirte!")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
         // Filtrado por categorías (ejemplo básico)
         document.addEventListener('DOMContentLoaded', function() {
             const categoryButtons = document.querySelectorAll('.category-chip');
