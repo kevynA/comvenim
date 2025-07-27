@@ -364,6 +364,12 @@
             // Inicializar el carrito al cargar la página
             updateCart();
 
+            function clearCart() {
+    cartItems = [];
+    localStorage.removeItem('comvenimCart');
+    updateCart();
+}
+
             // Sincronización entre pestañas
             window.addEventListener('storage', (e) => {
                 if (e.key === 'comvenimCart') {
