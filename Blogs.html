@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | COMVENIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-card:hover .blog-title {
+            color: #2563eb; /* blue-600 */
+        }
+        .category-chip {
+            transition: all 0.3s ease;
+        }
+        .category-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sección Blog -->
+    <section id="blog" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Encabezado -->
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">Blog</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tendencias y Conocimiento</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Descubre artículos sobre desarrollo web, marketing digital y tecnología para hacer crecer tu negocio.</p>
+            </div>
+
+            <!-- Categorías -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="category-chip px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium">Todos</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Tecnología</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Marketing</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Desarrollo Web</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Negocios</button>
+            </div>
+
+            <!-- Artículos destacados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artículo 1 -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="#">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="IA en negocios" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">Tecnología</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>15 Junio 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>5 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Cómo implementar IA en tu negocio sin ser experto</h3>
+                            <p class="text-gray-600 mb-4">Descubre herramientas de IA accesibles que pueden automatizar procesos y mejorar la productividad de tu empresa.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 2 -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="#">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="TikTok Marketing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">Marketing</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>8 Junio 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>7 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Estrategias de TikTok para negocios locales en 2024</h3>
+                            <p class="text-gray-600 mb-4">Aprende a aprovechar el algoritmo de TikTok para aumentar la visibilidad de tu negocio físico o servicio local.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 3 -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="#">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Jamstack" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">Desarrollo Web</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>1 Junio 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>10 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Por qué tu próximo sitio web debería usar Jamstack</h3>
+                            <p class="text-gray-600 mb-4">Ventajas de la arquitectura Jamstack sobre los CMS tradicionales para rendimiento, seguridad y escalabilidad.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <!-- CTA y enlace a más artículos -->
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
+                    Ver todos los artículos
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                
+                <div class="mt-8">
+                    <p class="text-gray-600 mb-4">¿Quieres recibir nuestros mejores artículos en tu correo?</p>
+                    <form class="max-w-md mx-auto flex">
+                        <input type="email" placeholder="Tu email" class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-r-lg hover:bg-blue-700 transition-colors duration-300">
+                            Suscribirme
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Filtrado por categorías (ejemplo básico)
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-chip');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase activa de todos los botones
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('bg-blue-600', 'text-white');
+                        btn.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-700', 'hover:bg-gray-50');
+                    });
+                    
+                    // Añadir clase activa al botón clickeado
+                    this.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-700', 'hover:bg-gray-50');
+                    this.classList.add('bg-blue-600', 'text-white');
+                    
+                    // Aquí iría la lógica para filtrar los artículos
+                    console.log('Filtrar por: ', this.textContent.trim());
+                });
+            });
+        });
+    </script>
+</body>
+</html>
