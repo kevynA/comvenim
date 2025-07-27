@@ -190,25 +190,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <script>
+        // ===================================
+        // DATOS (Planes y Productos) - Estos pueden estar en un archivo aparte
+        // ===================================
+        const plans = [
+            { id: 1, name: 'Plan Básico', price: 99.00, type: 'plan' },
+            { id: 2, name: 'Plan Estándar', price: 199.00, type: 'plan' },
+            { id: 3, name: 'Plan Premium', price: 399.00, type: 'plan' }
+        ];
+
+        const products = [
+            { id: 101, name: 'Página Web', description: 'Página con secciones a preferencia. (Inicio, Servicios, Planes, Productos y Contacto) (Tiempo estimado de entrega 7 días hábiles)', price: 59.99, image: 'Página Web.png' },
+            { id: 102, name: 'Tienda Web', description: '5 secciones más botón de carrito. (Gestión de ventas por WhatsApp)', price: 79.99, image: 'una_tienda_web_gestionada_por_whatsapp_con.jpeg' },
+            { id: 103, name: 'Mantenimiento de Equipos', description: 'Duración del proceso 2 días hábiles. (Opciones de repontenciación puede aumentar el tiempo de entrega y el valor)', price: 29.99, image: 'Mantenimiento de computadora.jpeg' },
+            { id: 104, name: 'Soporte Técnico', description: 'Detección de problemas. (El tiempo de entrega  y valor agregado dependerá de la gravedad del problema)', price: 5.00, image: 'Soporte Técnico.jpeg' }
+        ];
+
+        // Cargar carrito desde localStorage o inicializar vacío
+        let cartItems = JSON.parse(localStorage.getItem('comvenimCart')) || [];
+
         document.addEventListener('DOMContentLoaded', function () {
-            // ===================================
-            // DATOS (Planes y Productos)
-            // ===================================
-            const plans = [
-                { id: 1, name: 'Plan Básico', price: 99.00, type: 'plan' },
-                { id: 2, name: 'Plan Estándar', price: 199.00, type: 'plan' },
-                { id: 3, name: 'Plan Premium', price: 399.00, type: 'plan' }
-            ];
-
-            const products = [
-                { id: 101, name: 'Página Web', description: 'Página con secciones a preferencia. (Inicio, Servicios, Planes, Productos y Contacto) (Tiempo estimado de entrega 7 días hábiles)', price: 59.99, image: 'Página Web.png' },
-                { id: 102, name: 'Tienda Web', description: '5 secciones más botón de carrito. (Gestión de ventas por WhatsApp)', price: 79.99, image: 'una_tienda_web_gestionada_por_whatsapp_con.jpeg' },
-                { id: 103, name: 'Mantenimiento de Equipos', description: 'Duración del proceso 2 días hábiles. (Opciones de repontenciación puede aumentar el tiempo de entrega y el valor)', price: 29.99, image: 'Mantenimiento de computadora.jpeg' },
-                { id: 104, name: 'Soporte Técnico', description: 'Detección de problemas. (El tiempo de entrega  y valor agregado dependerá de la gravedad del problema)', price: 5.00, image: 'Soporte Técnico.jpeg' }
-            ];
-
-            let cartItems = [];
-
             // ===================================
             // RENDERIZADO INICIAL
             // ===================================
@@ -232,7 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             renderProducts();
 
             // ===================================
-            // FUNCIONALIDAD DEL CARRITO
+            // FUNCIONALIDAD DEL CARRITO (Modificada para usar localStorage)
             // ===================================
             const cartModal = document.getElementById('cart-modal');
             const cartContainer = document.getElementById('cart-container');
@@ -244,6 +245,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const cartCountEls = [document.getElementById('cart-count'), document.getElementById('cart-count-mobile')];
             const checkoutButton = document.getElementById('checkout-button-whatsapp');
 
+            // Función para guardar el carrito en localStorage
+            function saveCartToStorage() {
+                localStorage.setItem('comvenimCart', JSON.stringify(cartItems));
+            }
+
+            // Función para actualizar la UI del carrito
             function updateCart() {
                 cartItemsContainer.innerHTML = '';
                 if (cartItems.length === 0) {
@@ -272,8 +279,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     el.textContent = totalItems;
                     el.classList.toggle('hidden', totalItems === 0);
                 });
+
+                // Guardar en localStorage cada vez que se actualiza
+                saveCartToStorage();
             }
 
+            // Funciones globales para manipular el carrito
             window.addItemToCart = function(itemId, itemType) {
                 const sourceArray = itemType === 'plan' ? plans : products;
                 const itemToAdd = sourceArray.find(item => item.id === itemId);
@@ -288,8 +299,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     showCartNotification(itemToAdd.name);
                     updateCart();
                 }
-            }
+            };
             
+            window.removeItemFromCart = function(itemId) {
+                cartItems = cartItems.filter(item => item.id !== itemId);
+                updateCart();
+            };
+
             function showCartNotification(itemName) {
                 const notification = document.createElement('div');
                 notification.className = 'fixed top-24 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in';
@@ -298,11 +314,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 setTimeout(() => {
                     notification.remove();
                 }, 3000);
-            }
-
-            window.removeItemFromCart = function(itemId) {
-                cartItems = cartItems.filter(item => item.id !== itemId);
-                updateCart();
             }
 
             function toggleCart() {
@@ -316,7 +327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
             }
 
-            // ========= NUEVA FUNCIÓN PARA ENVIAR PEDIDO A WHATSAPP =========
+            // ========= FUNCIÓN PARA ENVIAR PEDIDO A WHATSAPP =========
             function sendOrderToWhatsApp() {
                 if (cartItems.length === 0) {
                     alert("Tu carrito está vacío. Añade productos antes de enviar tu pedido.");
@@ -335,7 +346,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 message += `*Total Estimado: $${total.toFixed(2)}*\n\n`;
                 message += 'Espero su pronta respuesta para coordinar. ¡Gracias!';
 
-                // IMPORTANTE: Reemplaza el número de abajo con tu número de WhatsApp, incluyendo el código de país.
                 const phoneNumber = '593992648781'; 
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -343,40 +353,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 window.open(whatsappUrl, '_blank');
             }
 
+            // Event listeners
             checkoutButton.addEventListener('click', sendOrderToWhatsApp);
             [cartButton, cartButtonMobile, closeCartButton].forEach(btn => btn.addEventListener('click', toggleCart));
             cartModal.addEventListener('click', (e) => e.target === cartModal && toggleCart());
 
             // ===================================
-            // OTRAS FUNCIONALIDADES (Menú Móvil, Carrusel)
+            // OTRAS FUNCIONALIDADES
             // ===================================
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
             
-            const slides = document.querySelectorAll('.carousel-item');
-            let currentSlide = 0;
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-
-            prevBtn.addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
-            });
-            nextBtn.addEventListener('click', nextSlide);
-            setInterval(nextSlide, 5000);
-            
+            // Inicializar el carrito al cargar la página
             updateCart();
+
+            // Sincronización entre pestañas
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'comvenimCart') {
+                    cartItems = JSON.parse(e.newValue) || [];
+                    updateCart();
+                }
+            });
         });
     </script>
-</body>
+    </body>
 </html>
