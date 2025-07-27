@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título del Artículo | COMVENIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .prose a {
+            @apply text-blue-600 hover:text-blue-800 underline;
+        }
+        .prose img {
+            @apply rounded-xl shadow-lg my-6;
+        }
+        .prose h2 {
+            @apply text-2xl font-bold mt-8 mb-4 text-gray-900;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header (Consistente con tu web) -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="https://comvenim.vercel.app/" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="https://comvenim.vercel.app/#servicios" class="text-gray-600 hover:text-blue-600 font-medium">Servicios</a>
+                <a href="/blog" class="text-gray-600 hover:text-blue-600 font-medium">Blog</a>
+                <a href="https://comvenim.vercel.app/#contacto" class="text-gray-600 hover:text-blue-600 font-medium">Contacto</a>
+            </div>
+            <!-- Botón móvil -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido del Blog -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <article class="max-w-4xl mx-auto">
+            <!-- Encabezado -->
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">Marketing Digital</span>
+                <h1 class="text-3xl md:text-4xl font-bold mb-6">Cómo implementar TikTok Marketing para negocios locales en 2024</h1>
+                <div class="flex items-center justify-center space-x-4 text-gray-500">
+                    <span><i class="far fa-calendar mr-2"></i>15 Junio 2024</span>
+                    <span><i class="far fa-clock mr-2"></i>5 min lectura</span>
+                </div>
+            </div>
+
+            <!-- Imagen destacada -->
+            <div class="rounded-xl overflow-hidden mb-10 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                     alt="TikTok para negocios" 
+                     class="w-full h-auto object-cover">
+            </div>
+
+            <!-- Contenido (formato "prose" para estilos tipográficos) -->
+            <div class="prose lg:prose-xl mx-auto">
+                <p class="lead">En 2024, TikTok se ha consolidado como la plataforma clave para llegar a audiencias jóvenes. Si tienes un negocio local, aquí te explicamos cómo aprovecharlo.</p>
+                
+                <h2>1. Optimiza tu perfil de negocio</h2>
+                <p>Lo primero es crear un <strong>perfil profesional</strong> en TikTok:</p>
+                <ul>
+                    <li>Usa un logo reconocible</li>
+                    <li>Incluye un enlace a tu web o WhatsApp</li>
+                    <li>Describe claramente qué ofrece tu negocio</li>
+                </ul>
+
+                <h2>2. Domina el algoritmo con estos contenidos</h2>
+                <p>El algoritmo de TikTok prioriza:</p>
+                <div class="bg-blue-50 p-6 rounded-lg my-6">
+                    <h3 class="font-bold text-lg mb-3">Contenidos que funcionan:</h3>
+                    <ul class="list-disc pl-5">
+                        <li>Tras bambalinas de tu negocio</li>
+                        <li>Tutoriales rápidos relacionados con tu producto</li>
+                        <li>Retos virales adaptados a tu nicho</li>
+                    </ul>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" 
+                     alt="Ejemplo contenido TikTok">
+
+                <h2>3. Usa hashtags estratégicos</h2>
+                <p>Combina hashtags populares con otros específicos para tu localidad:</p>
+                <div class="flex flex-wrap gap-2 my-6">
+                    <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">#NegociosLocales</span>
+                    <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">#TuCiudad</span>
+                    <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">#MarketingDigital</span>
+                </div>
+
+                <blockquote class="border-l-4 border-blue-500 pl-4 italic my-6">
+                    "En solo 3 meses, aumentamos un 40% las visitas a nuestra tienda física gracias a TikTok" 
+                    <span class="block font-medium mt-2">- Ana G., Florería Margarita</span>
+                </blockquote>
+            </div>
+
+            <!-- Autor y compartir -->
+            <div class="mt-16 border-t border-gray-200 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div class="flex items-center mb-6 md:mb-0">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                             alt="Autor" 
+                             class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">María Fernández</h4>
+                            <p class="text-gray-600">Especialista en Marketing Digital</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-200">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Artículos relacionados -->
+        <section class="mt-20">
+            <h3 class="text-2xl font-bold mb-8">Artículos relacionados</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <a href="#">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" 
+                             alt="IA en marketing" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-blue-600 font-medium">Tecnología</span>
+                            <h4 class="font-bold my-2">Cómo usar IA para crear contenidos</h4>
+                            <p class="text-gray-600 text-sm">Automatiza la creación de posts con estas herramientas.</p>
+                        </div>
+                    </a>
+                </article>
+                <!-- Repetir para más artículos -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistente con tu web) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">COMVENIM</h4>
+                    <p class="text-gray-400">Transformamos tu negocio con soluciones digitales a medida.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Enlaces</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Inicio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Servicios</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Contacto</h5>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400"><i class="fas fa-envelope mr-2"></i> hola@comvenim.com</li>
+                        <li class="text-gray-400"><i class="fas fa-phone mr-2"></i> +593 99 264 8781</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Redes</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 COMVENIM. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón WhatsApp -->
+    <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Menú móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            // Lógica para mostrar/ocultar menú (similar a tu web principal)
+        });
+    </script>
+</body>
+</html>
