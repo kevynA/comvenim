@@ -393,6 +393,43 @@ function sendOrderToWhatsApp() {
             });
         });
     </script>
+    // ===================================
+// CARRUSEL DE IMÁGENES
+// ===================================
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
     
+    // Mostrar el primer item
+    showItem(currentIndex);
+    
+    // Función para mostrar un item específico
+    function showItem(index) {
+        items.forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+    }
+    
+    // Navegación anterior
+    prevBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+        showItem(currentIndex);
+    });
+    
+    // Navegación siguiente
+    nextBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+        showItem(currentIndex);
+    });
+    
+    // Cambio automático cada 5 segundos (opcional)
+    setInterval(function() {
+        currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+        showItem(currentIndex);
+    }, 5000);
+});
 </body>
 </html>
