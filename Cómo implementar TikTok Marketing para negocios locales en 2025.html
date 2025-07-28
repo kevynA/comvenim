@@ -3,21 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título del Artículo | COMVENIM</title>
+    <title>Por qué tu próximo sitio web debería usar Jamstack | COMVENIM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .prose a {
-            @apply text-blue-600 hover:text-blue-800 underline;
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        .prose a:hover {
+            color: #1d4ed8;
         }
         .prose img {
-            @apply rounded-xl shadow-lg my-6;
-        }
-        .prose h2 {
-            @apply text-2xl font-bold mt-8 mb-4 text-gray-900;
+            border-radius: 0.5rem;
+            margin: 1.5rem auto;
         }
     </style>
 </head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#inicio" class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
+                <a href="index.html#servicios" class="text-gray-600 hover:text-blue-600 font-medium">Servicios</a>
+                <a href="index.html#planes" class="text-gray-600 hover:text-blue-600 font-medium">Planes</a>
+                <a href="index.html#productos" class="text-gray-600 hover:text-blue-600 font-medium">Productos</a>
+                <a href="Blogs.html" class="text-blue-600 font-medium">Blog</a>
+                <a href="index.html#redes" class="text-gray-600 hover:text-blue-600 font-medium">Redes Sociales</a>
+                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agendar Cita</a>
+            </div>
+            <!-- Botón de Menú Móvil -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="index.html#inicio" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Inicio</a>
+            <a href="index.html#servicios" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Servicios</a>
+            <a href="index.html#planes" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Planes</a>
+            <a href="index.html#productos" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Productos</a>
+            <a href="Blogs.html" class="block py-2 px-6 text-sm text-blue-600 hover:bg-blue-50">Noticias</a>
+            <a href="index.html#redes" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Redes Sociales</a>
+            <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Agendar Cita</a>
+        </div>
+    </header>
 <body class="bg-gray-50 text-gray-800">
     <!-- Header (Consistente con tu web) -->
     <header class="bg-white shadow-md sticky top-0 z-40">
