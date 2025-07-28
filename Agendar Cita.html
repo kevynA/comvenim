@@ -174,40 +174,119 @@
             </div>
         </section>
 
-        <!-- Nueva sección de contacto -->
+    <!-- Reemplaza la sección actual del formulario con este código -->
 <section class="py-16 bg-gray-100">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">¿Tienes preguntas?</h2>
-        <!-- Dentro de la sección "blog" (antes del footer) -->
-<div class="text-center mt-16">
-    <!-- Formulario de contacto -->
-    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-        <h3 class="text-xl font-bold mb-4">Contáctanos</h3>
-       <form action="https://formsubmit.co/convenimentornosseguros@gmail.com" method="POST">
-  <!-- Campos ocultos importantes -->
-  <input type="hidden" name="_next" value="https://comvenim.vercel.app/Gracias.html">
-  <input type="hidden" name="_captcha" value="false">
-  
-  <!-- Campos del formulario -->
-  <div>
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
-  </div>
-  
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  
-  <div>
-    <label for="mensaje">Mensaje:</label>
-    <textarea id="mensaje" name="mensaje" required></textarea>
-  </div>
-  
-  <button type="submit">Enviar Mensaje</button>
-</form>
-    </div>
-</div>
+        
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <!-- Información de contacto -->
+            <div class="bg-white p-8 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold mb-6 text-blue-600">Información de contacto</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-envelope text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Correo electrónico</h4>
+                            <p class="text-gray-600">convenimentornosseguros@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-phone-alt text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Teléfono</h4>
+                            <p class="text-gray-600">+593 99 264 8781</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-clock text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Horario de atención</h4>
+                            <p class="text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
+                            <p class="text-gray-600">Sábados: 9:00 - 13:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h4 class="font-semibold mb-3">Síguenos en redes</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61578571285624" target="_blank" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/comvenim/" target="_blank" class="bg-pink-100 text-pink-600 p-3 rounded-full hover:bg-pink-200 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@comvenim" target="_blank" class="bg-gray-100 text-gray-800 p-3 rounded-full hover:bg-gray-200 transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulario mejorado -->
+            <div class="bg-white p-8 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold mb-6 text-blue-600">Envíanos un mensaje</h3>
+                
+                <form action="https://formsubmit.co/convenimentornosseguros@gmail.com" method="POST" class="space-y-4">
+                    <input type="hidden" name="_next" value="https://comvenim.vercel.app/Gracias.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div>
+                        <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo*</label>
+                        <input type="text" id="nombre" name="nombre" required 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico*</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition">
+                    </div>
+                    
+                    <div>
+                        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">Teléfono (opcional)</label>
+                        <input type="tel" id="telefono" name="telefono" 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition">
+                    </div>
+                    
+                    <div>
+                        <label for="servicio" class="block text-sm font-medium text-gray-700 mb-1">Servicio de interés</label>
+                        <select id="servicio" name="servicio" 
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition">
+                            <option value="">Seleccione una opción</option>
+                            <option value="Desarrollo Web">Desarrollo Web</option>
+                            <option value="Marketing Digital">Marketing Digital</option>
+                            <option value="Soporte Técnico">Soporte Técnico</option>
+                            <option value="Consulta General">Consulta General</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="mensaje" class="block text-sm font-medium text-gray-700 mb-1">Mensaje*</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required 
+                                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"></textarea>
+                    </div>
+                    
+                    <div class="pt-2">
+                        <button type="submit" 
+                                class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-[1.02]">
+                            Enviar Mensaje
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
         <!-- Testimonios -->
