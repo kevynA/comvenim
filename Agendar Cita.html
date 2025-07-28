@@ -188,25 +188,28 @@
 <section class="py-16 bg-gray-100">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">¿Tienes preguntas?</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Formulario -->
-            <div class="bg-white p-8 rounded-xl shadow-md">
-                <form id="contactForm">
-                    <!-- Mismos campos del ejemplo anterior -->
-                </form>
-            </div>
-            <!-- Información de contacto -->
-            <div class="space-y-4">
-                <div class="flex items-start gap-4">
-                    <i class="fas fa-envelope mt-1 text-blue-600"></i>
-                    <p>correo@tudominio.com</p>
-                </div>
-                <div class="flex items-start gap-4">
-                    <i class="fas fa-phone-alt mt-1 text-blue-600"></i>
-                    <p>+593 99 264 8781</p>
-                </div>
-            </div>
-        </div>
+        <!-- Dentro de la sección "blog" (antes del footer) -->
+<div class="text-center mt-16">
+    <!-- Formulario de contacto -->
+    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h3 class="text-xl font-bold mb-4">Contáctanos</h3>
+        <form id="contactForm" class="space-y-4">
+            <input type="text" id="nombre" placeholder="Nombre completo" required
+                   class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+            
+            <input type="email" id="email" placeholder="Correo electrónico" required
+                   class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+            
+            <textarea id="mensaje" placeholder="Tu mensaje" required rows="4"
+                      class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+            
+            <button type="submit" 
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
+                Enviar Mensaje
+            </button>
+        </form>
+    </div>
+</div>
     </div>
 </section>
         <!-- Testimonios -->
