@@ -210,80 +210,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 </section>
-<!-- Sección de Ubicación con Mapa -->
-<section id="ubicacion" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-800">Nuestra Ubicación</h2>
-            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Visítanos en nuestras oficinas o contáctanos para una cita virtual.</p>
+<!-- Sección de Ubicación con Mapa - Versión Mobile-Friendly -->
+<section id="ubicacion" class="py-12 md:py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8 md:mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nuestra Ubicación</h2>
+            <p class="text-gray-600 mt-3 md:mt-4 max-w-2xl mx-auto text-sm md:text-base">Visítanos en nuestras oficinas o contáctanos para una cita virtual.</p>
         </div>
         
-        <div class="flex flex-col md:flex-row gap-8">
-            <!-- Mapa -->
-            <div class="md:w-1/2">
-                <iframe src="https://www.google.com/maps/embed?pb=!4v1753734912157!6m8!1m7!1sxvfIgsGIJQlwrnOLEBFXhw!2m2!1d0.3310830460590602!2d-78.12156621506057!3f106.13251!4f0!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade" class="rounded-xl shadow-lg"></iframe>
+        <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+            <!-- Mapa - Ahora responsive -->
+            <div class="md:w-1/2 h-64 md:h-auto">
+                <div class="relative pb-3/4 md:pb-0 h-full">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!4v1753734912157!6m8!1m7!1sxvfIgsGIJQlwrnOLEBFXhw!2m2!1d0.3310830460590602!2d-78.12156621506057!3f106.13251!4f0!5f0.7820865974627469" 
+                        class="absolute top-0 left-0 w-full h-full rounded-lg md:rounded-xl shadow-lg border-0"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
             
             <!-- Información de Contacto -->
-            <div class="md:w-1/2">
-                <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">CUPA LÍPIA Vacad Salindo</h3>
-                        <p class="text-gray-600">Sierra El Salvador<br>Línea de España María</p>
+            <div class="md:w-1/2 mt-6 md:mt-0">
+                <div class="bg-white p-6 md:p-8 rounded-lg md:rounded-xl shadow-lg border border-gray-200">
+                    <div class="text-center mb-4 md:mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-1 md:mb-2">CUPA LÍPIA Vacad Salindo</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Sierra El Salvador<br>Línea de España María</p>
                     </div>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-3 md:space-y-4">
                         <!-- Dirección -->
-                        <div class="flex items-start bg-gray-50 p-4 rounded-lg">
-                            <svg class="w-6 h-6 text-blue-600 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-start bg-gray-50 p-3 md:p-4 rounded-lg">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-3 md:mr-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
                             <div>
-                                <h4 class="font-bold text-gray-800">Dirección</h4>
-                                <p class="text-gray-600">Av. Atahualpa, Ibarra, Ecuador. (Sector Las Cuatro Esquinas)</p>
+                                <h4 class="font-bold text-gray-800 text-sm md:text-base">Dirección</h4>
+                                <p class="text-gray-600 text-xs md:text-sm">Av. Atahualpa, Ibarra, Ecuador. (Sector Las Cuatro Esquinas)</p>
                             </div>
                         </div>
                         
                         <!-- Teléfono -->
-                        <div class="flex items-start bg-gray-50 p-4 rounded-lg">
-                            <svg class="w-6 h-6 text-blue-600 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-start bg-gray-50 p-3 md:p-4 rounded-lg">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-3 md:mr-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
                             <div>
-                                <h4 class="font-bold text-gray-800">Teléfono</h4>
-                                <p class="text-gray-600">+593 90 264 8781</p>
+                                <h4 class="font-bold text-gray-800 text-sm md:text-base">Teléfono</h4>
+                                <p class="text-gray-600 text-xs md:text-sm">+593 90 264 8781</p>
                             </div>
                         </div>
                         
                         <!-- Email -->
-                        <div class="flex items-start bg-gray-50 p-4 rounded-lg">
-                            <svg class="w-6 h-6 text-blue-600 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-start bg-gray-50 p-3 md:p-4 rounded-lg">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-3 md:mr-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                             <div>
-                                <h4 class="font-bold text-gray-800">Email</h4>
-                                <p class="text-gray-600">convenimentornosseguros@gmail.com</p>
+                                <h4 class="font-bold text-gray-800 text-sm md:text-base">Email</h4>
+                                <p class="text-gray-600 text-xs md:text-sm">convenimentornosseguros@gmail.com</p>
                             </div>
                         </div>
                         
                         <!-- Horario -->
-                        <div class="flex items-start bg-gray-50 p-4 rounded-lg">
-                            <svg class="w-6 h-6 text-blue-600 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-start bg-gray-50 p-3 md:p-4 rounded-lg">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-3 md:mr-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             <div>
-                                <h4 class="font-bold text-gray-800">Horario de Atención</h4>
-                                <p class="text-gray-600">Lunes a Viernes: 9:00 - 16:00<br>Sábados: 10:00 - 14:00</p>
+                                <h4 class="font-bold text-gray-800 text-sm md:text-base">Horario de Atención</h4>
+                                <p class="text-gray-600 text-xs md:text-sm">Lunes a Viernes: 9:00 - 16:00<br>Sábados: 10:00 - 14:00</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Botón Agendar Cita - Más destacado -->
-                    <div class="mt-8 text-center">
-                        <a href="Agendar Cita.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <!-- Botón Agendar Cita - Mejorado para móviles -->
+                    <div class="mt-6 md:mt-8 text-center">
+                        <a href="Agendar Cita.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 text-sm md:text-base">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 inline-block mr-1 md:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                             AGENDAR UNA CITA
