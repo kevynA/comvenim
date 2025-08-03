@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los Artículos | COMVENIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-card:hover .blog-title {
+            color: #2563eb; /* blue-600 */
+        }
+        .category-chip {
+            transition: all 0.3s ease;
+        }
+        .category-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header consistente con la página principal -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#inicio" class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
+                <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium">Proyectos</a>
+                <a href="Blogs.html" class="text-blue-600 font-medium underline">Noticias</a>
+                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agendar Cita</a>
+            </div>
+            <!-- Botón de Menú Móvil -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="index.html#inicio" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Inicio</a>
+            <a href="proyectos.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Proyectos</a>
+            <a href="Blogs.html" class="block py-2 px-6 text-sm text-blue-600 font-medium bg-blue-50">Noticias</a>
+            <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Agendar Cita</a>
+        </div>
+    </header>
+
+    <!-- Sección Todos los Artículos -->
+    <section id="all-articles" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Encabezado -->
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">Blog</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Todos Nuestros Artículos</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explora nuestra colección completa de artículos sobre desarrollo web, marketing digital y tecnología.</p>
+            </div>
+
+            <!-- Categorías -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="category-chip px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium">Todos</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Tecnología</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Marketing</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Desarrollo Web</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Negocios</button>
+            </div>
+
+            <!-- Todos los artículos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artículo 1 -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="artículo-ia-negocios.html">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="IA en negocios" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">Tecnología</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>28 Julio 2025</span>
+                                <span class="mx-2">•</span>
+                                <span>5 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Cómo implementar IA en tu negocio sin ser experto</h3>
+                            <p class="text-gray-600 mb-4">Descubre herramientas de IA accesibles que pueden automatizar procesos y mejorar la productividad de tu empresa.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 2 -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="Cómo implementar TikTok Marketing para negocios locales en 2025.html">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="TikTok Marketing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">Marketing</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>8 Junio 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>7 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Estrategias de TikTok para negocios locales en 2024</h3>
+                            <p class="text-gray-600 mb-4">Aprende a aprovechar el algoritmo de TikTok para aumentar la visibilidad de tu negocio físico o servicio local.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 3 -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="articulo-jamstack.html">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Jamstack" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">Desarrollo Web</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>1 Junio 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>10 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Por qué tu próximo sitio web debería usar Jamstack</h3>
+                            <p class="text-gray-600 mb-4">Ventajas de la arquitectura Jamstack sobre los CMS tradicionales para rendimiento, seguridad y escalabilidad.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 4 (nuevo) -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="#">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="SEO 2024" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">Marketing</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>15 Mayo 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>8 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Tendencias de SEO que debes aplicar en 2024</h3>
+                            <p class="text-gray-600 mb-4">Actualizaciones clave en los algoritmos de búsqueda y estrategias para mejorar tu posicionamiento orgánico.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 5 (nuevo) -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="#">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Web Performance" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">Desarrollo Web</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>3 Mayo 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>6 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Optimización de velocidad web: técnicas avanzadas</h3>
+                            <p class="text-gray-600 mb-4">Guía práctica para reducir los tiempos de carga y mejorar la experiencia de usuario en tu sitio web.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Artículo 6 (nuevo) -->
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="#">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Email Marketing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">Negocios</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <span>22 Abril 2024</span>
+                                <span class="mx-2">•</span>
+                                <span>9 min lectura</span>
+                            </div>
+                            <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Email marketing que realmente convierte en ventas</h3>
+                            <p class="text-gray-600 mb-4">Estrategias comprobadas para diseñar campañas de email que generen engagement y aumenten tus conversiones.</p>
+                            <div class="flex items-center text-blue-600 font-medium">
+                                <span>Leer artículo</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Paginación -->
+            <div class="flex justify-center mt-12">
+                <nav class="inline-flex rounded-md shadow">
+                    <a href="#" class="px-4 py-2 rounded-l-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">1</a>
+                    <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">2</a>
+                    <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50">3</a>
+                    <a href="#" class="px-4 py-2 rounded-r-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Suscripción -->
+            <div class="text-center mt-16">
+                <div class="mt-8">
+                    <p class="text-gray-600 mb-4">¿Quieres recibir nuestros mejores artículos en tu correo?</p>
+                    <form action="https://script.google.com/macros/s/AKfycby4WpPxvAQDXcEsY7tVzwDbarJcdRGf_W-NwMYJDGL587DTx_gOt9khYN4g2zQx5yJLLA/exec" method="POST" target="_blank" class="max-w-md mx-auto flex">
+                        <input type="email" name="email" placeholder="Tu email" required class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-r-lg hover:bg-blue-700 transition-colors duration-300">
+                            Suscribirme
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 COMVENIM. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z" /></svg>
+    </a>
+    <script>
+    // Toggle del menú móvil
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
