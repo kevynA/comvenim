@@ -358,7 +358,136 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 </section>
+        <!-- Sección de Certificaciones -->
+        <section id="certificaciones" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800">Certificaciones y Credenciales</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Conoce las certificaciones que respaldan nuestro conocimiento y experiencia.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Certificación 1 -->
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="ruta/a/tu-certificado1.jpg" alt="Certificado en Desarrollo Web" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                                <span class="text-white font-medium">2023</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Desarrollo Web Avanzado</h3>
+                            <p class="text-gray-600 mb-4">Google Career Certificates</p>
+                            <a href="ruta/a/tu-certificado1.jpg" class="text-blue-600 font-medium flex items-center group" data-lightbox="certificaciones">
+                                Ver certificado
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificación 2 -->
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="ruta/a/tu-certificado2.jpg" alt="Certificado en Marketing Digital" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                                <span class="text-white font-medium">2024</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Marketing Digital Profesional</h3>
+                            <p class="text-gray-600 mb-4">Meta Blueprint</p>
+                            <a href="ruta/a/tu-certificado2.jpg" class="text-blue-600 font-medium flex items-center group" data-lightbox="certificaciones">
+                                Ver certificado
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificación 3 -->
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="ruta/a/tu-certificado3.jpg" alt="Certificado en Ciberseguridad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                                <span class="text-white font-medium">2024</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Fundamentos de Ciberseguridad</h3>
+                            <p class="text-gray-600 mb-4">Cisco Networking Academy</p>
+                            <a href="ruta/a/tu-certificado3.jpg" class="text-blue-600 font-medium flex items-center group" data-lightbox="certificaciones">
+                                Ver certificado
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lightbox para ver certificados en grande -->
+                <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+                    <div class="relative max-w-4xl w-full">
+                        <button id="close-lightbox" class="absolute -top-10 right-0 text-white hover:text-blue-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img id="lightbox-image" src="" alt="" class="w-full max-h-[80vh] object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <style>
+            .cert-card:hover .cert-title {
+                color: #2563eb;
+            }
+        </style>
+
+        <script>
+            // Lightbox para certificados
+            document.addEventListener('DOMContentLoaded', function() {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImage = document.getElementById('lightbox-image');
+                const closeLightbox = document.getElementById('close-lightbox');
+                
+                // Abrir lightbox al hacer clic en un certificado
+                document.querySelectorAll('[data-lightbox="certificaciones"]').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        lightboxImage.src = this.getAttribute('href');
+                        lightbox.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+                
+                // Cerrar lightbox
+                closeLightbox.addEventListener('click', function() {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+                
+                // Cerrar al hacer clic fuera de la imagen
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) {
+                        lightbox.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // Cerrar con ESC
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                        lightbox.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        </script>
         
         <section id="redes" class="py-20 bg-black text-white">
         <div class="container mx-auto px-4 text-center">
