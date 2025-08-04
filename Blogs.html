@@ -144,15 +144,49 @@
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
                 
-                <div class="mt-8">
-                    <p class="text-gray-600 mb-4">¿Quieres recibir nuestros mejores artículos en tu correo?</p>
-                    <form action="https://script.google.com/macros/s/AKfycbz2GQunl0nMAKj14GcMCVx1sUYDhS827562hpkKU9qZpD4MnruPBSCSgH_srvYj_wsGTw/exec" method="POST" target="_blank" class="max-w-md mx-auto flex">
-                        <input type="email" name="email" placeholder="Tu email" required class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-r-lg hover:bg-blue-700 transition-colors duration-300">
-                            Suscribirme
-                        </button>
-                    </form>
+                <!-- Formulario de Suscripción Mejorado -->
+    <div class="mt-8 bg-white p-6 rounded-xl shadow-md max-w-md mx-auto">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Suscríbete a nuestro boletín</h3>
+        <p class="text-gray-600 mb-4">Recibe nuestros mejores artículos y ofertas exclusivas directamente en tu correo.</p>
+        
+        <form id="subscribeForm" class="space-y-4">
+            <div>
+                <label for="email" class="sr-only">Correo electrónico</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="tucorreo@ejemplo.com">
+                <p id="emailError" class="mt-1 text-sm text-red-600 hidden"></p>
+            </div>
+            <button 
+                type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                <span id="submitText">Suscribirme</span>
+                <span id="spinner" class="hidden ml-2">
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </span>
+            </button>
+        </form>
+        
+        <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded text-left">
+            <div class="flex items-start">
+                <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <div>
+                    <p class="font-medium">¡Gracias por suscribirte!</p>
+                    <p class="text-sm">Te hemos enviado un correo de confirmación.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -173,7 +207,72 @@
     document.getElementById('mobile-menu-button').addEventListener('click', function() {
         const menu = document.getElementById('mobile-menu');
         menu.classList.toggle('hidden');
-    });
+    }
+                                                                  );
+</script>
+    <script>
+// URL de tu Google Apps Script (reemplázala con la tuya)
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPtGqQnJSIgd_PLk35LhqvaYHl_e4Q1P0hzmDO1IsIzhvJ0AvqzjmwYQiciqrQ-2Y8Wg/exec";
+
+document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const successMessage = document.getElementById('successMessage');
+    const submitText = document.getElementById('submitText');
+    const spinner = document.getElementById('spinner');
+    
+    // Reset estados
+    emailError.classList.add('hidden');
+    emailInput.classList.remove('border-red-500');
+    successMessage.classList.add('hidden');
+    
+    // Validación simple del cliente
+    if (!emailInput.value.includes('@')) {
+        emailInput.classList.add('border-red-500');
+        emailError.textContent = "Por favor ingresa un email válido";
+        emailError.classList.remove('hidden');
+        return;
+    }
+    
+    // Mostrar estado de carga
+    form.querySelector('button').disabled = true;
+    submitText.textContent = "Procesando...";
+    spinner.classList.remove('hidden');
+    
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `email=${encodeURIComponent(emailInput.value)}`
+        });
+        
+        if (response.ok) {
+            // Mostrar mensaje de éxito
+            form.reset();
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            
+            // Desplazarse suavemente al mensaje
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            throw new Error('Error en la respuesta del servidor');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        emailInput.classList.add('border-red-500');
+        emailError.textContent = "Ocurrió un error. Por favor intenta nuevamente.";
+        emailError.classList.remove('hidden');
+    } finally {
+        form.querySelector('button').disabled = false;
+        submitText.textContent = "Suscribirme";
+        spinner.classList.add('hidden');
+    }
+});
 </script>
 </body>
 </html>
