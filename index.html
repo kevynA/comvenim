@@ -15,7 +15,6 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Na-vjE5huysnwaD3VSiGodYc4ZCkk32Las-9D" />
     <title>COMVENIM - Soluciones y Productos Tecnológicos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,27 +47,10 @@
         .card {
             @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
         }
-        /* Asegura que el menú móvil esté por encima de otros elementos */
-#mobile-menu {
-    z-index: 9999;
-}
-
-/* Transición suave para el menú móvil */
-#mobile-menu {
-    transition: max-height 0.3s ease-out, opacity 0.2s ease;
-}
-
-/* Evita que el body se desplace cuando el menú está abierto */
-body.menu-open {
-    overflow: hidden;
-}
     </style>
 </head>
     
 <body class="text-gray-800">
-
-    
-    
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVKZ8435"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -79,15 +61,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
             <div class="hidden md:flex items-center space-x-8">
-    <a href="index.html#inicio" class="text-blue-600 font-medium underline">Inicio</a>
-    <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium">Proyectos</a>
-    <a href="Blogs.html" class="text-gray-600 hover:text-blue-600 font-medium">Noticias</a>
-    <a href="Desarrollador.html" class="text-gray-600 hover:text-blue-600 font-medium">Desarrollador</a>
-    <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agenda tu Cita</a>
-    <button id="cart-button" class="relative text-gray-600 hover:text-blue-600">
-        <!-- Icono del carrito -->
-    </button>
-</div>
+                 <a href="index.html#inicio" class="text-blue-600 font-medium underline">Inicio</a>
+                <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium">Proyectos</a>
+               <a href="Blogs.html" class="text-gray-600 hover:text-blue-600 font-medium">Noticias</a>
+               <a href="Desarrollador.html" class="text-gray-600 hover:text-blue-600 font-medium">Desarrollador</a>
+                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agenda tu Cita</a>
+                <button id="cart-button" class="relative text-gray-600 hover:text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
             <!-- Botón de Menú Móvil -->
             <div class="md:hidden flex items-center">
                  <button id="cart-button-mobile" class="relative text-gray-600 hover:text-blue-600 mr-4">
@@ -99,16 +84,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </button>
             </div>
         </nav>
-<!-- Menú Móvil -->
-<div id="mobile-menu" class="hidden md:hidden bg-white w-full absolute left-0 shadow-lg transition-all duration-300 overflow-hidden max-h-0 z-50">
-    <div class="container mx-auto px-6 py-2">
-        <a href="index.html#inicio" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">Inicio</a>
-        <a href="proyectos.html" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">Proyectos</a>
-        <a href="Blogs.html" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">Noticias</a>
-        <a href="Desarrollador.html" class="block py-3 px-4 text-blue-600 font-medium bg-blue-50 rounded-lg">Desarrollador</a>
-        <a href="Agendar Cita.html" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg">Agendar Cita</a>
-    </div>
-</div>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+             <a href="index.html#inicio" class="block py-2 px-6 text-sm text-blue-600 font-medium bg-blue-50">Inicio</a>
+            <a href="proyectos.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Proyectos</a>
+            <a href="Blogs.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Noticias</a>
+            <a href="Desarrollador.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Desarrollador</a>
+            <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Agendar Cita</a>
+        </div>
     </header>
     
 
@@ -116,9 +99,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- SECCIONES ANTERIORES (INICIO, SERVICIOS, PLANES) -->
         <section id="inicio" class="relative h-[60vh] md:h-[80vh] text-white">
             <div id="carousel" class="absolute inset-0">
-                <div class="carousel-item active h-full"><img src="Desarrollo Web a medida.webp" alt="Imagen de desarrollo web" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4"><h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Transformamos Ideas en Realidad Digital</h1><p class="text-lg md:text-xl max-w-3xl mb-8">Creamos sitios web modernos, rápidos y optimizados para impulsar tu negocio.</p></div></div>
-                <div class="carousel-item h-full"><img src="Soporte técnico -1920por1080 .webp" alt="Imagen de soporte técnico" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4"><h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Soporte Técnico 24/7</h1><p class="text-lg md:text-xl max-w-3xl mb-8">Tu tranquilidad es nuestra prioridad. Soluciones rápidas y eficientes.</p></div></div>
-                <div class="carousel-item h-full"><img src="Marketing Figital eficiente.webp" alt="Imagen de marketing digital" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4"><h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Impulsa tu Marca con Marketing Digital</h1><p class="text-lg md:text-xl max-w-3xl mb-8">Llega a más clientes y aumenta tus ventas con nuestras estrategias.</p></div></div>
+                <div class="carousel-item active h-full"><img src="Desarrollo Web a medida.png" alt="Imagen de desarrollo web" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4"><h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Transformamos Ideas en Realidad Digital</h1><p class="text-lg md:text-xl max-w-3xl mb-8">Creamos sitios web modernos, rápidos y optimizados para impulsar tu negocio.</p></div></div>
+                <div class="carousel-item h-full"><img src="Soporte técnico -1920por1080 .png" alt="Imagen de soporte técnico" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4"><h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Soporte Técnico 24/7</h1><p class="text-lg md:text-xl max-w-3xl mb-8">Tu tranquilidad es nuestra prioridad. Soluciones rápidas y eficientes.</p></div></div>
+                <div class="carousel-item h-full"><img src="Marketing Figital eficiente.png" alt="Imagen de marketing digital" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4"><h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Impulsa tu Marca con Marketing Digital</h1><p class="text-lg md:text-xl max-w-3xl mb-8">Llega a más clientes y aumenta tus ventas con nuestras estrategias.</p></div></div>
             </div>
             <button id="prevBtn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/50 p-2 rounded-full text-gray-800 hover:bg-white transition"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
             <button id="nextBtn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/50 p-2 rounded-full text-gray-800 hover:bg-white transition"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
@@ -129,7 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section id="planes" class="py-20">
             <div class="container mx-auto px-6"><div class="text-center mb-12"><h2 class="text-4xl font-bold text-gray-800">Nuestros Planes</h2><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Elige el plan que mejor se adapte a tus necesidades. Todos nuestros planes son escalables.</p></div><div class="grid md:grid-cols-3 gap-8"><div class="card p-8 flex flex-col"><h3 class="text-2xl font-bold text-center mb-2">Básico</h3><p class="text-center text-gray-500 mb-6">Ideal para empezar</p><p class="text-5xl font-extrabold text-center mb-6">$99<span class="text-lg font-medium text-gray-500">/mes</span></p><ul class="space-y-4 text-gray-600 mb-8 flex-grow"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sitio Web Básico (3 páginas)</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte técnico por email</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Reporte mensual de visitas</li></ul><button onclick="addItemToCart(1, 'plan')" class="w-full btn-primary">Contratar Ahora</button></div><div class="card p-8 flex flex-col border-4 border-blue-600 relative"><span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-sm font-bold px-4 py-1 rounded-full">MÁS POPULAR</span><h3 class="text-2xl font-bold text-center mb-2">Estándar</h3><p class="text-center text-gray-500 mb-6">Para negocios en crecimiento</p><p class="text-5xl font-extrabold text-center mb-6">$199<span class="text-lg font-medium text-gray-500">/mes</span></p><ul class="space-y-4 text-gray-600 mb-8 flex-grow"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sitio Web Avanzado (10 páginas)</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte técnico prioritario</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Integración con redes sociales</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Optimización SEO básica</li></ul><button onclick="addItemToCart(2, 'plan')" class="w-full btn-primary">Contratar Ahora</button></div><div class="card p-8 flex flex-col"><h3 class="text-2xl font-bold text-center mb-2">Premium</h3><p class="text-center text-gray-500 mb-6">La solución completa</p><p class="text-5xl font-extrabold text-center mb-6">$399<span class="text-lg font-medium text-gray-500">/mes</span></p><ul class="space-y-4 text-gray-600 mb-8 flex-grow"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Tienda Online / E-commerce</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte técnico 24/7</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Campañas de Marketing Digital</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Analítica avanzada e informes</li></ul><button onclick="addItemToCart(3, 'plan')" class="w-full btn-primary">Contratar Ahora</button></div></div></div>
         </section>
-    
+
         <section id="productos" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -232,14 +215,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </div>
-    <!-- Botón para direccionar a página del desarrolador -->
+     <!-- Botón para LinkedIn al final de la sección -->
         <div class="text-center mt-16">
-    <a href="Desarrollador.html" 
+    <a href="Desarrollador.html" target="_blank" 
        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 mx-auto">
-        Conocer al desarrollador
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+        Ver más certificaciones en LinkedIn
     </a>
 </div>
 </section>
+
         
     </main>
 
@@ -285,10 +272,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ];
 
         const products = [
-            { id: 101, name: 'Página Web', description: 'Página con secciones a preferencia. (Inicio, Servicios, Planes, Productos y Contacto) (Tiempo estimado de entrega 7 días hábiles)', price: 59.99, image: 'Página Web.webp' },
-            { id: 102, name: 'Tienda Web', description: '5 secciones más botón de carrito. (Gestión de ventas por WhatsApp)', price: 79.99, image: 'una_tienda_web_gestionada_por_whatsapp_con.webp' },
-            { id: 103, name: 'Mantenimiento de Equipos', description: 'Duración del proceso 2 días hábiles. (Opciones de repontenciación puede aumentar el tiempo de entrega y el valor)', price: 29.99, image: 'Mantenimiento de computadora.webp' },
-            { id: 104, name: 'Soporte Técnico', description: 'Detección de problemas. (El tiempo de entrega  y valor agregado dependerá de la gravedad del problema)', price: 5.00, image: 'Soporte Técnico.webp' }
+            { id: 101, name: 'Página Web', description: 'Página con secciones a preferencia. (Inicio, Servicios, Planes, Productos y Contacto) (Tiempo estimado de entrega 7 días hábiles)', price: 59.99, image: 'Página Web.png' },
+            { id: 102, name: 'Tienda Web', description: '5 secciones más botón de carrito. (Gestión de ventas por WhatsApp)', price: 79.99, image: 'una_tienda_web_gestionada_por_whatsapp_con.jpeg' },
+            { id: 103, name: 'Mantenimiento de Equipos', description: 'Duración del proceso 2 días hábiles. (Opciones de repontenciación puede aumentar el tiempo de entrega y el valor)', price: 29.99, image: 'Mantenimiento de computadora.jpeg' },
+            { id: 104, name: 'Soporte Técnico', description: 'Detección de problemas. (El tiempo de entrega  y valor agregado dependerá de la gravedad del problema)', price: 5.00, image: 'Soporte Técnico.jpeg' }
         ];
 
         // Cargar carrito desde localStorage o inicializar vacío
@@ -462,23 +449,9 @@ function sendOrderToWhatsApp() {
             // ===================================
             // OTRAS FUNCIONALIDADES
             // ===================================
-            // Menú móvil
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-            // Alternar visibilidad del menú
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('block');
-            
-            // Animación de altura
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.style.maxHeight = '0';
-            } else {
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-            }
-        }
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
             
             // Inicializar el carrito al cargar la página
             updateCart();
