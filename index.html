@@ -48,6 +48,20 @@
         .card {
             @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
         }
+        /* Asegura que el menú móvil esté por encima de otros elementos */
+#mobile-menu {
+    z-index: 9999;
+}
+
+/* Transición suave para el menú móvil */
+#mobile-menu {
+    transition: max-height 0.3s ease-out, opacity 0.2s ease;
+}
+
+/* Evita que el body se desplace cuando el menú está abierto */
+body.menu-open {
+    overflow: hidden;
+}
     </style>
 </head>
     
@@ -115,67 +129,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section id="planes" class="py-20">
             <div class="container mx-auto px-6"><div class="text-center mb-12"><h2 class="text-4xl font-bold text-gray-800">Nuestros Planes</h2><p class="text-gray-600 mt-4 max-w-2xl mx-auto">Elige el plan que mejor se adapte a tus necesidades. Todos nuestros planes son escalables.</p></div><div class="grid md:grid-cols-3 gap-8"><div class="card p-8 flex flex-col"><h3 class="text-2xl font-bold text-center mb-2">Básico</h3><p class="text-center text-gray-500 mb-6">Ideal para empezar</p><p class="text-5xl font-extrabold text-center mb-6">$99<span class="text-lg font-medium text-gray-500">/mes</span></p><ul class="space-y-4 text-gray-600 mb-8 flex-grow"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sitio Web Básico (3 páginas)</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte técnico por email</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Reporte mensual de visitas</li></ul><button onclick="addItemToCart(1, 'plan')" class="w-full btn-primary">Contratar Ahora</button></div><div class="card p-8 flex flex-col border-4 border-blue-600 relative"><span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-sm font-bold px-4 py-1 rounded-full">MÁS POPULAR</span><h3 class="text-2xl font-bold text-center mb-2">Estándar</h3><p class="text-center text-gray-500 mb-6">Para negocios en crecimiento</p><p class="text-5xl font-extrabold text-center mb-6">$199<span class="text-lg font-medium text-gray-500">/mes</span></p><ul class="space-y-4 text-gray-600 mb-8 flex-grow"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sitio Web Avanzado (10 páginas)</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte técnico prioritario</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Integración con redes sociales</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Optimización SEO básica</li></ul><button onclick="addItemToCart(2, 'plan')" class="w-full btn-primary">Contratar Ahora</button></div><div class="card p-8 flex flex-col"><h3 class="text-2xl font-bold text-center mb-2">Premium</h3><p class="text-center text-gray-500 mb-6">La solución completa</p><p class="text-5xl font-extrabold text-center mb-6">$399<span class="text-lg font-medium text-gray-500">/mes</span></p><ul class="space-y-4 text-gray-600 mb-8 flex-grow"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Tienda Online / E-commerce</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Soporte técnico 24/7</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Campañas de Marketing Digital</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Analítica avanzada e informes</li></ul><button onclick="addItemToCart(3, 'plan')" class="w-full btn-primary">Contratar Ahora</button></div></div></div>
         </section>
-       
-
-        <style>
-            .marquee-content {
-                animation: scroll 25s linear infinite;
-            }
-            
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            
-            @media (max-width: 768px) {
-                .marquee-content {
-                    animation-duration: 20s;
-                }
-            }
-            .marquee-content {
-                animation: scroll 40s linear infinite;
-                /* Ajuste inicial para pantallas pequeñas */
-                width: 200%;
-            }
-            
-            .marquee-item {
-                /* Asegura que los elementos no se encimen */
-                flex-shrink: 0;
-            }
-            
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            
-            /* Ajustes para tablets */
-            @media (min-width: 640px) {
-                .marquee-content {
-                    animation-duration: 30s;
-                    width: 180%;
-                }
-            }
-            
-            /* Ajustes para desktop */
-            @media (min-width: 1024px) {
-                .marquee-content {
-                    animation-duration: 25s;
-                    width: 150%;
-                }
-            }
-            
-            /* Ajuste para pantallas muy grandes */
-            @media (min-width: 1536px) {
-                .marquee-content {
-                    width: 120%;
-                }
-            }
-        </style>
-
-        <section id="productos" class="py-20 bg-white">
-            <!-- ... tu contenido actual de productos ... -->
-        </section>
-        
+    
         <section id="productos" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -287,12 +241,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </section>
         
-
-        <style>
-            .cert-card:hover .cert-title {
-                color: #2563eb;
-            }
-        </style>
     </main>
 
     <footer class="bg-gray-800 text-white py-6">
