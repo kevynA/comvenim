@@ -626,95 +626,65 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 
     <script>
-// Configuración de la API
-const API_URL = 'https://sheetdb.io/api/v1/3vbm7owp7uckp'; // Reemplaza con tu URL de Apps Script
-
-// Función para cargar opiniones existentes
-async function loadOpinions() {
+  // Obtener opiniones desde SheetDB
+  async function loadOpinions() {
     try {
-        const response = await fetch(`${API_URL}?action=get`);
-        const opinions = await response.json();
-        
-        const opinionsList = document.getElementById('opiniones-list');
-        if (opinions.length === 0) {
-            opinionsList.innerHTML = '<p class="text-gray-500 text-center col-span-2">Aún no hay opiniones. ¡Sé el primero en comentar!</p>';
-            return;
-        }
-        
-        opinionsList.innerHTML = opinions.map(opinion => `
-            <div class="card p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                        <span class="font-bold">${opinion.nombre.charAt(0).toUpperCase()}</span>
-                    </div>
-                    <div>
-                        <h4 class="font-bold">${opinion.nombre}</h4>
-                        <p class="text-sm text-gray-500">${new Date(opinion.fecha).toLocaleDateString()}</p>
-                    </div>
-                </div>
-                <p class="text-gray-600">${opinion.opinion}</p>
+      const response = await fetch('https://sheetdb.io/api/v1/3vbm7owp7uckp');
+      const opinions = await response.json();
+      
+      const container = document.getElementById('opinions-container');
+      container.innerHTML = opinions.map(opinion => `
+        <div class="card p-6 fade-in">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400">
+              ${'★'.repeat(opinion.puntuación)}${'☆'.repeat(5 - opinion.puntuación)}
             </div>
-        `).join('');
+          </div>
+          <p class="text-gray-600 mb-4">"${opinion.comentario}"</p>
+          <div class="flex items-center">
+            <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+              ${opinion.nombre.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <h4 class="font-bold">${opinion.nombre}</h4>
+            </div>
+          </div>
+        </div>
+      `).join('');
     } catch (error) {
-        console.error('Error cargando opiniones:', error);
+      console.error("Error cargando opiniones:", error);
     }
-}
+  }
 
-// Manejar el envío del formulario
-document.getElementById('opinion-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  // Enviar nueva opinión
+  async function submitOpinion(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
     
-    const form = e.target;
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.textContent;
+    await fetch('https://sheetdb.io/api/v1/3vbm7owp7uckp', {
+      method: 'POST',
+      body: JSON.stringify({
+        nombre: formData.get('name'),
+        email: formData.get('email'),
+        puntuación: formData.get('rating'),
+        comentario: formData.get('comment'),
+        fecha: new Date().toISOString()
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     
-    try {
-        submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...';
-        
-        const formData = {
-            nombre: form.nombre.value,
-            email: form.email.value,
-            opinion: form.opinion.value
-        };
-        
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            // Mostrar notificación de éxito
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-24 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in';
-            notification.textContent = '¡Gracias por tu opinión!';
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
-            
-            // Resetear el formulario
-            form.reset();
-            
-            // Recargar opiniones
-            await loadOpinions();
-        } else {
-            alert('Error al enviar la opinión: ' + result.message);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Ocurrió un error al enviar tu opinión. Por favor intenta nuevamente.');
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-    }
-});
+    alert("¡Opinión enviada!");
+    event.target.reset();
+    loadOpinions(); // Recargar opiniones
+  }
 
-// Cargar opiniones al cargar la página
-document.addEventListener('DOMContentLoaded', loadOpinions);
+  // Inicializar
+  document.addEventListener('DOMContentLoaded', () => {
+    loadOpinions();
+    document.getElementById('opinion-form').addEventListener('submit', submitOpinion);
+  });
 </script>
 </body>
 </html>
