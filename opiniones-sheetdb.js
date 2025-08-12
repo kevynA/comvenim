@@ -1,5 +1,5 @@
-// Configuración de la API (reemplaza con tus datos reales)
-const SHEETDB_API = 'https://sheetdb.io/api/v1/o07pzxtgsqgqw';
+// Configuración (REMPLAZA CON TUS DATOS)
+const SHEETDB_API = 'https://sheetdb.io/api/v1/3vbm7owp7uckp';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del DOM
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnText = document.getElementById('btn-text');
     const btnLoader = document.getElementById('btn-loader');
     const formMessage = document.getElementById('form-message');
-    const starInputs = document.querySelectorAll('.rating-stars input[type="radio"]');
 
     // Cargar opiniones al iniciar
     loadOpiniones();
@@ -18,25 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Validación básica
+        // Validación
         if (!form.nombre.value.trim() || !form.comentario.value.trim()) {
             showMessage('Por favor completa los campos obligatorios', 'error');
             return;
         }
 
-        // Validar puntuación
-        const puntuacion = form.querySelector('input[name="puntuacion"]:checked');
-        if (!puntuacion) {
-            showMessage('Por favor selecciona una puntuación', 'error');
-            return;
-        }
-
-        // Preparar datos con validación
+        // Preparar datos
         const data = {
-            nombre: sanitizeInput(form.nombre.value.trim()),
-            email: validateEmail(form.email.value.trim()) || 'No especificado',
-            comentario: sanitizeInput(form.comentario.value.trim()),
-            puntuacion: puntuacion.value,
+            nombre: form.nombre.value.trim(),
+            email: form.email.value.trim() || 'No especificado',
+            comentario: form.comentario.value.trim(),
             fecha: new Date().toISOString(),
             validado: "NO" // Moderación manual
         };
@@ -53,21 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(data)
             });
 
-            const responseData = await response.text();
-            
-            // Verificar si la respuesta es JSON válido
-            try {
-                const jsonResponse = JSON.parse(responseData);
-                if (response.ok) {
-                    showMessage('✅ Gracias! Tu opinión será revisada antes de publicarse.', 'success');
-                    form.reset();
-                    resetStars();
-                    loadOpiniones();
-                } else {
-                    throw new Error(jsonResponse.error || 'Error en la API');
-                }
-            } catch (parseError) {
-                throw new Error(`Respuesta inválida de la API: ${responseData.substring(0, 100)}`);
+            if (response.ok) {
+                showMessage('✅ Gracias! Tu opinión será revisada antes de publicarse.', 'success');
+                form.reset();
+                loadOpiniones();
+            } else {
+                throw new Error('Error en la API');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -77,126 +59,60 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Cargar opiniones desde SheetDB con manejo robusto de errores
+    // Cargar opiniones desde SheetDB
     async function loadOpiniones() {
         try {
-            const response = await fetch(`${SHEETDB_API}?validado=SI&cache=${Date.now()}`);
-            const responseText = await response.text();
-            
-            // Depuración
-            console.log("Respuesta cruda:", responseText);
-            
-            let opiniones;
-            try {
-                opiniones = JSON.parse(responseText);
-            } catch (e) {
-                throw new Error(`La API no devolvió JSON válido: ${responseText.substring(0, 100)}...`);
-            }
+            const response = await fetch(`${SHEETDB_API}?validado=SI`);
+            const opiniones = await response.json();
 
-            // Verificar estructura de datos
-            if (!Array.isArray(opiniones)) {
-                throw new Error("La respuesta no es un array");
-            }
-
-            // Filtrar y validar opiniones
-            const opinionesValidadas = opiniones.filter(op => {
-                try {
-                    return op.validado && String(op.validado).trim().toUpperCase() === "SI" &&
-                           op.nombre && op.comentario && op.puntuacion;
-                } catch {
-                    return false;
-                }
-            });
-
-            // Mostrar resultados
-            if (opinionesValidadas.length === 0) {
+            if (!opiniones || opiniones.length === 0) {
                 opinionesList.innerHTML = `
                     <div class="md:col-span-2 text-center py-12">
-                        <p class="text-gray-400">No hay opiniones aprobadas aún.</p>
+                        <p class="text-gray-400">Aún no hay opiniones publicadas.</p>
                     </div>`;
                 return;
             }
 
-            // Ordenar por fecha (con manejo de errores)
-            opinionesValidadas.sort((a, b) => {
-                try {
-                    return (new Date(b.fecha) || 0 - (new Date(a.fecha) || 0;
-                } catch {
-                    return 0;
-                }
-            });
+            // Ordenar por fecha (más recientes primero)
+            opiniones.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
-            // Generar HTML de opiniones
-            opinionesList.innerHTML = opinionesValidadas.map(op => {
-                const puntuacion = Math.min(Math.max(parseInt(op.puntuacion) || 1, 5);
-                const nombre = sanitizeInput(op.nombre || 'Anónimo');
-                const inicial = nombre.charAt(0).toUpperCase();
-                const comentario = sanitizeInput(op.comentario || 'Sin comentario');
-                const fecha = formatDate(op.fecha);
-
-                return `
+            opinionesList.innerHTML = opiniones.map(op => `
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="flex items-center mb-2">
-                        <div class="text-yellow-400 mr-2">
-                            ${'★'.repeat(puntuacion)}${'☆'.repeat(5 - puntuacion)}
-                        </div>
-                        <span class="text-sm text-gray-500 ml-auto">${fecha}</span>
-                    </div>
-                    <p class="text-gray-600 mb-4 italic">"${comentario}"</p>
+                    <p class="text-gray-600 mb-4 italic">"${op.comentario}"</p>
                     <div class="flex items-center">
                         <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                            ${inicial}
+                            ${op.nombre.charAt(0).toUpperCase()}
                         </div>
                         <div>
-                            <h4 class="font-bold text-gray-800">${nombre}</h4>
-                            ${op.email && op.email !== 'No especificado' ? 
-                              `<p class="text-xs text-gray-500">${validateEmail(op.email) || ''}</p>` : ''}
+                            <h4 class="font-bold text-gray-800">${op.nombre}</h4>
+                            <p class="text-sm text-gray-500">${formatDate(op.fecha)}</p>
                         </div>
                     </div>
-                </div>`;
-            }).join('');
+                </div>
+            `).join('');
 
         } catch (error) {
-            console.error("Error cargando opiniones:", error);
+            console.error('Error cargando opiniones:', error);
             opinionesList.innerHTML = `
                 <div class="md:col-span-2 text-center py-12">
-                    <p class="text-red-400">Error al cargar opiniones. Recarga la página.</p>
-                    <p class="text-sm text-gray-500 mt-2">${error.message}</p>
+                    <p class="text-red-400">Error cargando opiniones. Recarga la página.</p>
                 </div>`;
         }
     }
 
-    // Funciones auxiliares mejoradas
+    // Helper: Formatear fecha
     function formatDate(isoString) {
-        if (!isoString) return "Fecha no disponible";
-        try {
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            const date = new Date(isoString);
-            return isNaN(date) ? "Fecha inválida" : date.toLocaleDateString('es-ES', options);
-        } catch {
-            return "Fecha inválida";
-        }
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        return new Date(isoString).toLocaleDateString('es-ES', options);
     }
 
-    function validateEmail(email) {
-        if (!email) return null;
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email) ? email : null;
-    }
-
-    function sanitizeInput(input) {
-        return input ? input.toString()
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .substring(0, 500) : '';
-    }
-
+    // Helper: Mostrar mensajes
     function showMessage(text, type) {
         formMessage.textContent = text;
         formMessage.className = `mt-4 p-3 rounded-lg text-center ${
@@ -209,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
+    // Helper: Estado de carga
     function toggleLoading(loading) {
         if (loading) {
             btnText.classList.add('hidden');
@@ -220,43 +137,4 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = false;
         }
     }
-
-    function resetStars() {
-        starInputs.forEach(input => {
-            input.checked = false;
-            const label = document.querySelector(`label[for="${input.id}"]`);
-            if (label) {
-                label.classList.remove('text-yellow-400');
-                label.classList.add('text-gray-300');
-            }
-        });
-    }
-
-    // Event listeners para estrellas
-    starInputs.forEach(input => {
-        input.addEventListener('change', function() {
-            const labels = document.querySelectorAll('.rating-stars label');
-            labels.forEach(label => {
-                label.classList.remove('text-yellow-400');
-                label.classList.add('text-gray-300');
-            });
-            
-            const checkedInput = document.querySelector('input[name="puntuacion"]:checked');
-            if (checkedInput) {
-                const checkedLabel = document.querySelector(`label[for="${checkedInput.id}"]`);
-                if (checkedLabel) {
-                    checkedLabel.classList.remove('text-gray-300');
-                    checkedLabel.classList.add('text-yellow-400');
-                    
-                    // Marcar también las estrellas anteriores
-                    let prevSibling = checkedLabel.previousElementSibling;
-                    while (prevSibling && prevSibling.tagName === 'LABEL') {
-                        prevSibling.classList.remove('text-gray-300');
-                        prevSibling.classList.add('text-yellow-400');
-                        prevSibling = prevSibling.previousElementSibling;
-                    }
-                }
-            }
-        });
-    });
 });
