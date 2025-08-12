@@ -634,8 +634,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     </script>
 
-    <script>
-// Configuración de la API (reemplaza con tu URL de despliegue)
+  <script>
+// Configuración de la API
 const API_URL = 'https://script.google.com/macros/s/AKfycbwmyzUMAcgCx_WiTGd2lwN_AnHVwqgCPcKsVTOviGU7DUEGibEnMBD_v5FTfGVfnwoktw/exec';
 
 // Función para mostrar notificaciones
@@ -657,7 +657,7 @@ function showNotification(message, type = 'success') {
     }, 5000);
 }
 
-// Función para cargar opiniones
+// Función mejorada para cargar opiniones
 async function loadOpinions() {
     try {
         const container = document.getElementById('opiniones-list');
@@ -668,10 +668,16 @@ async function loadOpinions() {
             </div>
         `;
         
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
         
         if (!response.ok) {
-            throw new Error('Error al cargar opiniones');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const opinions = await response.json();
@@ -682,101 +688,12 @@ async function loadOpinions() {
         
         renderOpinions(opinions);
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error cargando opiniones:', error);
         showNotification('Error al cargar opiniones. Intenta recargar la página.', 'error');
     }
 }
 
-// Función para renderizar opiniones
-function renderOpinions(opinions) {
-    const container = document.getElementById('opiniones-list');
-    
-    if (opinions.length === 0) {
-        container.innerHTML = `
-            <div class="col-span-2 text-center py-8">
-                <p class="text-gray-500 mb-2">Aún no hay opiniones aprobadas.</p>
-                <p class="text-sm text-gray-400">¡Sé el primero en comentar!</p>
-            </div>`;
-        return;
-    }
-    
-    container.innerHTML = opinions.map(opinion => `
-        <div class="card p-6 hover:shadow-lg transition-shadow">
-            <div class="flex items-center mb-4">
-                <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                    ${opinion.nombre ? opinion.nombre.charAt(0).toUpperCase() : 'A'}
-                </div>
-                <div>
-                    <h4 class="font-bold">${opinion.nombre || 'Anónimo'}</h4>
-                    <p class="text-sm text-gray-500">${formatDate(opinion.fecha)}</p>
-                </div>
-            </div>
-            <p class="text-gray-600">${opinion.opinion || ''}</p>
-        </div>
-    `).join('');
-}
-
-// Función para formatear fecha
-function formatDate(dateString) {
-    if (!dateString) return 'Fecha no disponible';
-    try {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('es-ES', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    } catch {
-        return 'Fecha no disponible';
-    }
-}
-
-// Función para validar el formulario
-function validateForm(form) {
-    let isValid = true;
-    
-    // Validar nombre
-    const nombre = form.nombre.value.trim();
-    if (nombre.length < 2) {
-        document.getElementById('nombre-error').textContent = 'El nombre debe tener al menos 2 caracteres';
-        document.getElementById('nombre-error').classList.remove('hidden');
-        isValid = false;
-    } else {
-        document.getElementById('nombre-error').classList.add('hidden');
-    }
-    
-    // Validar email si existe
-    const email = form.email.value.trim();
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        document.getElementById('email-error').textContent = 'Ingresa un email válido';
-        document.getElementById('email-error').classList.remove('hidden');
-        isValid = false;
-    } else {
-        document.getElementById('email-error').classList.add('hidden');
-    }
-    
-    // Validar opinión
-    const opinion = form.opinion.value.trim();
-    if (opinion.length < 10) {
-        document.getElementById('opinion-error').textContent = 'La opinión debe tener al menos 10 caracteres';
-        document.getElementById('opinion-error').classList.remove('hidden');
-        isValid = false;
-    } else {
-        document.getElementById('opinion-error').classList.add('hidden');
-    }
-    
-    // Validar términos
-    if (!form.terminos.checked) {
-        showNotification('Debes aceptar los términos y condiciones', 'error');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-// Función para enviar la opinión
+// Función para enviar opinión mejorada
 async function submitOpinion(event) {
     event.preventDefault();
     
@@ -801,65 +718,62 @@ async function submitOpinion(event) {
             opinion: form.opinion.value.trim()
         };
         
-        // Enviar datos
+        // Enviar datos con manejo de CORS
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData),
+            redirect: 'follow' // Importante para Google Apps Script
         });
         
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}`);
+        // Manejar redirección de Google Apps Script
+        if (response.redirected) {
+            const redirectedResponse = await fetch(response.url);
+            const result = await redirectedResponse.json();
+            handleSubmissionResult(result);
+        } else {
+            const result = await response.json();
+            handleSubmissionResult(result);
         }
-        
-        const result = await response.json();
-        
-        if (!result.success) {
-            throw new Error(result.message || 'Error al enviar la opinión');
-        }
-        
-        // Mostrar éxito y resetear formulario
-        showNotification('¡Gracias por tu opinión! Será publicada después de revisión.', 'success');
-        form.reset();
-        
-        // Recargar opiniones después de 3 segundos
-        setTimeout(loadOpinions, 3000);
         
     } catch (error) {
-        console.error('Error:', error);
-        showNotification(error.message || 'Error al enviar tu opinión', 'error');
+        console.error('Error enviando opinión:', error);
+        showNotification('Error de conexión. Intenta nuevamente.', 'error');
     } finally {
-        // Restaurar estado normal del botón
         button.disabled = false;
         submitText.textContent = 'Enviar Opinión';
         spinner.classList.add('hidden');
     }
 }
 
-// Inicialización cuando el DOM esté listo
+function handleSubmissionResult(result) {
+    if (result.success) {
+        showNotification('¡Gracias por tu opinión! Será publicada después de revisión.', 'success');
+        document.getElementById('opinion-form').reset();
+        setTimeout(loadOpinions, 3000);
+    } else {
+        showNotification(result.message || 'Error al enviar tu opinión', 'error');
+    }
+}
+
+// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
-    // Configurar el formulario
     const form = document.getElementById('opinion-form');
     if (form) {
         form.addEventListener('submit', submitOpinion);
     }
-    
-    // Cargar opiniones al inicio
     loadOpinions();
     
-    // Agregar estilos para animaciones
+    // Estilos para animaciones
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-out {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(10px); }
-        }
-        .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
-        .animate-fade-out { animation: fade-out 0.3s ease-out forwards; }
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+        .animate-fade-in { animation: fade-in 0.3s ease-out; }
+        .animate-fade-out { animation: fade-out 0.3s ease-out; }
     `;
     document.head.appendChild(style);
 });
