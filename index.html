@@ -198,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
 
-        <!-- Sección de Opiniones (simplificada) -->
+       <!-- Sección de Opiniones -->
 <section id="opiniones" class="py-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
@@ -206,7 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Comparte tu experiencia con nuestros servicios.</p>
         </div>
         
-        <!-- Un único formulario -->
+        <!-- Formulario Mejorado -->
         <div class="max-w-2xl mx-auto bg-blue-50 p-8 rounded-xl shadow-md mb-12">
             <h3 class="text-xl font-bold mb-6 text-center">Deja tu opinión</h3>
             <form id="opinion-form" class="space-y-4">
@@ -214,224 +214,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre*</label>
                     <input type="text" id="nombre" name="nombre" required minlength="2"
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    <p id="nombre-error" class="hidden text-red-500 text-xs mt-1"></p>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email (opcional)</label>
                     <input type="email" id="email" name="email"
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    <p id="email-error" class="hidden text-red-500 text-xs mt-1"></p>
                 </div>
                 <div>
                     <label for="opinion" class="block text-sm font-medium text-gray-700 mb-1">Tu opinión*</label>
                     <textarea id="opinion" name="opinion" rows="4" required minlength="10"
                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    <p id="opinion-error" class="hidden text-red-500 text-xs mt-1"></p>
                 </div>
                 <div class="flex items-start">
                     <input type="checkbox" id="terminos" name="terminos" required
                            class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                     <label for="terminos" class="ml-2 block text-sm text-gray-700">
-                        Acepto los términos y condiciones de privacidad
+                        Acepto los <a href="#" class="text-blue-600 hover:underline">términos y condiciones</a> de privacidad
                     </label>
                 </div>
-                <button type="submit" class="w-full btn-primary mt-4">Enviar Opinión</button>
+                <button type="submit" class="w-full btn-primary mt-4 flex items-center justify-center">
+                    <span id="submit-text">Enviar Opinión</span>
+                    <svg id="submit-spinner" class="hidden h-5 w-5 ml-2 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
             </form>
         </div>
         
         <!-- Listado de opiniones -->
         <div id="opiniones-list" class="grid md:grid-cols-2 gap-8">
-            <!-- Las opiniones se cargarán aquí -->
+            <!-- Las opiniones se cargarán aquí dinámicamente -->
         </div>
     </div>
 </section>
-
-<script>
-// Configuración de la API
-const API_URL = 'https://script.google.com/macros/s/AKfycbzWddkHPvzUMJaJwIKejgZTvQV0kp-eG8AEDBHFOhZiUjw44szqhdbqukWy3J8aL5S_Nw/exec';
-
-// Función mejorada para cargar opiniones
-async function loadOpinions() {
-    try {
-        const loader = `<div class="col-span-2 text-center py-8">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mb-2"></div>
-            <p class="text-gray-500">Cargando opiniones...</p>
-        </div>`;
-        
-        document.getElementById('opiniones-list').innerHTML = loader;
-        
-        const response = await fetch(API_URL);
-        
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
-        
-        const opinions = await response.json();
-        
-        if (!Array.isArray(opinions)) {
-            throw new Error('Formato de respuesta inválido');
-        }
-        
-        renderOpinions(opinions);
-    } catch (error) {
-        console.error('Error cargando opiniones:', error);
-        showError('Error al cargar opiniones. Por favor intenta más tarde.');
-    }
-}
-
-function renderOpinions(opinions) {
-    const container = document.getElementById('opiniones-list');
-    
-    if (opinions.length === 0) {
-        container.innerHTML = `
-            <div class="col-span-2 text-center py-8">
-                <p class="text-gray-500 mb-2">Aún no hay opiniones aprobadas.</p>
-                <p class="text-sm text-gray-400">¡Sé el primero en comentar!</p>
-            </div>`;
-        return;
-    }
-    
-    container.innerHTML = opinions.map(opinion => `
-        <div class="card p-6 hover:shadow-lg transition-shadow">
-            <div class="flex items-center mb-4">
-                <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                    ${opinion.nombre ? `<span class="font-bold">${opinion.nombre.charAt(0).toUpperCase()}</span>` : ''}
-                </div>
-                <div>
-                    <h4 class="font-bold">${opinion.nombre || 'Anónimo'}</h4>
-                    <p class="text-sm text-gray-500">${formatDate(opinion.fecha)}</p>
-                </div>
-            </div>
-            <p class="text-gray-600">${opinion.opinion || ''}</p>
-        </div>
-    `).join('');
-}
-
-// Función optimizada para enviar opiniones
-async function submitOpinion(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const button = form.querySelector('button[type="submit"]');
-    const originalText = button.textContent;
-    
-    try {
-        // Validación en cliente
-        if (!validateForm(form)) return;
-        
-        button.disabled = true;
-        button.textContent = 'Enviando...';
-        
-        const formData = {
-            nombre: form.nombre.value.trim(),
-            email: form.email.value.trim(),
-            opinion: form.opinion.value.trim()
-        };
-        
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}`);
-        }
-        
-        const result = await response.json();
-        
-        if (!result.success) {
-            throw new Error(result.message);
-        }
-        
-        showNotification('¡Gracias por tu opinión! Será publicada después de ser moderada.', 'green');
-        form.reset();
-        setTimeout(loadOpinions, 3000); // Recargar después de 3 segundos
-    } catch (error) {
-        console.error('Error enviando opinión:', error);
-        showNotification(error.message || 'Error al enviar tu opinión', 'red');
-    } finally {
-        button.disabled = false;
-        button.textContent = originalText;
-    }
-}
-
-// Funciones auxiliares
-function validateForm(form) {
-    if (form.nombre.value.trim().length < 2) {
-        showNotification('El nombre debe tener al menos 2 caracteres', 'red');
-        return false;
-    }
-    
-    if (form.opinion.value.trim().length < 10) {
-        showNotification('La opinión debe tener al menos 10 caracteres', 'red');
-        return false;
-    }
-    
-    if (!form.terminos.checked) {
-        showNotification('Debes aceptar los términos y condiciones', 'red');
-        return false;
-    }
-    
-    return true;
-}
-
-function formatDate(dateString) {
-    if (!dateString) return 'Fecha no disponible';
-    try {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('es-ES', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    } catch {
-        return 'Fecha no disponible';
-    }
-}
-
-function showNotification(message, type = 'success') {
-    const colors = {
-        success: 'bg-green-500',
-        error: 'bg-red-500',
-        warning: 'bg-yellow-500'
-    };
-    
-    const notification = document.createElement('div');
-    notification.className = `fixed top-4 right-4 ${colors[type] || colors.success} text-white px-6 py-3 rounded-lg shadow-lg animate-fade-in`;
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.classList.replace('animate-fade-in', 'animate-fade-out');
-        setTimeout(() => notification.remove(), 300);
-    }, 5000);
-}
-
-// Inicialización
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('opinion-form');
-    if (form) {
-        form.addEventListener('submit', submitOpinion);
-    }
-    loadOpinions();
-    
-    // Estilos dinámicos para animaciones
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-out {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(10px); }
-        }
-        .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
-        .animate-fade-out { animation: fade-out 0.3s ease-out forwards; }
-    `;
-    document.head.appendChild(style);
-});
-</script>
         
 
         
@@ -814,5 +633,236 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
 });
     </script>
+
+    <script>
+// Configuración de la API (reemplaza con tu URL de despliegue)
+const API_URL = 'https://script.google.com/macros/s/AKfycbwmyzUMAcgCx_WiTGd2lwN_AnHVwqgCPcKsVTOviGU7DUEGibEnMBD_v5FTfGVfnwoktw/exec';
+
+// Función para mostrar notificaciones
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    const colors = {
+        success: 'bg-green-500',
+        error: 'bg-red-500',
+        info: 'bg-blue-500'
+    };
+    
+    notification.className = `fixed top-4 right-4 ${colors[type]} text-white px-6 py-3 rounded-lg shadow-lg animate-fade-in z-50`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.replace('animate-fade-in', 'animate-fade-out');
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
+
+// Función para cargar opiniones
+async function loadOpinions() {
+    try {
+        const container = document.getElementById('opiniones-list');
+        container.innerHTML = `
+            <div class="col-span-2 text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mb-2"></div>
+                <p class="text-gray-500">Cargando opiniones...</p>
+            </div>
+        `;
+        
+        const response = await fetch(API_URL);
+        
+        if (!response.ok) {
+            throw new Error('Error al cargar opiniones');
+        }
+        
+        const opinions = await response.json();
+        
+        if (!Array.isArray(opinions)) {
+            throw new Error('Formato de respuesta inválido');
+        }
+        
+        renderOpinions(opinions);
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error al cargar opiniones. Intenta recargar la página.', 'error');
+    }
+}
+
+// Función para renderizar opiniones
+function renderOpinions(opinions) {
+    const container = document.getElementById('opiniones-list');
+    
+    if (opinions.length === 0) {
+        container.innerHTML = `
+            <div class="col-span-2 text-center py-8">
+                <p class="text-gray-500 mb-2">Aún no hay opiniones aprobadas.</p>
+                <p class="text-sm text-gray-400">¡Sé el primero en comentar!</p>
+            </div>`;
+        return;
+    }
+    
+    container.innerHTML = opinions.map(opinion => `
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+                <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                    ${opinion.nombre ? opinion.nombre.charAt(0).toUpperCase() : 'A'}
+                </div>
+                <div>
+                    <h4 class="font-bold">${opinion.nombre || 'Anónimo'}</h4>
+                    <p class="text-sm text-gray-500">${formatDate(opinion.fecha)}</p>
+                </div>
+            </div>
+            <p class="text-gray-600">${opinion.opinion || ''}</p>
+        </div>
+    `).join('');
+}
+
+// Función para formatear fecha
+function formatDate(dateString) {
+    if (!dateString) return 'Fecha no disponible';
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    } catch {
+        return 'Fecha no disponible';
+    }
+}
+
+// Función para validar el formulario
+function validateForm(form) {
+    let isValid = true;
+    
+    // Validar nombre
+    const nombre = form.nombre.value.trim();
+    if (nombre.length < 2) {
+        document.getElementById('nombre-error').textContent = 'El nombre debe tener al menos 2 caracteres';
+        document.getElementById('nombre-error').classList.remove('hidden');
+        isValid = false;
+    } else {
+        document.getElementById('nombre-error').classList.add('hidden');
+    }
+    
+    // Validar email si existe
+    const email = form.email.value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('email-error').textContent = 'Ingresa un email válido';
+        document.getElementById('email-error').classList.remove('hidden');
+        isValid = false;
+    } else {
+        document.getElementById('email-error').classList.add('hidden');
+    }
+    
+    // Validar opinión
+    const opinion = form.opinion.value.trim();
+    if (opinion.length < 10) {
+        document.getElementById('opinion-error').textContent = 'La opinión debe tener al menos 10 caracteres';
+        document.getElementById('opinion-error').classList.remove('hidden');
+        isValid = false;
+    } else {
+        document.getElementById('opinion-error').classList.add('hidden');
+    }
+    
+    // Validar términos
+    if (!form.terminos.checked) {
+        showNotification('Debes aceptar los términos y condiciones', 'error');
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+// Función para enviar la opinión
+async function submitOpinion(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const button = form.querySelector('button[type="submit"]');
+    const submitText = document.getElementById('submit-text');
+    const spinner = document.getElementById('submit-spinner');
+    
+    // Validar formulario
+    if (!validateForm(form)) return;
+    
+    try {
+        // Mostrar estado de carga
+        button.disabled = true;
+        submitText.textContent = 'Enviando...';
+        spinner.classList.remove('hidden');
+        
+        // Preparar datos
+        const formData = {
+            nombre: form.nombre.value.trim(),
+            email: form.email.value.trim(),
+            opinion: form.opinion.value.trim()
+        };
+        
+        // Enviar datos
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (!result.success) {
+            throw new Error(result.message || 'Error al enviar la opinión');
+        }
+        
+        // Mostrar éxito y resetear formulario
+        showNotification('¡Gracias por tu opinión! Será publicada después de revisión.', 'success');
+        form.reset();
+        
+        // Recargar opiniones después de 3 segundos
+        setTimeout(loadOpinions, 3000);
+        
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification(error.message || 'Error al enviar tu opinión', 'error');
+    } finally {
+        // Restaurar estado normal del botón
+        button.disabled = false;
+        submitText.textContent = 'Enviar Opinión';
+        spinner.classList.add('hidden');
+    }
+}
+
+// Inicialización cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    // Configurar el formulario
+    const form = document.getElementById('opinion-form');
+    if (form) {
+        form.addEventListener('submit', submitOpinion);
+    }
+    
+    // Cargar opiniones al inicio
+    loadOpinions();
+    
+    // Agregar estilos para animaciones
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-out {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(10px); }
+        }
+        .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
+        .animate-fade-out { animation: fade-out 0.3s ease-out forwards; }
+    `;
+    document.head.appendChild(style);
+});
+</script>
 </body>
 </html>
