@@ -625,18 +625,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Opiniones
     <script>
+        
 // Configuración de la API
-const API_URL = 'https://script.google.com/macros/s/AKfycbyLXTXozxSlIQC2GSxSfw21C_RvzF03esFDYwt8GMr4YLgwsTktj6uyOVDfgvmWgM6nXA/exec'; // Reemplaza con tu URL de Apps Script
+const API_URL = 'https://script.google.com/macros/s/AKfycbyLXTXozxSlIQC2GSxSfw21C_RvzF03esFDYwt8GMr4YLgwsTktj6uyOVDfgvmWgM6nXA/exec';
 
 // Función para cargar opiniones existentes
 async function loadOpinions() {
     try {
         const response = await fetch(`${API_URL}?action=get`);
-        const opinions = await response.json();
+        if (!response.ok) throw new Error('Error al cargar opiniones');
         
+        const opinions = await response.json();
         const opinionsList = document.getElementById('opiniones-list');
+        
         if (opinions.length === 0) {
-            opinionsList.innerHTML = '<p class="text-gray-500 text-center col-span-2">Aún no hay opiniones. ¡Sé el primero en comentar!</p>';
+            opinionsList.innerHTML = `
+                <div class="col-span-2 text-center">
+                    <p class="text-gray-500 mb-4">Aún no hay opiniones aprobadas.</p>
+                    <p class="text-sm text-gray-400">¡Sé el primero en comentar! Tu opinión será publicada después de ser moderada.</p>
+                </div>`;
             return;
         }
         
@@ -648,7 +655,7 @@ async function loadOpinions() {
                     </div>
                     <div>
                         <h4 class="font-bold">${opinion.nombre}</h4>
-                        <p class="text-sm text-gray-500">${new Date(opinion.fecha).toLocaleDateString()}</p>
+                        <p class="text-sm text-gray-500">${formatDate(opinion.fecha)}</p>
                     </div>
                 </div>
                 <p class="text-gray-600">${opinion.opinion}</p>
@@ -656,7 +663,17 @@ async function loadOpinions() {
         `).join('');
     } catch (error) {
         console.error('Error cargando opiniones:', error);
+        document.getElementById('opiniones-list').innerHTML = `
+            <div class="col-span-2 text-center text-gray-500">
+                No se pudieron cargar las opiniones. Por favor intenta más tarde.
+            </div>`;
     }
+}
+
+// Formatear fecha
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('es-ES', options);
 }
 
 // Manejar el envío del formulario
@@ -672,10 +689,19 @@ document.getElementById('opinion-form').addEventListener('submit', async functio
         submitButton.textContent = 'Enviando...';
         
         const formData = {
-            nombre: form.nombre.value,
-            email: form.email.value,
-            opinion: form.opinion.value
+            nombre: form.nombre.value.trim(),
+            email: form.email.value.trim(),
+            opinion: form.opinion.value.trim()
         };
+        
+        // Validación adicional
+        if (formData.nombre.length < 2) {
+            throw new Error('Por favor ingresa un nombre válido');
+        }
+        
+        if (formData.opinion.length < 10) {
+            throw new Error('La opinión debe tener al menos 10 caracteres');
+        }
         
         const response = await fetch(API_URL, {
             method: 'POST',
@@ -685,32 +711,35 @@ document.getElementById('opinion-form').addEventListener('submit', async functio
             }
         });
         
+        if (!response.ok) throw new Error('Error en la respuesta del servidor');
+        
         const result = await response.json();
         
-        if (result.success) {
-            // Mostrar notificación de éxito
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-24 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in';
-            notification.textContent = '¡Gracias por tu opinión!';
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
-            
-            // Resetear el formulario
-            form.reset();
-            
-            // Recargar opiniones
-            await loadOpinions();
-        } else {
-            alert('Error al enviar la opinión: ' + result.message);
-        }
+        if (!result.success) throw new Error(result.message);
+        
+        // Mostrar notificación de éxito
+        showNotification('¡Gracias por tu opinión! Será publicada después de ser moderada.', 'green');
+        
+        // Resetear el formulario
+        form.reset();
+        
     } catch (error) {
         console.error('Error:', error);
-        alert('Ocurrió un error al enviar tu opinión. Por favor intenta nuevamente.');
+        showNotification(error.message || 'Ocurrió un error al enviar tu opinión. Por favor intenta nuevamente.', 'red');
     } finally {
         submitButton.disabled = false;
         submitButton.textContent = originalButtonText;
     }
 });
+
+// Mostrar notificación
+function showNotification(message, color = 'green') {
+    const notification = document.createElement('div');
+    notification.className = `fixed top-24 right-5 bg-${color}-500 text-white py-2 px-4 rounded-lg shadow-lg fade-in`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 5000);
+}
 
 // Cargar opiniones al cargar la página
 document.addEventListener('DOMContentLoaded', loadOpinions);
