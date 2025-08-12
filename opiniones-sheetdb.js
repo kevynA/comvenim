@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnText = document.getElementById('btn-text');
     const btnLoader = document.getElementById('btn-loader');
     const formMessage = document.getElementById('form-message');
+    const starInputs = document.querySelectorAll('.rating-stars input[type="radio"]');
 
     // Cargar opiniones al iniciar
     loadOpiniones();
@@ -23,11 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Validar puntuación
+        const puntuacion = form.querySelector('input[name="puntuacion"]:checked');
+        if (!puntuacion) {
+            showMessage('Por favor selecciona una puntuación', 'error');
+            return;
+        }
+
         // Preparar datos
         const data = {
             nombre: form.nombre.value.trim(),
             email: form.email.value.trim() || 'No especificado',
             comentario: form.comentario.value.trim(),
+            puntuacion: puntuacion.value,
             fecha: new Date().toISOString(),
             validado: "NO" // Moderación manual
         };
@@ -47,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 showMessage('✅ Gracias! Tu opinión será revisada antes de publicarse.', 'success');
                 form.reset();
+                resetStars();
                 loadOpiniones();
             } else {
                 throw new Error('Error en la API');
@@ -78,6 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             opinionesList.innerHTML = opiniones.map(op => `
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            ${'★'.repeat(op.puntuacion)}${'☆'.repeat(5 - op.puntuacion)}
+                        </div>
+                        <span class="text-sm text-gray-500 ml-auto">${formatDate(op.fecha)}</span>
+                    </div>
                     <p class="text-gray-600 mb-4 italic">"${op.comentario}"</p>
                     <div class="flex items-center">
                         <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">
@@ -85,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div>
                             <h4 class="font-bold text-gray-800">${op.nombre}</h4>
-                            <p class="text-sm text-gray-500">${formatDate(op.fecha)}</p>
+                            ${op.email !== 'No especificado' ? `<p class="text-xs text-gray-500">${op.email}</p>` : ''}
                         </div>
                     </div>
                 </div>
@@ -137,4 +153,40 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = false;
         }
     }
+
+    // Helper: Resetear estrellas
+    function resetStars() {
+        starInputs.forEach(input => {
+            input.checked = false;
+            const label = document.querySelector(`label[for="${input.id}"]`);
+            label.classList.remove('text-yellow-400');
+            label.classList.add('text-gray-300');
+        });
+    }
+
+    // Event listeners para estrellas
+    starInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const labels = document.querySelectorAll('.rating-stars label');
+            labels.forEach(label => {
+                label.classList.remove('text-yellow-400');
+                label.classList.add('text-gray-300');
+            });
+            
+            const checkedInput = document.querySelector('input[name="puntuacion"]:checked');
+            if (checkedInput) {
+                const checkedLabel = document.querySelector(`label[for="${checkedInput.id}"]`);
+                checkedLabel.classList.remove('text-gray-300');
+                checkedLabel.classList.add('text-yellow-400');
+                
+                // Marcar también las estrellas anteriores
+                let prevSibling = checkedLabel.previousElementSibling;
+                while (prevSibling && prevSibling.tagName === 'LABEL') {
+                    prevSibling.classList.remove('text-gray-300');
+                    prevSibling.classList.add('text-yellow-400');
+                    prevSibling = prevSibling.previousElementSibling;
+                }
+            }
+        });
+    });
 });
