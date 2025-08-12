@@ -71,50 +71,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cargar opiniones desde SheetDB
     async function loadOpiniones() {
-        try {
-            const response = await fetch(`${SHEETDB_API}?validado=SI`);
-            const opiniones = await response.json();
-
-            if (!opiniones || opiniones.length === 0) {
-                opinionesList.innerHTML = `
-                    <div class="md:col-span-2 text-center py-12">
-                        <p class="text-gray-400">Aún no hay opiniones publicadas.</p>
-                    </div>`;
-                return;
-            }
-
-            // Ordenar por fecha (más recientes primero)
-            opiniones.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
-
-            opinionesList.innerHTML = opiniones.map(op => `
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            ${'★'.repeat(op.puntuacion)}${'☆'.repeat(5 - op.puntuacion)}
-                        </div>
-                        <span class="text-sm text-gray-500 ml-auto">${formatDate(op.fecha)}</span>
-                    </div>
-                    <p class="text-gray-600 mb-4 italic">"${op.comentario}"</p>
-                    <div class="flex items-center">
-                        <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                            ${op.nombre.charAt(0).toUpperCase()}
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">${op.nombre}</h4>
-                            ${op.email !== 'No especificado' ? `<p class="text-xs text-gray-500">${op.email}</p>` : ''}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-        } catch (error) {
-            console.error('Error cargando opiniones:', error);
+    try {
+        const response = await fetch(`${SHEETDB_API}?validado=SI`);
+        const opiniones = await response.json();
+        
+        console.log("Datos recibidos:", opiniones); // Para diagnóstico
+        
+        if (!opiniones || opiniones.length === 0) {
             opinionesList.innerHTML = `
                 <div class="md:col-span-2 text-center py-12">
-                    <p class="text-red-400">Error cargando opiniones. Recarga la página.</p>
+                    <p class="text-gray-400">No hay opiniones publicadas aún.</p>
                 </div>`;
+            return;
         }
+
+        // Filtra por si acaso hay algún null
+        const opinionesValidadas = opiniones.filter(op => 
+            op.validado && op.validado.toString().trim().toUpperCase() === "SI"
+        );
+
+        if (opinionesValidadas.length === 0) {
+            opinionesList.innerHTML = `
+                <div class="md:col-span-2 text-center py-12">
+                    <p class="text-gray-400">No hay opiniones aprobadas aún.</p>
+                </div>`;
+            return;
+        }
+
+        // Ordenar y mostrar...
+        opinionesValidadas.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+        
+        opinionesList.innerHTML = opinionesValidadas.map(op => `
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-center mb-2">
+                    <div class="text-yellow-400 mr-2">
+                        ${'★'.repeat(op.puntuacion)}${'☆'.repeat(5 - op.puntuacion)}
+                    </div>
+                    <span class="text-sm text-gray-500 ml-auto">
+                        ${formatDate(op.fecha)}
+                    </span>
+                </div>
+                <p class="text-gray-600 mb-4 italic">"${op.comentario}"</p>
+                <div class="flex items-center">
+                    <div class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                        ${op.nombre.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">${op.nombre}</h4>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+    } catch (error) {
+        console.error("Error cargando opiniones:", error);
+        opinionesList.innerHTML = `
+            <div class="md:col-span-2 text-center py-12">
+                <p class="text-red-400">Error al cargar opiniones. Recarga la página.</p>
+            </div>`;
     }
+}
 
     // Helper: Formatear fecha
     function formatDate(isoString) {
