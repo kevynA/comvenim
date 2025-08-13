@@ -7,187 +7,73 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Animaciones mejoradas */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .animate-fadeIn {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        /* Efectos para tarjetas */
-        .blog-card {
-            @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl;
-            transform-style: preserve-3d;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px) rotateX(2deg);
-        }
-        
         .blog-card:hover .blog-title {
-            @apply text-blue-600;
+            color: #2563eb; /* blue-600 */
         }
-        
-        /* Efectos para botones */
-        .btn {
-            @apply relative overflow-hidden transition-all duration-300;
-        }
-        
-        .btn-primary {
-            @apply bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-900;
-        }
-        
-        .btn-secondary {
-            @apply bg-gradient-to-r from-gray-600 to-gray-800 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:from-gray-700 hover:to-gray-900;
-        }
-        
-        /* Efecto ripple */
-        .ripple {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ripple:after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
-            background-repeat: no-repeat;
-            background-position: 50%;
-            transform: scale(10, 10);
-            opacity: 0;
-            transition: transform .5s, opacity 1s;
-        }
-        
-        .ripple:active:after {
-            transform: scale(0, 0);
-            opacity: 0.3;
-            transition: 0s;
-        }
-        
-        /* Efectos para imágenes */
-        .project-img {
-            @apply transition-transform duration-500;
-        }
-        
-        .blog-card:hover .project-img {
-            transform: scale(1.05);
-        }
-        
-        /* Efecto overlay */
-        .img-overlay {
-            @apply absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300;
-        }
-        
-        /* Efecto para chips de categoría */
         .category-chip {
-            @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-300;
+            transition: all 0.3s ease;
         }
-        
         .category-chip:hover {
-            @apply shadow-md transform -translate-y-1;
-        }
-        
-        /* Efecto para enlaces */
-        .nav-link {
-            @apply relative;
-        }
-        
-        .nav-link:after {
-            content: '';
-            @apply absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300;
-        }
-        
-        .nav-link:hover:after {
-            @apply w-full;
-        }
-        
-        .active-link {
-            @apply text-blue-600;
-        }
-        
-        .active-link:after {
-            @apply w-full;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header consistente con otras páginas -->
+    <!-- Header consistente con la página principal -->
     <header id="header" class="bg-white shadow-md sticky top-0 z-40">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-extrabold text-blue-600 hover:text-blue-800 transition">COMVENIM</a>
+            <a href="index.html" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html#inicio" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Inicio</a>
-                <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Proyectos</a>
-                <a href="Blogs.html" class="text-blue-600 font-medium nav-link active-link">Noticias</a>
-                <a href="Desarrollador.html" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Desarrollador</a>
-                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Agendar Cita</a>
-            </div>
+    <a href="index.html#inicio" class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
+    <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium">Proyectos</a>
+    <a href="Blogs.html" class="text-blue-600 font-medium underline">Noticias</a>
+    <a href="Desarrollador.html" class="text-gray-600 hover:text-blue-600 font-medium">Desarrollador</a>
+    <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agendar Cita</a>
+</div>
             <!-- Botón de Menú Móvil -->
             <div class="md:hidden flex items-center">
-                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 transition-transform hover:scale-110">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </nav>
         <!-- Menú Móvil -->
         <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="index.html#inicio" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50 transition">Inicio</a>
-            <a href="proyectos.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50 transition">Proyectos</a>
-            <a href="Blogs.html" class="block py-2 px-6 text-sm text-blue-600 font-medium bg-blue-50">Noticias</a>
-            <a href="Desarrollador.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50 transition">Desarrollador</a>
-            <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50 transition">Agendar Cita</a>
-        </div>
+    <a href="index.html#inicio" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Inicio</a>
+    <a href="proyectos.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Proyectos</a>
+    <a href="Blogs.html" class="block py-2 px-6 text-sm text-blue-600 font-medium bg-blue-50">Noticias</a>
+    <a href="Desarrollador.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Desarrollador</a>
+    <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Agendar Cita</a>
+</div>
     </header>
 
     <!-- Sección Blog -->
     <section id="blog" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-            <!-- Encabezado con animación -->
-            <div class="text-center mb-12 animate-fadeIn" style="animation-delay: 0.1s">
-                <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4 animate-float">Noticias</span>
+            <!-- Encabezado -->
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">Noticias</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tendencias y Conocimiento</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">Descubre artículos sobre desarrollo web, marketing digital y tecnología para hacer crecer tu negocio.</p>
             </div>
 
-            <!-- Categorías con animación escalonada -->
+            <!-- Categorías -->
             <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button class="category-chip px-4 py-2 bg-blue-600 text-white animate-fadeIn" style="animation-delay: 0.2s">Todos</button>
-                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 animate-fadeIn" style="animation-delay: 0.3s">Tecnología</button>
-                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 animate-fadeIn" style="animation-delay: 0.4s">Marketing</button>
-                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 animate-fadeIn" style="animation-delay: 0.5s">Desarrollo Web</button>
-                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 animate-fadeIn" style="animation-delay: 0.6s">Negocios</button>
+                <button class="category-chip px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium">Todos</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Tecnología</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Marketing</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Desarrollo Web</button>
+                <button class="category-chip px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-50">Negocios</button>
             </div>
 
-            <!-- Artículos destacados con animación escalonada -->
+            <!-- Artículos destacados -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Artículo 1 -->
-                <article class="blog-card animate-fadeIn" style="animation-delay: 0.2s">
-                    <a href="artículo-ia-negocios.html" class="group">
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="artículo-ia-negocios.html">
                         <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
-                                 alt="IA en negocios" 
-                                 class="w-full h-full object-cover project-img">
-                            <div class="img-overlay"></div>
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="IA en negocios" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             <span class="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">Tecnología</span>
                         </div>
                         <div class="p-6">
@@ -198,22 +84,19 @@
                             </div>
                             <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Cómo implementar IA en tu negocio sin ser experto</h3>
                             <p class="text-gray-600 mb-4">Descubre herramientas de IA accesibles que pueden automatizar procesos y mejorar la productividad de tu empresa.</p>
-                            <div class="flex items-center text-blue-600 font-medium group-hover:text-blue-800 transition">
+                            <div class="flex items-center text-blue-600 font-medium">
                                 <span>Leer artículo</span>
-                                <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                                <i class="fas fa-arrow-right ml-2"></i>
                             </div>
                         </div>
                     </a>
                 </article>
 
                 <!-- Artículo 2 -->
-                <article class="blog-card animate-fadeIn" style="animation-delay: 0.3s">
-                    <a href="Cómo implementar TikTok Marketing para negocios locales en 2025.html" class="group">
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="Cómo implementar TikTok Marketing para negocios locales en 2025.html">
                         <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
-                                 alt="TikTok Marketing" 
-                                 class="w-full h-full object-cover project-img">
-                            <div class="img-overlay"></div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="TikTok Marketing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             <span class="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">Marketing</span>
                         </div>
                         <div class="p-6">
@@ -224,22 +107,19 @@
                             </div>
                             <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Estrategias de TikTok para negocios locales en 2024</h3>
                             <p class="text-gray-600 mb-4">Aprende a aprovechar el algoritmo de TikTok para aumentar la visibilidad de tu negocio físico o servicio local.</p>
-                            <div class="flex items-center text-blue-600 font-medium group-hover:text-blue-800 transition">
+                            <div class="flex items-center text-blue-600 font-medium">
                                 <span>Leer artículo</span>
-                                <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                                <i class="fas fa-arrow-right ml-2"></i>
                             </div>
                         </div>
                     </a>
                 </article>
 
                 <!-- Artículo 3 -->
-                <article class="blog-card animate-fadeIn" style="animation-delay: 0.4s">
-                    <a href="articulo-jamstack.html" class="group">
+                <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <a href="articulo-jamstack.html">
                         <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
-                                 alt="Jamstack" 
-                                 class="w-full h-full object-cover project-img">
-                            <div class="img-overlay"></div>
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Jamstack" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">Desarrollo Web</span>
                         </div>
                         <div class="p-6">
@@ -250,64 +130,72 @@
                             </div>
                             <h3 class="blog-title text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">Por qué tu próximo sitio web debería usar Jamstack</h3>
                             <p class="text-gray-600 mb-4">Ventajas de la arquitectura Jamstack sobre los CMS tradicionales para rendimiento, seguridad y escalabilidad.</p>
-                            <div class="flex items-center text-blue-600 font-medium group-hover:text-blue-800 transition">
+                            <div class="flex items-center text-blue-600 font-medium">
                                 <span>Leer artículo</span>
-                                <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                                <i class="fas fa-arrow-right ml-2"></i>
                             </div>
                         </div>
                     </a>
                 </article>
             </div>
 
-            <!-- CTA y formulario de suscripción -->
-            <div class="text-center mt-16">
-                <a href="Artículos.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300 ripple">
-                    Ver todos los artículos
-                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                </a>
-                
-                <!-- Formulario de Suscripción Mejorado -->
-                <div class="mt-8 bg-white p-6 rounded-xl shadow-md max-w-md mx-auto animate-fadeIn" style="animation-delay: 0.5s">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Suscríbete a nuestro boletín</h3>
-                    <p class="text-gray-600 mb-4">Recibe nuestros mejores artículos y ofertas exclusivas directamente en tu correo.</p>
-                    
-                    <form id="subscribeForm" class="space-y-4">
-                        <div>
-                            <label for="email" class="sr-only">Correo electrónico</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                                placeholder="tucorreo@ejemplo.com">
-                            <p id="emailError" class="mt-1 text-sm text-red-600 hidden"></p>
-                        </div>
-                        <button 
-                            type="submit"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center ripple">
-                            <span id="submitText">Suscribirme</span>
-                            <span id="spinner" class="hidden ml-2">
-                                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
-                            </span>
-                        </button>
-                    </form>
-                    
-                    <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded text-left">
-                        <div class="flex items-start">
-                            <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            <div>
-                                <p class="font-medium">¡Gracias por suscribirte!</p>
-                                <p class="text-sm" id="successDetail">Te hemos enviado un correo de confirmación.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- CTA y enlace a más artículos -->
+<div class="text-center mt-16">
+    <a href="Artículos.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
+        Ver todos los artículos
+        <i class="fas fa-arrow-right ml-2"></i>
+    </a>
+    
+    <!-- Formulario de Suscripción Mejorado -->
+    <div class="mt-8 bg-white p-6 rounded-xl shadow-md max-w-md mx-auto">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Suscríbete a nuestro boletín</h3>
+        <p class="text-gray-600 mb-4">Recibe nuestros mejores artículos y ofertas exclusivas directamente en tu correo.</p>
+        
+        <form id="subscribeForm" class="space-y-4">
+            <div>
+                <label for="email" class="sr-only">Correo electrónico</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="tucorreo@ejemplo.com">
+                <p id="emailError" class="mt-1 text-sm text-red-600 hidden"></p>
+            </div>
+            <button 
+                type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                <span id="submitText">Suscribirme</span>
+                <span id="spinner" class="hidden ml-2">
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </span>
+            </button>
+        </form>
+        
+        <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded text-left">
+    <div class="flex items-start">
+        <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <div>
+            <p class="font-medium">¡Gracias por suscribirte!</p>
+            <p class="text-sm" id="successDetail">Te hemos enviado un correo de confirmación.</p>
+        </div>
+    </div>
+</div>
+
+<div id="emailError" class="hidden mt-1 text-sm text-red-600"></div>
+    </div>
+</div>
+</div>
+
+<div id="emailError" class="hidden mt-1 text-sm text-red-600"></div>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -319,131 +207,87 @@
         </div>
     </footer>
 
-    <!-- Botón de WhatsApp flotante -->
+    <!-- Botón de WhatsApp -->
     <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-30">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z" /></svg>
     </a>
-
     <script>
-        // Menú móvil
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            
-            // Animación del icono
-            this.classList.toggle('transform');
-            this.classList.toggle('rotate-90');
-        });
+    // Toggle del menú móvil
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+                                                                  );
+</script>
+    <script>
+// URL de tu Google Apps Script
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeqDTcOfqWAkO_lJkHyDvZ0q9FGFbQ6t4P_qRGvyfT9nwaYFpLUz8DqJDMpjOjtj8F/exec";
 
-        // Efecto ripple para botones
-        document.querySelectorAll('.ripple').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const ripple = document.createElement('span');
-                ripple.className = 'ripple-effect';
-                ripple.style.left = `${x}px`;
-                ripple.style.top = `${y}px`;
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 1000);
-            });
+document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const successMessage = document.getElementById('successMessage');
+    const submitText = document.getElementById('submitText');
+    const spinner = document.getElementById('spinner');
+    
+    // Reset estados
+    emailError.classList.add('hidden');
+    emailInput.classList.remove('border-red-500');
+    successMessage.classList.add('hidden');
+    
+    // Validación simple del cliente
+    if (!emailInput.value.includes('@')) {
+        emailInput.classList.add('border-red-500');
+        emailError.textContent = "Por favor ingresa un email válido";
+        emailError.classList.remove('hidden');
+        return;
+    }
+    
+    // Mostrar estado de carga
+    form.querySelector('button').disabled = true;
+    submitText.textContent = "Procesando...";
+    spinner.classList.remove('hidden');
+    
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `email=${encodeURIComponent(emailInput.value)}`
         });
-
-        // Animaciones al hacer scroll
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.animate-fadeIn');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
         
-        // Ejecutar al cargar y al hacer scroll
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll();
-
-        // Formulario de suscripción
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeqDTcOfqWAkO_lJkHyDvZ0q9FGFbQ6t4P_qRGvyfT9nwaYFpLUz8DqJDMpjOjtj8F/exec";
-
-        document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        const result = await response.json();
+        
+        if (result.success) {
+            // Mostrar mensaje de éxito
+            form.reset();
+            form.classList.add('hidden');
+            successMessage.querySelector('p:last-child').textContent = result.message;
+            successMessage.classList.remove('hidden');
             
-            const form = e.target;
-            const emailInput = document.getElementById('email');
-            const emailError = document.getElementById('emailError');
-            const successMessage = document.getElementById('successMessage');
-            const submitText = document.getElementById('submitText');
-            const spinner = document.getElementById('spinner');
-            
-            // Reset estados
-            emailError.classList.add('hidden');
-            emailInput.classList.remove('border-red-500');
-            successMessage.classList.add('hidden');
-            
-            // Validación simple del cliente
-            if (!emailInput.value.includes('@')) {
-                emailInput.classList.add('border-red-500');
-                emailError.textContent = "Por favor ingresa un email válido";
-                emailError.classList.remove('hidden');
-                return;
-            }
-            
-            // Mostrar estado de carga
-            form.querySelector('button').disabled = true;
-            submitText.textContent = "Procesando...";
-            spinner.classList.remove('hidden');
-            
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `email=${encodeURIComponent(emailInput.value)}`
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    // Mostrar mensaje de éxito
-                    form.reset();
-                    form.classList.add('hidden');
-                    document.getElementById('successDetail').textContent = result.message;
-                    successMessage.classList.remove('hidden');
-                    
-                    // Desplazarse suavemente al mensaje
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    // Mostrar mensaje de error específico
-                    emailInput.classList.add('border-red-500');
-                    emailError.textContent = result.message;
-                    emailError.classList.remove('hidden');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                emailInput.classList.add('border-red-500');
-                emailError.textContent = "Ocurrió un error. Por favor intenta nuevamente.";
-                emailError.classList.remove('hidden');
-            } finally {
-                form.querySelector('button').disabled = false;
-                submitText.textContent = "Suscribirme";
-                spinner.classList.add('hidden');
-            }
-        });
-    </script>
+            // Desplazarse suavemente al mensaje
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            // Mostrar mensaje de error específico
+            emailInput.classList.add('border-red-500');
+            emailError.textContent = result.message;
+            emailError.classList.remove('hidden');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        emailInput.classList.add('border-red-500');
+        emailError.textContent = "Ocurrió un error. Por favor intenta nuevamente.";
+        emailError.classList.remove('hidden');
+    } finally {
+        form.querySelector('button').disabled = false;
+        submitText.textContent = "Suscribirme";
+        spinner.classList.add('hidden');
+    }
+});
+</script>
 </body>
 </html>
