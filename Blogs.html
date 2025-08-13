@@ -291,5 +291,75 @@
             animateOnScroll();
         });
     </script>
+     <script>
+// URL de tu Google Apps Script
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxeqDTcOfqWAkO_lJkHyDvZ0q9FGFbQ6t4P_qRGvyfT9nwaYFpLUz8DqJDMpjOjtj8F/exec";
+
+document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const successMessage = document.getElementById('successMessage');
+    const submitText = document.getElementById('submitText');
+    const spinner = document.getElementById('spinner');
+    
+    // Reset estados
+    emailError.classList.add('hidden');
+    emailInput.classList.remove('border-red-500');
+    successMessage.classList.add('hidden');
+    
+    // Validación simple del cliente
+    if (!emailInput.value.includes('@')) {
+        emailInput.classList.add('border-red-500');
+        emailError.textContent = "Por favor ingresa un email válido";
+        emailError.classList.remove('hidden');
+        return;
+    }
+    
+    // Mostrar estado de carga
+    form.querySelector('button').disabled = true;
+    submitText.textContent = "Procesando...";
+    spinner.classList.remove('hidden');
+    
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `email=${encodeURIComponent(emailInput.value)}`
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Mostrar mensaje de éxito
+            form.reset();
+            form.classList.add('hidden');
+            successMessage.querySelector('p:last-child').textContent = result.message;
+            successMessage.classList.remove('hidden');
+            
+            // Desplazarse suavemente al mensaje
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            // Mostrar mensaje de error específico
+            emailInput.classList.add('border-red-500');
+            emailError.textContent = result.message;
+            emailError.classList.remove('hidden');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        emailInput.classList.add('border-red-500');
+        emailError.textContent = "Ocurrió un error. Por favor intenta nuevamente.";
+        emailError.classList.remove('hidden');
+    } finally {
+        form.querySelector('button').disabled = false;
+        submitText.textContent = "Suscribirme";
+        spinner.classList.add('hidden');
+    }
+});
+</script>
 </body>
 </html>
