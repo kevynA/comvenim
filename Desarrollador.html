@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="description" content="🚀 Comvenim - Digitaliza tu negocio con webs + campañas de ads que venden. Soporte técnico incluido. ¡Potencia tus ventas hoy! #MarketingDigital">
     <style>
         body {
@@ -33,11 +34,6 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .cart-item-animation { animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
         .btn-primary {
             @apply bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105;
         }
@@ -46,6 +42,72 @@
         }
         .card {
             @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+        }
+        
+        /* Animaciones mejoradas */
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .animate-pulse-once {
+            animation: pulse 1s ease-in-out;
+        }
+        
+        /* Transiciones para el menú móvil */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+            opacity: 1;
+            transition: max-height 0.5s ease-in, opacity 0.3s ease 0.2s;
+        }
+        
+        /* Efecto hover para tarjetas de certificación */
+        .cert-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Animación para el marquee */
+        .marquee-content {
+            animation: scroll 25s linear infinite;
+            width: 200%;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @media (min-width: 640px) {
+            .marquee-content {
+                animation-duration: 30s;
+                width: 180%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .marquee-content {
+                animation-duration: 25s;
+                width: 150%;
+            }
+        }
+        
+        @media (min-width: 1536px) {
+            .marquee-content {
+                width: 120%;
+            }
         }
     </style>
 </head>
@@ -59,38 +121,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Header y Navegación -->
     <header id="header" class="bg-white shadow-md sticky top-0 z-40">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
+            <a href="#" class="text-3xl font-extrabold text-blue-600 hover:text-blue-700 transition-colors duration-300">COMVENIM</a>
             <div class="hidden md:flex items-center space-x-8">
-                 <a href="index.html#inicio"class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
-                <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium">Proyectos</a>
-               <a href="Blogs.html" class="text-gray-600 hover:text-blue-600 font-medium">Noticias</a>
-               <a href="Desarrollador.html" class="text-blue-600 font-medium underline">Desarrollador</a>
-                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agenda tu Cita</a>
-                <button id="cart-button" class="relative text-gray-600 hover:text-blue-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                </button>
+                <a href="index.html#inicio" class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300">Inicio</a>
+                <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300">Proyectos</a>
+                <a href="Blogs.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300">Noticias</a>
+                <a href="Desarrollador.html" class="text-blue-600 font-medium underline hover:text-blue-700 transition-colors duration-300">Desarrollador</a>
+                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300">Agenda tu Cita</a>
             </div>
+            
             <!-- Botón de Menú Móvil -->
             <div class="md:hidden flex items-center">
-                 <button id="cart-button-mobile" class="relative text-gray-600 hover:text-blue-600 mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                    <span id="cart-count-mobile" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                </button>
-                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </div>
         </nav>
+        
         <!-- Menú Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
-             <a href="index.html#inicio" class="block py-2 px-6 text-sm text-blue-600 font-medium bg-blue-50">Inicio</a>
-            <a href="proyectos.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Proyectos</a>
-            <a href="Blogs.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Noticias</a>
-            <a href="Desarrollador.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Desarrollador</a>
-            <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Agendar Cita</a>
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg">
+            <div class="container mx-auto px-6 py-2">
+                <a href="index.html#inicio" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-300">Inicio</a>
+                <a href="proyectos.html" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-300">Proyectos</a>
+                <a href="Blogs.html" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-300">Noticias</a>
+                <a href="Desarrollador.html" class="block py-3 px-4 text-blue-600 font-medium bg-blue-50 rounded-lg">Desarrollador</a>
+                <a href="Agendar Cita.html" class="block py-3 px-4 text-gray-800 hover:bg-blue-50 rounded-lg transition-colors duration-300">Agendar Cita</a>
+            </div>
         </div>
     </header>
     
@@ -137,111 +195,77 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 
                 <!-- Botón CTA - Posicionamiento responsive -->
                 <div class="mt-4 md:mt-0 md:absolute md:right-6 md:top-1/2 md:transform md:-translate-y-1/2 text-center md:text-left">
-                    <a href="Agendar Cita.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base">
+                    <a href="Agendar Cita.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base animate-pulse-once">
                         ¡Contrátanos!
                     </a>
                 </div>
             </div>
         </section>
-        <style>
-            .marquee-content {
-                animation: scroll 25s linear infinite;
-            }
-            
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            
-            @media (max-width: 768px) {
-                .marquee-content {
-                    animation-duration: 20s;
-                }
-            }
-            .marquee-content {
-                animation: scroll 40s linear infinite;
-                /* Ajuste inicial para pantallas pequeñas */
-                width: 200%;
-            }
-            
-            .marquee-item {
-                /* Asegura que los elementos no se encimen */
-                flex-shrink: 0;
-            }
-            
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            
-            /* Ajustes para tablets */
-            @media (min-width: 640px) {
-                .marquee-content {
-                    animation-duration: 30s;
-                    width: 180%;
-                }
-            }
-            
-            /* Ajustes para desktop */
-            @media (min-width: 1024px) {
-                .marquee-content {
-                    animation-duration: 25s;
-                    width: 150%;
-                }
-            }
-            
-            /* Ajuste para pantallas muy grandes */
-            @media (min-width: 1536px) {
-                .marquee-content {
-                    width: 120%;
-                }
-            }
-        </style>
 
         <!-- Sección del Creador del Sitio -->
-<section id="creador" class="py-20 bg-gray-100">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-800">Desarrollador</h2>
-            <p class="text-gray-600 mt-4 max-w-2xl mx-auto">COMVENIM</p>
-        </div>
-        <div class="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto">
-            <div class="md:w-1/3">
-                <img src="Kevin 1.webp" alt="Creador de COMVENIM" class="w-full h-auto rounded-xl shadow-lg">
-            </div>
-            <div class="md:w-2/3">
-                <h3 class="text-2xl font-bold mb-4">KEVIN AYALA</h3>
-                <p class="text-gray-600 mb-4">Especialista en TIC´s y desarrollador principal, con experiencia de más de 2 años cómo asistente adniminstrativo en supervisión y soporte técnico, en empresas públicas y privadas.</p>
-                <div class="mb-4">
-                    <h4 class="font-bold mb-2">Habilidades:</h4>
-                    <ul class="list-disc list-inside text-gray-600">
-                        <li>Desarrollo web UX y UI</li>
-                        <li>Ciberseguridad</li>
-                        <li>Marketing digital y SEO</li>
-                        <li>Soporte técnico especializado</li>
-                    </ul>
+        <section id="creador" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Desarrollador</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Conoce al profesional detrás de COMVENIM</p>
                 </div>
-                <div>
-                    <h4 class="font-bold mb-2">Contacto:</h4>
-                    <p class="text-gray-600">Puedes contactarme directamente para proyectos personalizados: <a href="mailto:tuemail@comvenim.com" class="text-blue-600 hover:underline">convenimentornosseguros@gmail.com</a></p>
+                <div class="flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto">
+                    <div class="md:w-1/3 transform transition duration-500 hover:scale-105">
+                        <img src="Kevin 1.webp" alt="Creador de COMVENIM" class="w-full h-auto rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">KEVIN AYALA</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Especialista en TIC´s y desarrollador principal, con experiencia de más de 2 años cómo asistente administrativo en supervisión y soporte técnico, en empresas públicas y privadas.</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-3 text-lg text-gray-800 flex items-center">
+                                <i class="fas fa-cogs text-blue-500 mr-2"></i> Habilidades:
+                            </h4>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i> Desarrollo web UX y UI
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i> Ciberseguridad
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i> Marketing digital y SEO
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i> Soporte técnico especializado
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-bold mb-2 text-lg text-gray-800 flex items-center">
+                                <i class="fas fa-envelope text-blue-500 mr-2"></i> Contacto:
+                            </h4>
+                            <p class="text-gray-600 mb-2">Puedes contactarme directamente para proyectos personalizados:</p>
+                            <a href="mailto:convenimentornosseguros@gmail.com" class="text-blue-600 hover:underline font-medium">
+                                convenimentornosseguros@gmail.com
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- Sección de Certificaciones -->
+        </section>
+
+        <!-- Sección de Certificaciones -->
         <section id="certificaciones" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-800">Certificaciones y Credenciales</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Conoce las certificaciones que respaldan nuestro conocimiento y experiencia.</p>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Certificaciones y Credenciales</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Conoce las certificaciones que respaldan nuestro conocimiento y experiencia.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Certificación 1 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Titulo tercer nivel.webp" alt="Título de tercer nivel - TIC´s" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Titulo tercer nivel.webp" alt="Título de tercer nivel - TIC´s" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2022</span>
                             </div>
@@ -259,9 +283,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     
                     <!-- Certificación 2 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Fundamentos de Marketing Digital y Comercio Elecctrónico.webp" alt="Certificado en Marketing Digital" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Fundamentos de Marketing Digital y Comercio Elecctrónico.webp" alt="Certificado en Marketing Digital" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -279,9 +303,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     
                     <!-- Certificación 3 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Inteligencia Artificial y productividad.webp" alt="Certificado en Inteligencia Artificial y Productividad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Inteligencia Artificial y productividad.webp" alt="Certificado en Inteligencia Artificial y Productividad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -299,9 +323,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
 
                     <!-- Certificación 4 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Introducción a Ciberseguridad.webp" alt="Certificado de Introducción a Ciberseguridad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Introducción a Ciberseguridad.webp" alt="Certificado de Introducción a Ciberseguridad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -317,10 +341,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </a>
                         </div>
                     </div>
+                    
                     <!-- Certificación 5 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Introducción al Análisis de datos con Python.webp" alt="Certificado de Introducción al Análisis de datos con Python" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Introducción al Análisis de datos con Python.webp" alt="Certificado de Introducción al Análisis de datos con Python" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -336,10 +361,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </a>
                         </div>
                     </div>
+                    
                     <!-- Certificación 6 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Meta Ads desde cero.webp" alt="Cartificación de Meta Ads" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Meta Ads desde cero.webp" alt="Cartificación de Meta Ads" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -355,10 +381,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </a>
                         </div>
                     </div>
+                    
                     <!-- Certificación 7 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Descubriendo la Gestión de datos industriales - 2025.webp" alt="Cartificación de Meta Ads" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Descubriendo la Gestión de datos industriales - 2025.webp" alt="Cartificación de Meta Ads" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -374,10 +401,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </a>
                         </div>
                     </div>
+                    
                     <!-- Certificación 8 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Inicie_su_Negocio_-Certificado_de_Aprobación_del_curso_165599.webp" alt="Cartificación Inicia tu Negocio" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Inicie_su_Negocio_-Certificado_de_Aprobación_del_curso_165599.webp" alt="Cartificación Inicia tu Negocio" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -393,10 +421,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </a>
                         </div>
                     </div>
+                    
                     <!-- Certificación 9 -->
-                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100">
+                    <div class="cert-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
                         <div class="relative h-48 overflow-hidden">
-                            <img src="Gestón de Ciberseguridad.webp" alt="Cartificación Gestón de Ciberseguridad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="Gestón de Ciberseguridad.webp" alt="Cartificación Gestón de Ciberseguridad" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                                 <span class="text-white font-medium">2025</span>
                             </div>
@@ -417,40 +446,101 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <!-- Lightbox para ver certificados en grande -->
                 <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
                     <div class="relative max-w-4xl w-full">
-                        <button id="close-lightbox" class="absolute -top-10 right-0 text-white hover:text-blue-300">
+                        <button id="close-lightbox" class="absolute -top-10 right-0 text-white hover:text-blue-300 transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        <img id="lightbox-image" src="" alt="" class="w-full max-h-[80vh] object-contain">
+                        <img id="lightbox-image" src="" alt="" class="w-full max-h-[80vh] object-contain rounded-lg">
                     </div>
                 </div>
             </div>
 
             <!-- Botón para LinkedIn al final de la sección -->
-        <div class="text-center mt-16">
-    <a href="https://www.linkedin.com/in/kevinayala1004784011/" target="_blank" 
-       class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 mx-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-        Ver más certificaciones en LinkedIn
-    </a>
-</div>
+            <div class="text-center mt-16">
+                <a href="https://www.linkedin.com/in/kevinayala1004784011/" target="_blank" 
+                   class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    Ver más certificaciones en LinkedIn
+                </a>
+            </div>
         </section>
-
-
-        
     </main>
 
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-            <p>&copy; 2025 COMVENIM. Todos los derechos reservados.</p>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white hover:text-blue-300 transition-colors duration-300">COMVENIM</a>
+                    <p class="text-gray-400 mt-2">Soluciones tecnológicas para tu negocio</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#inicio" class="text-gray-400 hover:text-white transition-colors duration-300">Inicio</a>
+                    <a href="proyectos.html" class="text-gray-400 hover:text-white transition-colors duration-300">Proyectos</a>
+                    <a href="Blogs.html" class="text-gray-400 hover:text-white transition-colors duration-300">Noticias</a>
+                    <a href="Desarrollador.html" class="text-gray-400 hover:text-white transition-colors duration-300">Desarrollador</a>
+                    <a href="Agendar Cita.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contacto</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 COMVENIM. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-30">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z" /></svg>
+    <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-30 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z"/>
+        </svg>
     </a>
+
+    <script>
+        // Menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Lightbox para certificaciones
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeLightbox = document.getElementById('close-lightbox');
+        
+        document.querySelectorAll('[data-lightbox="certificaciones"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                lightboxImage.src = link.getAttribute('href');
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeLightbox.addEventListener('click', () => {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Efecto de animación al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('fade-in');
+                }, index * 200);
+            });
+        });
+    </script>
 </body>
 </html>
