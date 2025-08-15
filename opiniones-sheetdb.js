@@ -1,5 +1,5 @@
 // Configuración (REMPLAZA CON TUS DATOS)
-const SHEETDB_API = 'https://sheetdb.io/api/v1/3vbm7owp7uckp';
+const SHEETDB_API = 'https://sheetdb.io/api/v1/o07pzxtgsqgqw';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del DOM
