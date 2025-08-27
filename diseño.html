@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- Favicon estándar -->
+    <link rel="icon" href="Blanco y negro - Icono - 16x16.png" type="image/x-icon">
+    <link rel="shortcut icon" href="Blanco y negro - Icono - 16x16.png" type="image/x-icon">
+
+    <!-- Para navegadores modernos (PNG/SVG) -->
+    <link rel="icon" href="Blanco y negro - Icono - 16x16.png" type="image/png">
+    <link rel="icon" href="Blanco y negro - Icono - 16x16.svg" type="image/svg+xml">
+
+    <!-- Para Apple (iOS) -->
+    <link rel="apple-touch-icon" href="Blanco y negro - Icono - 16x16.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY71CFJFMN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TY71CFJFMN');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseños para Redes Sociales | COMVENIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Meta tags SEO y redes sociales -->
+    <meta name="description" content="🚀 Diseños profesionales para redes sociales que impulsan tu marca. Campañas digitales efectivas y contenido visual atractivo. ¡Contáctanos!">
+    <meta property="og:title" content="Diseños para Redes Sociales | COMVENIM">
+    <meta property="og:description" content="Diseños profesionales para redes sociales que impulsan tu marca. Campañas digitales efectivas y contenido visual atractivo.">
+    <meta property="og:image" content="Logo - 16 por 16 - Web.png">
+    <meta property="og:url" content="https://comvenim.com/diseños-redes">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        /* Animaciones y estilos mejorados */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        .cart-item-animation { animation: slideIn 0.3s ease-out; }
+        
+        .btn-primary {
+            @apply bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:from-blue-700 hover:to-blue-900 ripple;
+        }
+        
+        .btn-secondary {
+            @apply bg-gradient-to-r from-slate-600 to-slate-800 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:from-slate-700 hover:to-slate-900 ripple;
+        }
+        
+        .card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+            transform-style: preserve-3d;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+        }
+        
+        /* Efecto ripple para botones */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+        
+        .ripple:active:after {
+            transform: scale(0, 0);
+            opacity: 0.3;
+            transition: 0s;
+        }
+        
+        /* Placeholder para imágenes */
+        img {
+            background-color: #f3f4f6;
+            background-image: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%);
+            transition: opacity 0.3s ease;
+        }
+        
+        img[src] {
+            opacity: 1;
+        }
+        
+        img:not([src]) {
+            opacity: 0;
+        }
+        
+        /* Rating stars */
+        .rating-stars label {
+            transition: color 0.2s ease;
+        }
+        .rating-stars:hover label {
+            color: #fbbf24;
+        }
+        .rating-stars input:checked ~ label {
+            color: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        
+        .carousel-item { 
+            display: none; 
+            transition: opacity 1s ease-in-out; 
+        }
+        .carousel-item.active { 
+            display: block; 
+        }
+        
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-fadeInUp {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos específicos para la página de diseños */
+        .social-post {
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .social-post:hover {
+            transform: scale(1.03);
+        }
+        
+        .platform-filter {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .platform-filter.active {
+            background: #4361ee;
+            color: white;
+        }
+        
+        .instagram-bg {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        
+        .facebook-bg {
+            background: #1877F2;
+        }
+        
+        .tiktok-bg {
+            background: #000000;
+        }
+        
+        .whatsapp-bg {
+            background: #25D366;
+        }
+    </style>
+</head>
+    
+<body class="text-gray-800">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVKZ8435"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header y Navegación -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-blue-600">COMVENIM</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#inicio" class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
+                <a href="proyectos.html" class="text-gray-600 hover:text-blue-600 font-medium">Proyectos</a>
+                <a href="Blogs.html" class="text-gray-600 hover:text-blue-600 font-medium">Noticias</a>
+                <a href="diseños-redes.html" class="text-blue-600 font-medium underline">Diseños RRSS</a>
+                <a href="Desarrollador.html" class="text-gray-600 hover:text-blue-600 font-medium">Desarrollador</a>
+                <a href="Agendar Cita.html" class="text-gray-600 hover:text-blue-600 font-medium">Agenda tu Cita</a>
+            </div>
+            <!-- Botón de Menú Móvil -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600" aria-label="Menú móvil">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="index.html#inicio" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Inicio</a>
+            <a href="proyectos.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Proyectos</a>
+            <a href="Blogs.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Noticias</a>
+            <a href="diseños-redes.html" class="block py-2 px-6 text-sm text-blue-600 font-medium bg-blue-50">Diseños RRSS</a>
+            <a href="Desarrollador.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Desarrollador</a>
+            <a href="Agendar Cita.html" class="block py-2 px-6 text-sm text-gray-600 hover:bg-blue-50">Agendar Cita</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section Específica para Diseños de Redes -->
+        <section id="inicio" class="relative h-[60vh] md:h-[80vh] text-white scroll-animate">
+            <div id="carousel" class="absolute inset-0">
+                <div class="carousel-item active h-full">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Diseños para redes sociales" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4">
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Diseños que <span class="text-blue-400">Convierten</span></h1>
+                        <p class="text-lg md:text-xl max-w-3xl mb-8">Contenido visual impactante para tus redes sociales que genera engagement y ventas.</p>
+                        <a href="#portafolio" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Ver Portafolio
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item h-full">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Campañas digitales" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4">
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Campañas <span class="text-blue-400">Digitales</span> Efectivas</h1>
+                        <p class="text-lg md:text-xl max-w-3xl mb-8">Estrategias de marketing que posicionan tu marca y aumentan tus conversiones.</p>
+                        <a href="#servicios" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Nuestros Servicios
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item h-full">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="Contenido para redes" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center p-4">
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Contenido <span class="text-blue-400">Personalizado</span></h1>
+                        <p class="text-lg md:text-xl max-w-3xl mb-8">Desarrollamos la identidad visual de tu marca para destacar en redes sociales.</p>
+                        <a href="#contacto" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Solicitar Presupuesto
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button id="prevBtn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/50 p-2 rounded-full text-gray-800 hover:bg-white transition" aria-label="Imagen anterior"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg></button>
+            <button id="nextBtn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/50 p-2 rounded-full text-gray-800 hover:bg-white transition" aria-label="Imagen siguiente"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="portafolio" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-animate">
+                    <h2 class="text-4xl font-bold text-gray-800">Nuestro <span class="text-blue-600">Portafolio</span> de Diseños</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Explora nuestros diseños creativos para diferentes plataformas y industrias.</p>
+                </div>
+                
+                <!-- Platform Filters -->
+                <div class="flex justify-center flex-wrap gap-4 mb-12">
+                    <div class="platform-filter active bg-white shadow-md rounded-full px-6 py-2 font-medium" data-filter="all">
+                        Todos
+                    </div>
+                    <div class="platform-filter bg-white shadow-md rounded-full px-6 py-2 font-medium flex items-center" data-filter="instagram">
+                        <i class="fab fa-instagram text-pink-600 mr-2"></i> Instagram
+                    </div>
+                    <div class="platform-filter bg-white shadow-md rounded-full px-6 py-2 font-medium flex items-center" data-filter="facebook">
+                        <i class="fab fa-facebook text-blue-600 mr-2"></i> Facebook
+                    </div>
+                    <div class="platform-filter bg-white shadow-md rounded-full px-6 py-2 font-medium flex items-center" data-filter="tiktok">
+                        <i class="fab fa-tiktok text-black mr-2"></i> TikTok
+                    </div>
+                </div>
+                
+                <!-- Portfolio Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Instagram Post 1 -->
+                    <div class="social-post bg-white shadow-lg instagram" data-platform="instagram">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1616469829476-8953c5655574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Instagram post" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fab fa-instagram text-pink-600 text-xl mr-2"></i>
+                                    <span class="font-medium">@cliente_ejemplo</span>
+                                </div>
+                                <div class="text-gray-500">
+                                    <i class="far fa-heart"></i> 3.2K
+                                </div>
+                            </div>
+                            <p class="text-gray-700">Descubre cómo transformamos la presencia digital de @cliente_ejemplo. ¡Los resultados hablan por sí solos! 🚀</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Facebook Post -->
+                    <div class="social-post bg-white shadow-lg facebook" data-platform="facebook">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Facebook post" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fab fa-facebook text-blue-600 text-xl mr-2"></i>
+                                    <span class="font-medium">Cliente Ejemplo</span>
+                                </div>
+                                <div class="text-gray-500">
+                                    <i class="far fa-thumbs-up"></i> 1.5K
+                                </div>
+                            </div>
+                            <p class="text-gray-700">¡Oferta especial esta semana! No dejes pasar la oportunidad de adquirir nuestros productos con un 20% de descuento.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TikTok Post -->
+                    <div class="social-post bg-white shadow-lg tiktok" data-platform="tiktok">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="TikTok post" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fab fa-tiktok text-black text-xl mr-2"></i>
+                                    <span class="font-medium">@cliente_tiktok</span>
+                                </div>
+                                <div class="text-gray-500">
+                                    <i class="far fa-heart"></i> 45.2K
+                                </div>
+                            </div>
+                            <p class="text-gray-700">Trending alert! ¿Ya viste nuestro último video? 😎 #viral #trending #marketingdigital</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Instagram Post 2 -->
+                    <div class="social-post bg-white shadow-lg instagram" data-platform="instagram">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1616007736933-54d2525a2c19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Instagram post" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fab fa-instagram text-pink-600 text-xl mr-2"></i>
+                                    <span class="font-medium">@marca_fashion</span>
+                                </div>
+                                <div class="text-gray-500">
+                                    <i class="far fa-heart"></i> 8.7K
+                                </div>
+                            </div>
+                            <p class="text-gray-700">Nueva colección Otoño/Invierno 2023. ¿Cuál es tu favorito? 👇 #moda #tendencia #coleccion2023</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Facebook Post 2 -->
+                    <div class="social-post bg-white shadow-lg facebook" data-platform="facebook">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="Facebook post" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fab fa-facebook text-blue-600 text-xl mr-2"></i>
+                                    <span class="font-medium">Empresa Tech</span>
+                                </div>
+                                <div class="text-gray-500">
+                                    <i class="far fa-thumbs-up"></i> 2.3K
+                                </div>
+                            </div>
+                            <p class="text-gray-700">Nuestro equipo ha estado trabajando en una innovadora solución que revolucionará la industria. ¡Próximamente!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TikTok Post 2 -->
+                    <div class="social-post bg-white shadow-lg tiktok" data-platform="tiktok">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611944212120-4c2c31c57f5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="TikTok post" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <i class="fab fa-tiktok text-black text-xl mr-2"></i>
+                                    <span class="font-medium">@restaurante_delicia</span>
+                                </div>
+                                <div class="text-gray-500">
+                                    <i class="far fa-heart"></i> 127K
+                                </div>
+                            </div>
+                            <p class="text-gray-700">Así preparamos nuestro plato estrella 😋 ¿Te gustaría probarlo? #foodie #receta #delicious</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#contacto" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md">
+                        ¿Quieres diseños como estos?
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicios" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-animate">
+                    <h2 class="text-4xl font-bold text-gray-800">Nuestros <span class="text-blue-600">Servicios</span> de Marketing Digital</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Ofrecemos soluciones completas para potenciar tu presencia en redes sociales.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-8 card scroll-animate">
+                        <div class="bg-blue-100 text-blue-600 rounded-full p-4 inline-block mb-4 float-animation">
+                            <i class="fas fa-palette text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Diseño de Contenido</h3>
+                        <p class="text-gray-600">Creación de posts, historias, banners y gráficos personalizados para todas tus redes sociales.</p>
+                        <ul class="mt-4 text-left text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Posts para Instagram y Facebook</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Historias y Reels</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Banners y portadas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center p-8 card scroll-animate" style="animation-delay: 0.2s;">
+                        <div class="bg-purple-100 text-purple-600 rounded-full p-4 inline-block mb-4 float-animation">
+                            <i class="fas fa-chart-line text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Gestión de Campañas</h3>
+                        <p class="text-gray-600">Desarrollamos y ejecutamos estrategias de marketing en redes sociales para maximizar tu ROI.</p>
+                        <ul class="mt-4 text-left text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Estrategia personalizada</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Campañas publicitarias</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Análisis y optimización</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center p-8 card scroll-animate" style="animation-delay: 0.4s;">
+                        <div class="bg-pink-100 text-pink-600 rounded-full p-4 inline-block mb-4 float-animation">
+                            <i class="fas fa-video text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Contenido Multimedia</h3>
+                        <p class="text-gray-600">Producción de videos, animaciones y contenido interactivo para engagement máximo.</p>
+                        <ul class="mt-4 text-left text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Videos para Reels/TikTok</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Animaciones y motion graphics</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Contenido interactivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-20 bg-blue-600 text-white">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-8 bg-blue-700 rounded-2xl">
+                        <div class="text-5xl font-bold mb-2">+250</div>
+                        <div class="text-xl">Clientes satisfechos</div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-blue-700 rounded-2xl">
+                        <div class="text-5xl font-bold mb-2">+5K</div>
+                        <div class="text-xl">Diseños entregados</div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-blue-700 rounded-2xl">
+                        <div class="text-5xl font-bold mb-2">+85%</div>
+                        <div class="text-xl">Aumento en engagement</div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-blue-700 rounded-2xl">
+                        <div class="text-5xl font-bold mb-2">24h</div>
+                        <div class="text-xl">Tiempo de respuesta</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-animate">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Lo que dicen nuestros clientes</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Experiencias reales de negocios que han crecido con nuestros diseños.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card p-8 scroll-animate">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                ★★★★★
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Los diseños que creó COMVENIM para nuestras redes sociales aumentaron nuestro engagement en un 120%. ¡Totalmente recomendados!"</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <span class="font-bold">E</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Edwin</h4>
+                                <p class="text-sm text-gray-500">Papelería</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8 scroll-animate" style="animation-delay: 0.2s;">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                ★★★★☆
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Las campañas en redes sociales generaron leads de calidad para mi farmacia. El ROI fue evidente desde el primer mes."</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <span class="font-bold">E</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Elizabeth</h4>
+                                <p class="text-sm text-gray-500">Farmacia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8 scroll-animate" style="animation-delay: 0.4s;">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                ★★★★★
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"El contenido para TikTok que desarrollaron volvió virales nuestros videos. Increíble cómo aumentaron nuestras ventas."</p>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                                <span class="font-bold">C</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Carlos</h4>
+                                <p class="text-sm text-gray-500">Técnico de Dispositivos Móviles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-blue-600 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Listo para transformar tu presencia en redes sociales?</h2>
+                <p class="text-xl mb-10 max-w-3xl mx-auto">Contáctanos hoy mismo y recibe una consultoría gratuita para tu estrategia de contenido.</p>
+                <a href="#contacto" class="bg-white text-blue-600 font-bold py-4 px-10 rounded-full inline-block transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Solicitar asesoría gratuita
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">¿Listo para <span class="text-blue-600">empezar?</span></h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Nombre completo</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Correo electrónico</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="company" class="block text-gray-700 font-medium mb-2">Empresa</label>
+                                <input type="text" id="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                Enviar mensaje
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-gray-50 p-8 rounded-2xl shadow-lg h-full">
+                            <h3 class="text-2xl font-bold mb-6">Información de contacto</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-envelope text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Correo electrónico</h4>
+                                        <p class="text-gray-600">convenimentornosseguros@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-green-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-phone-alt text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Teléfono</h4>
+                                        <p class="text-gray-600">+593 992 648 781</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-map-marker-alt text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Ubicación</h4>
+                                        <p class="text-gray-600">Av. Atahualpa, Ibarra, Ecuador. (Sector Las Cuatro Esquinas)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h4 class="font-bold mb-4">Síguenos en redes sociales</h4>
+                                <div class="flex space-x-4">
+                                    <a href="https://www.facebook.com/profile.php?id=61578571285624" target="_blank" class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/comvenim/" target="_blank" class="w-12 h-12 rounded-full bg-pink-600 flex items-center justify-center text-white">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://www.tiktok.com/@comvenim" target="_blank" class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white">
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                    <a href="https://wa.me/593992648781" target="_blank" class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold mr-2">C</div>
+                        <span class="text-xl font-bold">COMVENIM</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Transformamos tu presencia en redes sociales con diseños impactantes y estrategias efectivas.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61578571285624" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/comvenim/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@comvenim" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/593992648781" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Enlaces rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#inicio" class="text-gray-400 hover:text-white">Inicio</a></li>
+                        <li><a href="proyectos.html" class="text-gray-400 hover:text-white">Proyectos</a></li>
+                        <li><a href="diseños-redes.html" class="text-gray-400 hover:text-white">Diseños RRSS</a></li>
+                        <li><a href="Blogs.html" class="text-gray-400 hover:text-white">Noticias</a></li>
+                        <li><a href="Agendar Cita.html" class="text-gray-400 hover:text-white">Agendar Cita</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Servicios</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Diseño de contenido</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Gestión de campañas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contenido multimedia</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Estrategia de redes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Community Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Suscríbete al newsletter</h4>
+                    <p class="text-gray-400 mb-4">Recibe tips y tendencias de marketing digital.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Tu correo electrónico" class="px-4 py-2 w-full rounded-l-lg focus:outline-none">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 COMVENIM. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/593992648781" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.474.852-.352 2.054.494.498 2.132-.556z" /></svg>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===================================
+            // PLATFORM FILTER FUNCTIONALITY
+            // ===================================
+            const filters = document.querySelectorAll('.platform-filter');
+            const posts = document.querySelectorAll('.social-post');
+            
+            filters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    // Remove active class from all filters
+                    filters.forEach(f => f.classList.remove('active', 'bg-blue-600', 'text-white'));
+                    
+                    // Add active class to clicked filter
+                    filter.classList.add('active', 'bg-blue-600', 'text-white');
+                    
+                    const platform = filter.getAttribute('data-filter');
+                    
+                    // Show/hide posts based on filter
+                    posts.forEach(post => {
+                        if (platform === 'all') {
+                            post.style.display = 'block';
+                        } else {
+                            if (post.getAttribute('data-platform') === platform) {
+                                post.style.display = 'block';
+                            } else {
+                                post.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // ===================================
+            // CARRUSEL DE IMÁGENES
+            // ===================================
+            const carousel = document.getElementById('carousel');
+            if (carousel) {
+                const items = document.querySelectorAll('.carousel-item');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                let currentIndex = 0;
+                let carouselInterval;
+                
+                // Mostrar el primer item
+                showItem(currentIndex);
+                startCarousel();
+                
+                // Función para mostrar un item específico
+                function showItem(index) {
+                    items.forEach((item, i) => {
+                        item.classList.toggle('active', i === index);
+                    });
+                }
+                
+                // Navegación anterior
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', function() {
+                        resetCarouselInterval();
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+                        showItem(currentIndex);
+                    });
+                }
+                
+                // Navegación siguiente
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', function() {
+                        resetCarouselInterval();
+                        currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+                        showItem(currentIndex);
+                    });
+                }
+                
+                function startCarousel() {
+                    carouselInterval = setInterval(function() {
+                        currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+                        showItem(currentIndex);
+                    }, 5000);
+                }
+                
+                function resetCarouselInterval() {
+                    clearInterval(carouselInterval);
+                    startCarousel();
+                }
+            }
+
+            // ===================================
+            // ANIMACIONES AL SCROLL
+            // ===================================
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.scroll-animate');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('animate-fadeInUp');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Ejecutar al cargar
+
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ===================================
+            // MENÚ MÓVIL
+            // ===================================
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+        });
+    </script>
+</body>
+</html>
