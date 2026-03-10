@@ -6,13 +6,13 @@
     <link rel="icon" href="Blanco y negro - Icono - 16x16.png" type="image/png" sizes="16x16">
     <link rel="apple-touch-icon" href="Blanco y negro - Icono - 16x16.png">
     
-    <!-- Google tag (gtag.js) - Optimizado con load nativo -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY71CFJFMN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-TY71CFJFMN', { 'send_page_view': false }); // Optimizado
+      gtag('config', 'G-TY71CFJFMN', { 'send_page_view': false });
     </script>
 
     <meta charset="UTF-8">
@@ -42,41 +42,55 @@
         .overflow-hidden{overflow:hidden;}
         .cursor-pointer{cursor:pointer;}
         
-        /* Animaciones optimizadas (solo las necesarias) */
+        /* Animaciones optimizadas */
         @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
         .fade-in{animation:fadeIn .5s ease;}
     </style>
     
-    <!-- Tailwind CDN con estrategia de carga optimizada -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fuentes optimizadas con display swap -->
+    <!-- Fuentes optimizadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome optimizado - Solo iconos necesarios -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     
-    <!-- Meta tags SEO optimizados -->
-    <meta name="description" content="🚀 Diseños profesionales para redes sociales. Campañas digitales efectivas y contenido visual atractivo para Instagram, Facebook y TikTok. ¡Contáctanos!">
-    <meta name="keywords" content="diseño redes sociales, marketing digital, contenido visual, instagram diseño, facebook posts, tiktok videos">
+    <!-- Meta tags SEO -->
+    <meta name="description" content="🚀 Diseños profesionales para redes sociales, identidad visual de marcas, branding, packaging y contenido visual atractivo. ¡Contáctanos!">
+    <meta name="keywords" content="diseño redes sociales, identidad visual, branding, packaging, diseño de logos, línea gráfica, marketing digital">
     <meta property="og:title" content="Diseños para Redes Sociales | COMVENIM">
-    <meta property="og:description" content="Diseños profesionales para impulsar tu marca en redes sociales. Campañas digitales efectivas.">
+    <meta property="og:description" content="Diseños profesionales para impulsar tu marca en redes sociales. Identidad visual, branding y más.">
     <meta property="og:image" content="Logo - 16 por 16 - Web.png">
     <meta property="og:url" content="https://comvenim.com/disenos-redes">
     <meta name="twitter:card" content="summary_large_image">
     
-    <!-- Estilos específicos para filtros de plataformas -->
+    <!-- Estilos específicos -->
     <style>
         /* Filtros de plataforma mejorados */
         .platform-filter{transition:all .2s;cursor:pointer;user-select:none;}
         .platform-filter.active{background:#2563eb;color:white;transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);}
         
-        /* Tarjetas de posts con skeleton loading */
-        .social-post{transition:transform .2s,opacity .2s;opacity:1;border-radius:.75rem;overflow:hidden;}
-        .social-post.loading{opacity:.7;}
-        .social-post:hover{transform:translateY(-4px);box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);}
+        /* Tarjetas de posts */
+        .social-post-compact{transition:transform .2s,opacity .2s;opacity:1;border-radius:.75rem;overflow:hidden;}
+        .social-post-compact:hover{transform:translateY(-4px);box-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);}
+        
+        /* Estilos para imágenes de posts */
+        .post-image{height:200px;overflow:hidden;position:relative;}
+        .post-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease;}
+        .social-post-compact:hover .post-image img{transform:scale(1.05);}
+        
+        /* Badge de plataforma */
+        .platform-badge{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:white;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:10;}
+        
+        /* Métricas de posts */
+        .post-metrics{display:flex;align-items:center;gap:12px;font-size:0.75rem;color:#6b7280;margin-top:6px;}
+        .post-metrics span{display:flex;align-items:center;gap:3px;}
+        
+        /* Badge de categoría de diseño */
+        .design-category-badge{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.7);color:white;font-size:0.7rem;padding:3px 8px;border-radius:20px;z-index:10;backdrop-filter:blur(4px);}
         
         /* Gradientes por plataforma */
         .platform-bg-instagram{background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);}
@@ -88,15 +102,24 @@
         .stat-card{transition:transform .2s;backdrop-filter:blur(10px);}
         .stat-card:hover{transform:scale(1.05);}
         
-        /* Scroll suave optimizado */
+        /* Scroll suave */
         html{scroll-behavior:smooth;}
         
-        /* Menú móvil optimizado */
+        /* Menú móvil */
         @media (max-width:768px){#mobile-menu{transition:max-height .3s ease;overflow:hidden;}}
         
-        /* Botón WhatsApp optimizado */
+        /* Botón WhatsApp */
         .whatsapp-btn{transition:all .2s;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);}
         .whatsapp-btn:hover{transform:scale(1.1);box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);}
+        
+        /* Línea de tiempo para identidad visual */
+        .timeline-item{position:relative;padding-left:20px;border-left:2px solid #2563eb;}
+        .timeline-item:before{content:'';position:absolute;left:-6px;top:0;width:10px;height:10px;border-radius:50%;background:#2563eb;}
+        
+        /* Estilos para mostrar variedad de diseños */
+        .design-showcase{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:20px;}
+        .design-item{background:white;border-radius:8px;padding:10px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,0.05);}
+        .design-item i{font-size:2rem;color:#2563eb;margin-bottom:5px;}
     </style>
 </head>
 
@@ -136,29 +159,34 @@
     </header>
 
     <main>
-        <!-- Hero section optimizado -->
+        <!-- Hero section mejorado con más servicios -->
         <section class="bg-gradient-to-br from-blue-50 to-white py-12 md:py-20">
             <div class="container mx-auto px-4 text-center">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    Diseños <span class="text-blue-600">Profesionales</span> para Redes Sociales
+                    Diseños <span class="text-blue-600">Profesionales</span> para tu Marca
                 </h1>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                    Contenido visual que impulsa tu marca en Instagram, Facebook y TikTok
+                    Identidad visual, branding, packaging, línea gráfica y contenido para redes sociales
                 </p>
-                <a href="#contacto" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 shadow-lg">
-                    Comenzar ahora
-                </a>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#portafolio" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 shadow-lg">
+                        Ver portafolio
+                    </a>
+                    <a href="#servicios" class="inline-block bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition transform hover:scale-105">
+                        Nuestros servicios
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- Portfolio Section con filtros mejorados -->
+        <!-- Portfolio Section con variedad de diseños -->
         <section id="portafolio" class="py-16 bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
                         Nuestro <span class="text-blue-600">Portafolio</span>
                     </h2>
-                    <p class="text-gray-600 mt-2">Explora nuestros diseños por plataforma</p>
+                    <p class="text-gray-600 mt-2">Explora nuestra variedad de diseños: identidad visual, branding y contenido digital</p>
                 </div>
                 
                 <!-- Filtros de plataforma mejorados -->
@@ -175,154 +203,318 @@
                     <button class="platform-filter px-5 py-2 rounded-full font-medium shadow-sm flex items-center gap-1" data-filter="tiktok">
                         <i class="fab fa-tiktok"></i> TikTok
                     </button>
+                    <button class="platform-filter px-5 py-2 rounded-full font-medium shadow-sm flex items-center gap-1" data-filter="branding">
+                        <i class="fas fa-brush"></i> Branding
+                    </button>
                 </div>
                 
-                <!-- GRID DE POSTS COMPACTOS (IGUAL TAMAÑO QUE TU CÓDIGO) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="posts-grid">
-            
-            <!-- ===== INSTAGRAM POSTS ===== -->
-            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="instagram">
-                <a href="https://www.instagram.com/comvenim/" target="_blank" class="block">
-                    <div class="post-image relative">
-                        <img data-src="Marketing Digital efectivo.png" alt="Instagram post" class="lazy w-full h-full object-cover" loading="lazy">
-                        <div class="platform-badge">
-                            <i class="fab fa-instagram text-pink-600 text-lg"></i>
-                        </div>
+                <!-- GRID DE POSTS CON VARIEDAD DE DISEÑOS -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="posts-grid">
+                    
+                    <!-- ===== IDENTIDAD VISUAL / BRANDING ===== -->
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Identidad visual completa" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-palette text-purple-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-brush mr-1"></i> Identidad Visual
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Branding Completo</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 456</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Identidad visual para marca de moda - Paleta de colores, tipografía y logo</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-pencil-ruler"></i> Logo</span>
+                                    <span><i class="fas fa-fill-drip"></i> Colores</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="p-3">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">@comvenim</span>
-                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 234</span>
-                        </div>
-                        <p class="text-gray-700 text-xs mt-1 line-clamp-2">Descubre cómo transformamos marcas 🚀</p>
-                        <div class="post-metrics">
-                            <span><i class="far fa-comment"></i> 12</span>
-                            <span><i class="far fa-bookmark"></i> 8</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="instagram">
-                <a href="https://www.instagram.com/comvenim/" target="_blank" class="block">
-                    <div class="post-image relative">
-                        <img data-src="[URL_IMAGEN_INSTA_2]" alt="Instagram diseño" class="lazy w-full h-full object-cover" loading="lazy">
-                        <div class="platform-badge">
-                            <i class="fab fa-instagram text-pink-600 text-lg"></i>
-                        </div>
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Línea gráfica" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-pen-fancy text-indigo-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-ruler mr-1"></i> Línea Gráfica
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Línea Gráfica</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 234</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Manual de marca completo con aplicaciones y usos correctos</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-ruler"></i> Manual</span>
+                                    <span><i class="fas fa-file-alt"></i> PDF</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="p-3">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">@comvenim</span>
-                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 567</span>
-                        </div>
-                        <p class="text-gray-700 text-xs mt-1">Nuevo diseño para cliente ✨ #branding</p>
-                        <div class="post-metrics">
-                            <span><i class="far fa-comment"></i> 23</span>
-                            <span><i class="far fa-bookmark"></i> 15</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-            <!-- ===== FACEBOOK POSTS ===== -->
-            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="facebook">
-                <a href="https://www.facebook.com/profile.php?id=61561423178570" target="_blank" class="block">
-                    <div class="post-image relative">
-                        <img data-src="468912923_122132790770380772_1863108855453653105_n.jpg" alt="Facebook post" class="lazy w-full h-full object-cover" loading="lazy">
-                        <div class="platform-badge">
-                            <i class="fab fa-facebook text-blue-600 text-lg"></i>
-                        </div>
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Packaging diseño" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-box-open text-amber-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-box mr-1"></i> Packaging
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Packaging</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 789</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Diseño de packaging para productos cosméticos - Cajas y etiquetas</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-cube"></i> Cajas</span>
+                                    <span><i class="fas fa-tag"></i> Etiquetas</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="p-3">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">Severun Tech</span>
-                            <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i> 89</span>
-                        </div>
-                        <p class="text-gray-700 text-xs mt-1">Tecnología para hogares inteligentes</p>
-                        <div class="post-metrics">
-                            <span><i class="far fa-comment"></i> 7</span>
-                            <span><i class="fas fa-share"></i> 4</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="facebook">
-                <a href="https://www.facebook.com/profile.php?id=61561423178570" target="_blank" class="block">
-                    <div class="post-image relative">
-                        <img data-src="[URL_IMAGEN_FB_2]" alt="Facebook post 2" class="lazy w-full h-full object-cover" loading="lazy">
-                        <div class="platform-badge">
-                            <i class="fab fa-facebook text-blue-600 text-lg"></i>
-                        </div>
+                    <!-- ===== LOGOS Y MARCAS ===== -->
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Diseño de logo" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-star text-yellow-500 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-star mr-1"></i> Logos
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Logos</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 567</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Colección de logos minimalistas para startups tecnológicas</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-vector-square"></i> Vector</span>
+                                    <span><i class="fas fa-file-image"></i> PNG</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="p-3">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">Severun Tech</span>
-                            <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i> 156</span>
-                        </div>
-                        <p class="text-gray-700 text-xs mt-1">Mantenimiento de equipos profesionales</p>
-                        <div class="post-metrics">
-                            <span><i class="far fa-comment"></i> 23</span>
-                            <span><i class="fas fa-share"></i> 12</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-            <!-- ===== TIKTOK POSTS ===== -->
-            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="tiktok">
-                <a href="https://www.tiktok.com/@comvenim" target="_blank" class="block">
-                    <div class="post-image relative">
-                        <img data-src="[URL_IMAGEN_TIKTOK_1]" alt="TikTok video" class="lazy w-full h-full object-cover" loading="lazy">
-                        <div class="platform-badge">
-                            <i class="fab fa-tiktok text-black text-lg"></i>
-                        </div>
-                        <!-- Indicador de video pequeño -->
-                        <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 rounded px-1.5 py-0.5">
-                            <i class="fas fa-play text-white text-xs"></i>
-                        </div>
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Papelería corporativa" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-envelope text-green-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-print mr-1"></i> Papelería
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Papelería</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 123</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Diseño de papelería corporativa: tarjetas, sobres, folders</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-id-card"></i> Tarjetas</span>
+                                    <span><i class="fas fa-folder"></i> Folders</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="p-3">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">@comvenim</span>
-                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 12.5K</span>
-                        </div>
-                        <p class="text-gray-700 text-xs mt-1">🎵 #viral #marketingdigital</p>
-                        <div class="post-metrics">
-                            <span><i class="far fa-comment"></i> 432</span>
-                            <span><i class="fas fa-play"></i> 45K</span>
-                        </div>
-                        <div class="text-xs text-gray-400 mt-1 truncate">
-                            <i class="fas fa-music mr-1"></i> sonido original
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="tiktok">
-                <a href="https://www.tiktok.com/@comvenim" target="_blank" class="block">
-                    <div class="post-image relative">
-                        <img data-src="[URL_IMAGEN_TIKTOK_2]" alt="TikTok diseño" class="lazy w-full h-full object-cover" loading="lazy">
-                        <div class="platform-badge">
-                            <i class="fab fa-tiktok text-black text-lg"></i>
-                        </div>
-                        <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 rounded px-1.5 py-0.5">
-                            <i class="fas fa-play text-white text-xs"></i>
-                        </div>
+                    <!-- ===== INSTAGRAM POSTS ===== -->
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="instagram">
+                        <a href="https://www.instagram.com/comvenim/" target="_blank" class="block">
+                            <div class="post-image relative">
+                                <img data-src="Marketing Digital efectivo.png" alt="Instagram post" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fab fa-instagram text-pink-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-hashtag mr-1"></i> Post
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">@comvenim</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 234</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1 line-clamp-2">Marketing digital efectivo para tu negocio 🚀</p>
+                                <div class="post-metrics">
+                                    <span><i class="far fa-comment"></i> 12</span>
+                                    <span><i class="far fa-bookmark"></i> 8</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="p-3">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-sm">@comvenim</span>
-                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 8.2K</span>
-                        </div>
-                        <p class="text-gray-700 text-xs mt-1">✨ Detrás de escena #design</p>
-                        <div class="post-metrics">
-                            <span><i class="far fa-comment"></i> 156</span>
-                            <span><i class="fas fa-play"></i> 20K</span>
-                        </div>
-                        <div class="text-xs text-gray-400 mt-1 truncate">
-                            <i class="fas fa-music mr-1"></i> sonido original
+
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="instagram">
+                        <a href="https://www.instagram.com/comvenim/" target="_blank" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Instagram diseño" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fab fa-instagram text-pink-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-hashtag mr-1"></i> Stories
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">@comvenim</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 567</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Diseño de stories interactivas para promociones ✨</p>
+                                <div class="post-metrics">
+                                    <span><i class="far fa-comment"></i> 23</span>
+                                    <span><i class="far fa-bookmark"></i> 15</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ===== FACEBOOK POSTS ===== -->
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="facebook">
+                        <a href="https://www.facebook.com/profile.php?id=61561423178570" target="_blank" class="block">
+                            <div class="post-image relative">
+                                <img data-src="468912923_122132790770380772_1863108855453653105_n.jpg" alt="Facebook post" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fab fa-facebook text-blue-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-hashtag mr-1"></i> Post
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Severun Tech</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i> 89</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Tecnología para hogares inteligentes</p>
+                                <div class="post-metrics">
+                                    <span><i class="far fa-comment"></i> 7</span>
+                                    <span><i class="fas fa-share"></i> 4</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ===== TIKTOK POSTS ===== -->
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="tiktok">
+                        <a href="https://www.tiktok.com/@comvenim" target="_blank" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="TikTok video" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fab fa-tiktok text-black text-lg"></i>
+                                </div>
+                                <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 rounded px-1.5 py-0.5">
+                                    <i class="fas fa-play text-white text-xs"></i>
+                                </div>
+                                <div class="design-category-badge" style="left:8px; bottom:40px;">
+                                    <i class="fas fa-video mr-1"></i> Reel
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">@comvenim</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 12.5K</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">🎵 Tutorial de diseño #viral</p>
+                                <div class="post-metrics">
+                                    <span><i class="far fa-comment"></i> 432</span>
+                                    <span><i class="fas fa-play"></i> 45K</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ===== MÁS EJEMPLOS DE BRANDING ===== -->
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moodboard" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-images text-purple-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-magic mr-1"></i> Moodboard
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Moodboard</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 345</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Inspiración y paleta de colores para marca de café</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-palette"></i> Colores</span>
+                                    <span><i class="fas fa-font"></i> Tipografía</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Merchandising" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-tshirt text-blue-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-tshirt mr-1"></i> Merch
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Merchandising</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 678</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Diseño de camisetas y productos promocionales</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-tshirt"></i> Ropa</span>
+                                    <span><i class="fas fa-mug-hot"></i> Tazas</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="branding">
+                        <a href="#" class="block">
+                            <div class="post-image relative">
+                                <img data-src="https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Señalética" class="lazy w-full h-full object-cover" loading="lazy">
+                                <div class="platform-badge">
+                                    <i class="fas fa-signs-post text-green-600 text-lg"></i>
+                                </div>
+                                <div class="design-category-badge">
+                                    <i class="fas fa-signs-post mr-1"></i> Señalética
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium text-sm">Señalética</span>
+                                    <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 234</span>
+                                </div>
+                                <p class="text-gray-700 text-xs mt-1">Diseño de señalética corporativa y wayfinding</p>
+                                <div class="post-metrics">
+                                    <span><i class="fas fa-arrow-left"></i> Dirección</span>
+                                    <span><i class="fas fa-building"></i> Oficinas</span>
                                 </div>
                             </div>
                         </a>
@@ -337,56 +529,197 @@
             </div>
         </section>
 
-        <!-- Servicios mejorados -->
-        <section id="servicios" class="py-16 bg-white">
+        <!-- Nueva sección: Tipos de Diseño que Ofrecemos -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">
+                        Tipos de <span class="text-blue-600">Diseño</span>
+                    </h2>
+                    <p class="text-gray-600 mt-2">Variedad de servicios creativos para tu marca</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-palette text-3xl text-blue-600 mb-2"></i>
+                        <span class="text-sm font-medium">Identidad Visual</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-brush text-3xl text-purple-600 mb-2"></i>
+                        <span class="text-sm font-medium">Branding</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-box-open text-3xl text-amber-600 mb-2"></i>
+                        <span class="text-sm font-medium">Packaging</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-star text-3xl text-yellow-500 mb-2"></i>
+                        <span class="text-sm font-medium">Logos</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-ad text-3xl text-red-500 mb-2"></i>
+                        <span class="text-sm font-medium">Publicidad</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-mobile-alt text-3xl text-green-600 mb-2"></i>
+                        <span class="text-sm font-medium">Redes Sociales</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-print text-3xl text-indigo-600 mb-2"></i>
+                        <span class="text-sm font-medium">Papelería</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-tshirt text-3xl text-pink-600 mb-2"></i>
+                        <span class="text-sm font-medium">Merchandising</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-video text-3xl text-blue-800 mb-2"></i>
+                        <span class="text-sm font-medium">Motion Graphics</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-ruler text-3xl text-gray-800 mb-2"></i>
+                        <span class="text-sm font-medium">Línea Gráfica</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-magic text-3xl text-cyan-600 mb-2"></i>
+                        <span class="text-sm font-medium">Moodboards</span>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg text-center hover:shadow-md transition">
+                        <i class="fas fa-chart-pie text-3xl text-orange-600 mb-2"></i>
+                        <span class="text-sm font-medium">Infografías</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios mejorados con más categorías -->
+        <section id="servicios" class="py-16 bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-                        Nuestros <span class="text-blue-600">Servicios</span>
+                        Nuestros <span class="text-blue-600">Servicios</span> Creativos
                     </h2>
-                    <p class="text-gray-600 mt-2">Soluciones completas para tu marca</p>
+                    <p class="text-gray-600 mt-2">Soluciones completas de diseño para tu marca</p>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Servicio 1 -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Servicio 1: Identidad Visual -->
                     <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
                         <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                             <i class="fas fa-palette text-2xl text-blue-600"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Diseño de Contenido</h3>
-                        <p class="text-gray-600 mb-4">Posts, historias y banners personalizados para todas tus redes</p>
+                        <h3 class="text-xl font-bold mb-2">Identidad Visual</h3>
+                        <p class="text-gray-600 mb-4">Creamos la personalidad de tu marca desde cero</p>
                         <ul class="space-y-2 text-sm text-gray-600">
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Posts para Instagram/Facebook</li>
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Historias y Reels</li>
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Banners y portadas</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Diseño de logos</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Paletas de color</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Tipografía corporativa</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Manual de marca</li>
                         </ul>
                     </div>
                     
-                    <!-- Servicio 2 -->
+                    <!-- Servicio 2: Branding -->
                     <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
                         <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                            <i class="fas fa-chart-line text-2xl text-purple-600"></i>
+                            <i class="fas fa-brush text-2xl text-purple-600"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Gestión de Campañas</h3>
-                        <p class="text-gray-600 mb-4">Estrategias personalizadas para maximizar tu ROI</p>
+                        <h3 class="text-xl font-bold mb-2">Branding</h3>
+                        <p class="text-gray-600 mb-4">Construimos marcas memorables y coherentes</p>
                         <ul class="space-y-2 text-sm text-gray-600">
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Estrategia personalizada</li>
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Campañas publicitarias</li>
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Análisis y optimización</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Estrategia de marca</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Naming y tagging</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Brand guidelines</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Posicionamiento</li>
                         </ul>
                     </div>
                     
-                    <!-- Servicio 3 -->
+                    <!-- Servicio 3: Packaging -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
+                        <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-box-open text-2xl text-amber-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Packaging</h3>
+                        <p class="text-gray-600 mb-4">Diseño de empaques que venden</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Cajas y estuches</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Etiquetas y stickers</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Bolsas y envoltorios</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Packaging ecológico</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Servicio 4: Diseño Editorial -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
+                        <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-book-open text-2xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Diseño Editorial</h3>
+                        <p class="text-gray-600 mb-4">Publicaciones impresas y digitales</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Revistas y catálogos</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Brochures y folletos</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Libros y e-books</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Informes anuales</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Servicio 5: Contenido Digital -->
                     <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
                         <div class="w-14 h-14 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-                            <i class="fas fa-video text-2xl text-pink-600"></i>
+                            <i class="fas fa-mobile-alt text-2xl text-pink-600"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Contenido Multimedia</h3>
-                        <p class="text-gray-600 mb-4">Videos y animaciones para máximo engagement</p>
+                        <h3 class="text-xl font-bold mb-2">Contenido Digital</h3>
+                        <p class="text-gray-600 mb-4">Para redes sociales y plataformas digitales</p>
                         <ul class="space-y-2 text-sm text-gray-600">
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Videos para Reels/TikTok</li>
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Animaciones</li>
-                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Contenido interactivo</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Posts para Instagram/Facebook</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Stories y Reels</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Banners y portadas</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Animaciones para redes</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Servicio 6: Papelería -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
+                        <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-print text-2xl text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Papelería</h3>
+                        <p class="text-gray-600 mb-4">Materiales impresos para tu negocio</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Tarjetas de presentación</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Hojas membretadas</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Sobres y folders</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Blocks de notas</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Servicio 7: Merchandising -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
+                        <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-tshirt text-2xl text-red-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Merchandising</h3>
+                        <p class="text-gray-600 mb-4">Productos promocionales personalizados</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Camisetas y ropa</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Tazas y termos</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Bolígrafos y agendas</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Regalos corporativos</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Servicio 8: Señalética -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition border border-gray-100">
+                        <div class="w-14 h-14 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-signs-post text-2xl text-gray-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Señalética</h3>
+                        <p class="text-gray-600 mb-4">Diseño de señalización corporativa</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Señales direccionales</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Placas identificativas</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Tótems informativos</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Vinilos decorativos</li>
                         </ul>
                     </div>
                 </div>
@@ -398,20 +731,59 @@
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="stat-card text-center p-4 bg-blue-700 rounded-xl text-white">
-                        <div class="text-3xl font-bold">+10</div>
-                        <div class="text-sm">Clientes</div>
+                        <div class="text-3xl font-bold">+25</div>
+                        <div class="text-sm">Marcas creadas</div>
                     </div>
                     <div class="stat-card text-center p-4 bg-blue-700 rounded-xl text-white">
-                        <div class="text-3xl font-bold">40</div>
-                        <div class="text-sm">Diseños</div>
+                        <div class="text-3xl font-bold">+150</div>
+                        <div class="text-sm">Diseños entregados</div>
                     </div>
                     <div class="stat-card text-center p-4 bg-blue-700 rounded-xl text-white">
-                        <div class="text-3xl font-bold">+85%</div>
-                        <div class="text-sm">Engagement</div>
+                        <div class="text-3xl font-bold">+95%</div>
+                        <div class="text-sm">Satisfacción</div>
                     </div>
                     <div class="stat-card text-center p-4 bg-blue-700 rounded-xl text-white">
-                        <div class="text-3xl font-bold">24h</div>
-                        <div class="text-sm">Respuesta</div>
+                        <div class="text-3xl font-bold">10+</div>
+                        <div class="text-sm">Industrias</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proceso de trabajo para identidad visual -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+                        Nuestro <span class="text-blue-600">Proceso</span> Creativo
+                    </h2>
+                    <p class="text-gray-600 mt-2">Cómo creamos la identidad visual de tu marca</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto">
+                    <div class="timeline-item mb-6">
+                        <h3 class="text-lg font-bold">1. Brief y descubrimiento</h3>
+                        <p class="text-sm text-gray-600">Conocemos tu marca, valores, competencia y objetivos.</p>
+                    </div>
+                    <div class="timeline-item mb-6">
+                        <h3 class="text-lg font-bold">2. Investigación y moodboard</h3>
+                        <p class="text-sm text-gray-600">Exploramos referencias, tendencias y creamos paneles de inspiración.</p>
+                    </div>
+                    <div class="timeline-item mb-6">
+                        <h3 class="text-lg font-bold">3. Conceptualización</h3>
+                        <p class="text-sm text-gray-600">Desarrollamos conceptos y bocetos iniciales de identidad.</p>
+                    </div>
+                    <div class="timeline-item mb-6">
+                        <h3 class="text-lg font-bold">4. Diseño y desarrollo</h3>
+                        <p class="text-sm text-gray-600">Creamos las piezas finales: logo, colores, tipografía, aplicaciones.</p>
+                    </div>
+                    <div class="timeline-item mb-6">
+                        <h3 class="text-lg font-bold">5. Presentación y ajustes</h3>
+                        <p class="text-sm text-gray-600">Presentamos la propuesta y realizamos los ajustes necesarios.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="text-lg font-bold">6. Entrega final</h3>
+                        <p class="text-sm text-gray-600">Entregamos todos los archivos y manual de uso de la marca.</p>
                     </div>
                 </div>
             </div>
@@ -420,27 +792,33 @@
         <!-- CTA Section -->
         <section id="contacto" class="py-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Listo para transformar tu presencia en redes?</h2>
-                <p class="text-lg mb-8 max-w-2xl mx-auto">Recibe una consultoría gratuita para tu estrategia de contenido</p>
-                <a href="agendar-cita.html" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">
-                    Solicitar asesoría gratuita
-                </a>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Listo para dar vida a tu marca?</h2>
+                <p class="text-lg mb-8 max-w-2xl mx-auto">Recibe una consultoría gratuita y descubre cómo podemos ayudarte</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="agendar-cita.html" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">
+                        Solicitar asesoría
+                    </a>
+                    <a href="https://wa.me/593992648781" target="_blank" class="inline-block bg-green-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer simplificado -->
+    <!-- Footer mejorado -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="text-2xl font-bold mb-4">COMVENIM</div>
-                    <p class="text-gray-400 text-sm mb-4">Transformamos tu presencia en redes sociales con diseños impactantes</p>
+                    <p class="text-gray-400 text-sm mb-4">Transformamos marcas a través del diseño estratégico y creativo</p>
                     <div class="flex space-x-4">
                         <a href="https://www.facebook.com/profile.php?id=61578571285624" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/comvenim/" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.tiktok.com/@comvenim" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
                         <a href="https://wa.me/593992648781" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-behance"></i></a>
                     </div>
                 </div>
                 
@@ -451,15 +829,18 @@
                         <li><a href="proyectos.html" class="hover:text-white">Proyectos</a></li>
                         <li><a href="diseno.html" class="hover:text-white">Diseños</a></li>
                         <li><a href="blogs.html" class="hover:text-white">Noticias</a></li>
+                        <li><a href="desarrollador.html" class="hover:text-white">Desarrollador</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-4">Servicios</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white">Diseño de contenido</a></li>
-                        <li><a href="#" class="hover:text-white">Gestión de campañas</a></li>
-                        <li><a href="#" class="hover:text-white">Contenido multimedia</a></li>
+                        <li><a href="#" class="hover:text-white">Identidad Visual</a></li>
+                        <li><a href="#" class="hover:text-white">Branding</a></li>
+                        <li><a href="#" class="hover:text-white">Packaging</a></li>
+                        <li><a href="#" class="hover:text-white">Diseño Editorial</a></li>
+                        <li><a href="#" class="hover:text-white">Redes Sociales</a></li>
                     </ul>
                 </div>
                 
@@ -468,6 +849,8 @@
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><i class="fab fa-whatsapp mr-2"></i> +593 992648781</li>
                         <li><i class="far fa-envelope mr-2"></i> info@comvenim.com</li>
+                        <li><i class="far fa-clock mr-2"></i> Lun - Vie: 9am - 6pm</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Ecuador</li>
                     </ul>
                 </div>
             </div>
@@ -502,7 +885,7 @@
                 
                 // Platform filters
                 const filters = document.querySelectorAll('.platform-filter');
-                const posts = document.querySelectorAll('.social-post');
+                const posts = document.querySelectorAll('.social-post-compact');
                 
                 if (filters.length && posts.length) {
                     filters.forEach(filter => {
@@ -534,9 +917,11 @@
                         entries.forEach(entry => {
                             if (entry.isIntersecting) {
                                 const img = entry.target;
-                                img.src = img.dataset.src;
-                                img.classList.remove('lazy');
-                                observer.unobserve(img);
+                                if (img.dataset.src) {
+                                    img.src = img.dataset.src;
+                                    img.classList.remove('lazy');
+                                    observer.unobserve(img);
+                                }
                             }
                         });
                     });
@@ -545,8 +930,10 @@
                 } else {
                     // Fallback
                     document.querySelectorAll('img.lazy').forEach(img => {
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                        }
                     });
                 }
             });
