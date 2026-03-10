@@ -177,47 +177,152 @@
                     </button>
                 </div>
                 
-                <!-- Grid de posts con lazy loading y segmentación -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
-                    <!-- Instagram Post 1 -->
-                    <div class="social-post bg-white shadow-lg rounded-xl overflow-hidden" data-platform="instagram">
-                        <a href="https://www.instagram.com/comvenim/" target="_blank" rel="noopener" class="block">
-                            <div class="relative overflow-hidden bg-gray-200 aspect-square">
-                                <img data-src="Marketing Digital efectivo.png" alt="Instagram post @comvenim" class="lazy w-full h-full object-cover transition-transform hover:scale-105" loading="lazy">
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fab fa-instagram text-pink-600 text-xl"></i>
-                                        <span class="font-medium">@comvenim</span>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 text-sm">Descubre cómo transformamos la presencia digital 🚀</p>
-                                <div class="mt-3 flex items-center text-gray-500 text-sm">
-                                    <i class="far fa-heart mr-1"></i> 234
-                                    <i class="far fa-comment ml-3 mr-1"></i> 12
-                                </div>
-                            </div>
-                        </a>
+                <!-- GRID DE POSTS COMPACTOS (IGUAL TAMAÑO QUE TU CÓDIGO) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="posts-grid">
+            
+            <!-- ===== INSTAGRAM POSTS ===== -->
+            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="instagram">
+                <a href="https://www.instagram.com/comvenim/" target="_blank" class="block">
+                    <div class="post-image relative">
+                        <img data-src="Marketing Digital efectivo.png" alt="Instagram post" class="lazy w-full h-full object-cover" loading="lazy">
+                        <div class="platform-badge">
+                            <i class="fab fa-instagram text-pink-600 text-lg"></i>
+                        </div>
                     </div>
+                    <div class="p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-sm">@comvenim</span>
+                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 234</span>
+                        </div>
+                        <p class="text-gray-700 text-xs mt-1 line-clamp-2">Descubre cómo transformamos marcas 🚀</p>
+                        <div class="post-metrics">
+                            <span><i class="far fa-comment"></i> 12</span>
+                            <span><i class="far fa-bookmark"></i> 8</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
-                    <!-- Facebook Post 1 -->
-                    <div class="social-post bg-white shadow-lg rounded-xl overflow-hidden" data-platform="facebook">
-                        <a href="https://www.facebook.com/profile.php?id=61561423178570" target="_blank" rel="noopener" class="block">
-                            <div class="relative overflow-hidden bg-gray-200 aspect-square">
-                                <img data-src="468912923_122132790770380772_1863108855453653105_n.jpg" alt="Facebook post Severun Technology" class="lazy w-full h-full object-cover transition-transform hover:scale-105" loading="lazy">
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fab fa-facebook text-blue-600 text-xl"></i>
-                                        <span class="font-medium">Severun Technology</span>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 text-sm">Servicios de Mantenimiento y tecnología para hogares inteligentes</p>
-                                <div class="mt-3 flex items-center text-gray-500 text-sm">
-                                    <i class="far fa-thumbs-up mr-1"></i> 89
-                                    <i class="far fa-comment ml-3 mr-1"></i> 7
+            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="instagram">
+                <a href="https://www.instagram.com/comvenim/" target="_blank" class="block">
+                    <div class="post-image relative">
+                        <img data-src="[URL_IMAGEN_INSTA_2]" alt="Instagram diseño" class="lazy w-full h-full object-cover" loading="lazy">
+                        <div class="platform-badge">
+                            <i class="fab fa-instagram text-pink-600 text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-sm">@comvenim</span>
+                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 567</span>
+                        </div>
+                        <p class="text-gray-700 text-xs mt-1">Nuevo diseño para cliente ✨ #branding</p>
+                        <div class="post-metrics">
+                            <span><i class="far fa-comment"></i> 23</span>
+                            <span><i class="far fa-bookmark"></i> 15</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- ===== FACEBOOK POSTS ===== -->
+            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="facebook">
+                <a href="https://www.facebook.com/profile.php?id=61561423178570" target="_blank" class="block">
+                    <div class="post-image relative">
+                        <img data-src="468912923_122132790770380772_1863108855453653105_n.jpg" alt="Facebook post" class="lazy w-full h-full object-cover" loading="lazy">
+                        <div class="platform-badge">
+                            <i class="fab fa-facebook text-blue-600 text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-sm">Severun Tech</span>
+                            <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i> 89</span>
+                        </div>
+                        <p class="text-gray-700 text-xs mt-1">Tecnología para hogares inteligentes</p>
+                        <div class="post-metrics">
+                            <span><i class="far fa-comment"></i> 7</span>
+                            <span><i class="fas fa-share"></i> 4</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="facebook">
+                <a href="https://www.facebook.com/profile.php?id=61561423178570" target="_blank" class="block">
+                    <div class="post-image relative">
+                        <img data-src="[URL_IMAGEN_FB_2]" alt="Facebook post 2" class="lazy w-full h-full object-cover" loading="lazy">
+                        <div class="platform-badge">
+                            <i class="fab fa-facebook text-blue-600 text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-sm">Severun Tech</span>
+                            <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i> 156</span>
+                        </div>
+                        <p class="text-gray-700 text-xs mt-1">Mantenimiento de equipos profesionales</p>
+                        <div class="post-metrics">
+                            <span><i class="far fa-comment"></i> 23</span>
+                            <span><i class="fas fa-share"></i> 12</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- ===== TIKTOK POSTS ===== -->
+            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="tiktok">
+                <a href="https://www.tiktok.com/@comvenim" target="_blank" class="block">
+                    <div class="post-image relative">
+                        <img data-src="[URL_IMAGEN_TIKTOK_1]" alt="TikTok video" class="lazy w-full h-full object-cover" loading="lazy">
+                        <div class="platform-badge">
+                            <i class="fab fa-tiktok text-black text-lg"></i>
+                        </div>
+                        <!-- Indicador de video pequeño -->
+                        <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 rounded px-1.5 py-0.5">
+                            <i class="fas fa-play text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-sm">@comvenim</span>
+                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 12.5K</span>
+                        </div>
+                        <p class="text-gray-700 text-xs mt-1">🎵 #viral #marketingdigital</p>
+                        <div class="post-metrics">
+                            <span><i class="far fa-comment"></i> 432</span>
+                            <span><i class="fas fa-play"></i> 45K</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1 truncate">
+                            <i class="fas fa-music mr-1"></i> sonido original
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="social-post-compact bg-white rounded-lg shadow-md overflow-hidden" data-platform="tiktok">
+                <a href="https://www.tiktok.com/@comvenim" target="_blank" class="block">
+                    <div class="post-image relative">
+                        <img data-src="[URL_IMAGEN_TIKTOK_2]" alt="TikTok diseño" class="lazy w-full h-full object-cover" loading="lazy">
+                        <div class="platform-badge">
+                            <i class="fab fa-tiktok text-black text-lg"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 rounded px-1.5 py-0.5">
+                            <i class="fas fa-play text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-sm">@comvenim</span>
+                            <span class="text-xs text-gray-500"><i class="far fa-heart mr-1"></i> 8.2K</span>
+                        </div>
+                        <p class="text-gray-700 text-xs mt-1">✨ Detrás de escena #design</p>
+                        <div class="post-metrics">
+                            <span><i class="far fa-comment"></i> 156</span>
+                            <span><i class="fas fa-play"></i> 20K</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1 truncate">
+                            <i class="fas fa-music mr-1"></i> sonido original
                                 </div>
                             </div>
                         </a>
